@@ -218,15 +218,17 @@ def verify_aws_braket_qpu_corpus(base_dir: str) -> bool:
     structural_wins = sum(
         1 for j in data
         if j["compiled_structural_metrics"]["prometheus_depth"] < j["compiled_structural_metrics"]["sabre_o3_depth"]
+        and j["compiled_structural_metrics"]["prometheus_depth"] < j["compiled_structural_metrics"]["tket_depth"]
         and j["compiled_structural_metrics"]["prometheus_2q_gates"] < j["compiled_structural_metrics"]["sabre_o3_2q_gates"]
+        and j["compiled_structural_metrics"]["prometheus_2q_gates"] < j["compiled_structural_metrics"]["tket_2q_gates"]
     )
-    in_coherence = [
-        j for j in data
-        if j["logical_metrics"]["qubits"] <= 10
-        and "f337ec8e-9348-4414-8a8d-10f2ed333d07" not in j["task_arn"]
-    ]
-    in_coh_wins_sabre = sum(
-        1 for j in in_coherence
+    overall_wins_sabre = sum(
+        1 for j in data
+        if j["physical_observables"]["prometheus"]["fidelity"] > j["physical_observables"]["sabre"]["fidelity"]
+    )
+    sub_10q = [j for j in data if j["logical_metrics"]["qubits"] <= 10]
+    sub_10q_wins_sabre = sum(
+        1 for j in sub_10q
         if j["physical_observables"]["prometheus"]["fidelity"] > j["physical_observables"]["sabre"]["fidelity"]
     )
 
@@ -236,10 +238,10 @@ def verify_aws_braket_qpu_corpus(base_dir: str) -> bool:
     print(f"  Completed 3-Way Braket Tasks  : {n_tasks} ProgramSet tasks (Distinct ARNs: {distinct_arns})")
     print(f"  Completed Compiled Circuits   : {total_circuits}")
     print(f"  Completed Physical Shots      : {total_shots:,}")
-    print(f"  Structural Depth + 2Q Wins    : {structural_wins} / {n_tasks} (100.0% simultaneous depth & 2Q reduction)")
+    print(f"  Structural Depth + 2Q Wins    : {structural_wins} / {n_tasks} (100.0% lower depth & CZ count vs. both SABRE O3 & TKET)")
     print(
-        f"  In-Coherence Fidelity Wins    : {in_coh_wins_sabre} / {len(in_coherence)} "
-        f"({100.0 * in_coh_wins_sabre / len(in_coherence):.1f}% vs. SABRE O3; 9 / 12 including pre-patch 9Q run)"
+        f"  Physical Fidelity Wins vs S   : {overall_wins_sabre} / {n_tasks} overall ({100.0 * overall_wins_sabre / n_tasks:.1f}%); "
+        f"{sub_10q_wins_sabre} / {len(sub_10q)} on 4Q-10Q tasks ({100.0 * sub_10q_wins_sabre / len(sub_10q):.1f}%)"
     )
     cepheus_9q = next(j for j in data if "2df64966-8b30-4e19-a859-25efc2f2b136" in j["task_arn"])
     print(

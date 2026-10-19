@@ -445,7 +445,7 @@
     "timestamp": "2026-10-19T18:16:13.404642",
     "qpu": "aws_iqm_emerald",
     "total_backend_qubits": 54,
-    "circuit_family": "QAOA MaxCut (3-Regular)",
+    "circuit_family": "QAOA MaxCut (Bounded-Degree, N=7, |E|=10)",
     "shots_per_compiler": 4096,
     "total_program_set_shots": 12288,
     "execution_time_seconds": 24.88,
