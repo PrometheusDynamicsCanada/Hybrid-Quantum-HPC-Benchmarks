@@ -1,13 +1,14 @@
 # Prometheus Dynamics - Hybrid Quantum-HPC & Multi-QPU Benchmark Corpus
 
 [![Platform](https://img.shields.io/badge/Platform-Prometheus%20Dynamics-4F46E5)](https://prometheusdynamics.ca)
+[![AWS Braket QPUs](https://img.shields.io/badge/AWS%20Braket%20QPUs-14%20ProgramSet%20Tasks%20%7C%20126.0K%20Shots-FF9900)](./aws_braket_qpu_14_jobs_ledger.json)
 [![IBM Quantum](https://img.shields.io/badge/IBM%20Heron%20156Q-107%20Completed%20Jobs%20%7C%204.96M%20Shots-054ADA)](./ibm_heron_156q_verified_benchmarks.json)
 [![Hybrid HPC](https://img.shields.io/badge/NVIDIA%20H100%20%28VeloxQ%29-42%20Configs%20%7C%204%E2%86%921%2C029%20Binary%20Vars-00D1B2)](./veloxq_h100_hybrid_benchmarks.json)
-[![AWS Braket](https://img.shields.io/badge/AWS%20Braket-Verified%20Badge-FF9900)](https://www.credly.com/badges/b64dc9e8-8f3e-4996-8494-4acee97db732/public_url)
+[![AWS Braket Badge](https://img.shields.io/badge/AWS%20Braket-Verified%20Badge-FF9900)](https://www.credly.com/badges/b64dc9e8-8f3e-4996-8494-4acee97db732/public_url)
 
-Official empirical hardware and hybrid-solver benchmark corpus for **Prometheus Dynamics** ([`https://prometheusdynamics.ca`](https://prometheusdynamics.ca)), documenting live physical executions across **three 156-qubit IBM Heron superconducting processors (`ibm_marrakesh`, `ibm_fez`, `ibm_kingston`)**, **VeloxQ NVIDIA H100 physics-inspired QUBO solvers (`VeloxQH100_1`)**, and the **Amazon Braket SDK (`LocalSimulator`)**.
+Official empirical hardware and hybrid-solver benchmark corpus for **Prometheus Dynamics** ([`https://prometheusdynamics.ca`](https://prometheusdynamics.ca)), documenting **121 completed 3-way physical quantum hardware benchmark jobs (`363` compiled circuits, `5,090,304` completed hardware shots)** across **six physical quantum processors** spanning **Amazon Braket (`Rigetti Cepheus-1-108Q`, `IQM Garnet` 20Q, `IQM Emerald` 54Q)** and **IBM Quantum (`ibm_marrakesh`, `ibm_fez`, `ibm_kingston` 156Q Heron)**, alongside **VeloxQ NVIDIA H100 physics-inspired QUBO solvers (`VeloxQH100_1`)** and the **Amazon Braket SDK (`LocalSimulator`)**.
 
-> **Intellectual Property & Reproducibility Boundary:** To protect proprietary compilation and problem-compression IP, internal routing source code, internal scoring weights, QUBO Hamiltonian penalty coefficients, and routed physical OpenQASM trajectories are withheld from this repository. Instead, this repository provides **complete machine-readable benchmark ledgers, full scheduling instance specifications, returned schedules, exact MILP lower-bound certificates, and standalone Python verification scripts** (`verify_corpus_and_schedules.py` and `validate_braket_local.py`).
+> **Intellectual Property & Reproducibility Boundary:** To protect proprietary compilation and problem-compression IP, internal routing source code, internal scoring weights, QUBO Hamiltonian penalty coefficients, and routed physical OpenQASM trajectories are withheld from this repository. Instead, this repository provides **complete machine-readable benchmark ledgers (including verifiable Amazon Braket Task ARNs and IBM Quantum Job IDs), full scheduling instance specifications, returned schedules, exact MILP lower-bound certificates, and standalone Python verification scripts** (`verify_corpus_and_schedules.py` and `validate_braket_local.py`).
 
 ---
 
@@ -15,13 +16,14 @@ Official empirical hardware and hybrid-solver benchmark corpus for **Prometheus 
 
 | Benchmark Pillar | Hardware / Environment | Reconciled Scale & Scope | Key Empirical Outcome |
 | :--- | :--- | :--- | :--- |
+| **Amazon Braket Live QPU Corpus** | **Rigetti `Cepheus-1-108Q`** (`108Q`), **IQM `Garnet`** (`20Q`), **IQM `Emerald`** (`54Q`) | **14 Completed 3-Way `ProgramSet` Tasks** (**`42` verbatim compiled circuits, `125,952` completed physical shots**) across `Dense All-to-All`, `QFT`, and `QAOA MaxCut` ([`aws_braket_qpu_14_jobs_ledger.json`](./aws_braket_qpu_14_jobs_ledger.json)) | **100% (`14 / 14`) simultaneous reduction in circuit depth and 2Q `CZ` gates**; **`+379.42%` (`4.79x`) distribution fidelity & `9.03x` XEB vs. `SABRE O3` (`+887.34%` / `9.87x` vs. `TKET`) on Rigetti `Cepheus-1-108Q` (`9Q Dense All-to-All`)**; **`+116.13%` (`2.16x`) fidelity on `Cepheus-1-108Q` (`6Q Dense All-to-All`)**; **`+14.92%` fidelity (`-52.6%` TVD) on IQM `Emerald` (`6Q QFT`)**; **`+9.39%` fidelity (`+43.1%` XEB) on IQM `Garnet` (`9Q Dense All-to-All`)** |
 | **156Q Gate-QPU Compilation Corpus** | **`ibm_marrakesh`**, **`ibm_fez`**, **`ibm_kingston`** *(156Q IBM Heron)* | **107 Completed 3-Way Jobs** (**`321` compiled physical circuits, `4,964,352` completed physical shots**) across **18 qubit scales (`4Q`-`23Q`)** *(out of `110` total dispatches / `5,111,808` dispatched shots; `3` unrecovered queue dispatches documented)* | Beat **Quantinuum `TKET` on `100 / 107` (`93.5%`)** and **IBM `SABRE O3` on `80 / 107` (`74.8%`)** completed hardware triplets; up to **`-54.5%`** 2Q gate reduction vs. `TKET` and **`-34.8%`** vs. `SABRE O3` |
 | **19Q Dense All-to-All ($K_{19}$) Survival** | **`ibm_marrakesh`**, **`ibm_fez`**, **`ibm_kingston`** *(156Q IBM Heron)* | **19-Qubit Dense All-to-All ($K_{19}$)** (`171` logical all-to-all pairs, `16,384 shots/compiler`) | Achieved **`24.26%`** (`ibm_kingston`), **`12.78%`** (`ibm_marrakesh`), and **`6.54%`** (`ibm_fez`) computational-basis distribution fidelity vs. `18.98%`, `6.27%`, and `3.57%` for `SABRE O3`; achieved **`70.45%` heavy-output probability (`HOP`)** on `ibm_kingston` (exceeding the `2/3` heavy-output reference threshold, vs. `63.28%` `SABRE O3` and `54.38%` `TKET`) |
 | **Hybrid Quantum-HPC QUBO Compression** | **VeloxQ NVIDIA H100 (`VeloxQH100_1`)** + **156Q IBM Heron** | **42 Distinct Benchmark Configurations** (**`150` multi-seed H100 solver executions**) scaling from **`4` to `1,029` QUBO binary variables** | **`94.44%` variable compression (`72` $\to$ `4` binary variables, `0.0%` optimality gap)** mapped to **4 physical qubits** on IBM Heron (`94.04%-96.34%` distribution fidelity); **`10.0x`-`11.3x` (`3x3`)** and **`26.1x`-`34.0x` (`4x3`)** ground-state sampling boost on H100; **`1,029` binary variables (`15x3` schedule)** solved to the **`26h`** target horizon (`0.0%` horizon gap; `25h` unrestricted pure-$C_{\max}$ MILP lower bound) in **`5.26s`** |
 | **Multi-Architecture Braket Verification** | **Amazon Braket SDK (`LocalSimulator`)** - **Rigetti Cepheus (108Q)** & **IQM Garnet (20Q)** | **7 Logical Workloads Verified at `4,096` Shots on `LocalSimulator` + 14 Archived 3-Compiler Structural Benchmarks** (`8Q` & `12Q` `QAOA MaxCut` + `QFT`, and optional `17Q`, `18Q`, `19Q` `Dense All-to-All` $\times$ `SABRE O3`, `TKET`, `Prometheus`) | Won **14 out of 14** structural benchmarks across Rigetti Cepheus and IQM Garnet (`validate_braket_local.py` verifies Qiskit-to-Braket logical equivalence and 4,096-shot execution across all 7 workloads and prints the 14-row benchmark table) |
 
 ### Quick-Start Independent Verification
-Run both verification suites locally to audit the corpus arithmetic, 45-operation schedule feasibility, and Qiskit-to-Braket logical circuit equivalence:
+Run both verification suites locally to audit the 107-job IBM Heron corpus, the 14-job live Amazon Braket QPU corpus, the 45-operation schedule feasibility, and Qiskit-to-Braket logical circuit equivalence:
 ```bash
 python verify_corpus_and_schedules.py
 python validate_braket_local.py
@@ -34,22 +36,42 @@ python validate_braket_local.py
 To ensure unambiguous interpretation across hardware and hybrid-solver benchmarks, all reported metrics follow strict definitions:
 
 1. **Classical Computational-Basis Distribution Fidelity (`fidelity`):**
-   - Throughout [`ibm_heron_156q_verified_benchmarks.json`](./ibm_heron_156q_verified_benchmarks.json), `fidelity` denotes the **classical computational-basis distribution overlap (Bhattacharyya coefficient)** between the noiseless ideal measurement probability distribution $P_{\text{ideal}}(x)$ and the empirical hardware bitstring frequency distribution $P_{\text{meas}}(x)$ over computational-basis states $x \in \{0,1\}^n$ (`16,384 shots/compiler`):
-     $$F_{\text{dist}}(P_{\text{ideal}}, P_{\text{meas}}) = \sum_{x \in \{0,1\}^n} \sqrt{P_{\text{ideal}}(x) \, P_{\text{meas}}(x)} = \sqrt{F_{\text{Hellinger}}}$$
+   - Throughout [`ibm_heron_156q_verified_benchmarks.json`](./ibm_heron_156q_verified_benchmarks.json) and [`aws_braket_qpu_14_jobs_ledger.json`](./aws_braket_qpu_14_jobs_ledger.json), `fidelity` denotes the **classical computational-basis distribution overlap** between the noiseless ideal measurement probability distribution $P_{\text{ideal}}(x)$ and the empirical hardware bitstring frequency distribution $P_{\text{meas}}(x)$ over computational-basis states $x \in \{0,1\}^n$.
    - This metric directly measures computational-basis output distribution preservation from shot histograms without requiring $4^n$ full quantum state tomography. It is reported alongside **Total Variation Distance** $\text{TVD} = \frac{1}{2}\sum_x |P_{\text{ideal}}(x) - P_{\text{meas}}(x)|$ and **Linear Cross-Entropy Benchmarking** $\text{XEB} = 2^n \sum_x P_{\text{ideal}}(x) P_{\text{meas}}(x) - 1$.
 2. **Heavy-Output Probability (`HOP`) vs. Formal Quantum Volume (`QV`):**
    - On the 19-qubit dense all-to-all ($K_{19}$) benchmark on `ibm_kingston` (`dbajlrhgv2cc73e6vuj0`), Prometheus achieved a **Heavy-Output Probability (`HOP`) of `70.45%`** (exceeding the `2/3` / `66.67%` heavy-output reference threshold, compared to `63.28%` for `SABRE O3` and `54.38%` for `TKET`).
    - **Methodological Boundary:** Crossing `2/3` heavy-output probability on this deterministic $K_{19}$ workload establishes heavy-output survival on that specific 19-qubit dense circuit; it is **not** a formal Quantum Volume (`QV`) certification, which under Qiskit's protocol requires a random $\text{SU}(4)$ model-circuit ensemble evaluated across $\ge 100$ independent random trials with a $2\sigma$ confidence bound.
 3. **Physical Qubits (`Q`) vs. QUBO Binary Variables:**
-   - **Physical Qubits (`4Q` to `23Q` on `156Q` IBM Heron processors; `8Q` to `19Q` on Braket QPU topologies)** refer exclusively to gate-model quantum circuits.
+   - **Physical Qubits (`4Q` to `23Q` on `156Q` IBM Heron processors; `4Q` to `17Q` on live Amazon Braket QPUs)** refer exclusively to gate-model quantum circuits.
    - **QUBO Binary Variables (`4` to `1,029` binary decision variables)** refer to combinatorial Ising/QUBO formulations executed on the **VeloxQ NVIDIA H100 GPU solver (`VeloxQH100_1`)**. Only the compressed `4-variable` Tier-5 schedule formulation (and `8Q`/`9Q` small instances) are mapped directly to physical gate-model qubits (`4Q` on `ibm_marrakesh`, `ibm_kingston`, and `ibm_fez`).
-4. **Corpus Accounting (`107` Completed Jobs vs. `110` Historical Dispatches) & Unfavorable Cases:**
+4. **Corpus Accounting (`121` Completed 3-Way Hardware Jobs Across IBM Quantum & Amazon Braket) & Unfavorable Cases:**
+   - [`aws_braket_qpu_14_jobs_ledger.json`](./aws_braket_qpu_14_jobs_ledger.json) contains **14 distinct completed 3-way `ProgramSet` hardware benchmark tasks** (`42` verbatim compiled circuits, `125,952` completed physical shots) across **Rigetti `Cepheus-1-108Q`**, **IQM `Garnet` (`20Q`)**, and **IQM `Emerald` (`54Q`)**.
    - [`ibm_heron_156q_verified_benchmarks.json`](./ibm_heron_156q_verified_benchmarks.json) contains **107 distinct completed 3-way hardware benchmark jobs** (`321` compiled physical circuits, `4,964,352` completed physical shots). Three earlier `8Q Dense All-to-All` queue dispatches (`db3v85svf2bc73ctral0`, `db3v85svf2bc73ctrakg`, `db3v85imb58s7388ed7g`, totaling `9` circuits and `147,456` dispatched shots) remained in `PENDING_IN_QUEUE` on an expired account session and are listed separately under `unrecovered_queue_dispatches` (`4,964,352 + 147,456 = 5,111,808` total dispatched shots across `110` dispatches).
-   - **Retained Unfavorable Results:** All 107 completed jobs are retained without cherry-picking, including the 27 instances where `SABRE O3` outperformed Prometheus (for example, `8Q QFT` job `dbaijipgv2cc73e6ubgg` on `ibm_fez`, where `SABRE O3` achieved `0.9909` distribution fidelity vs. `0.7785` for the selected candidate). Retaining mixed outcomes demonstrates why workload- and calibration-specific multi-compiler arbitration is essential in production.
+   - **Retained Unfavorable Results:** All 121 completed hardware jobs (`107` IBM Heron + `14` AWS Braket) are retained without cherry-picking, including all `27 / 107` IBM Heron cases and `2 / 11` in-coherence AWS Braket cases where `SABRE O3` outperformed Prometheus. Retaining mixed outcomes demonstrates why workload- and calibration-specific multi-compiler arbitration is essential in production.
 
 ---
 
-## 3. Live 156-Qubit IBM Heron Benchmarks (`SABRE O3` vs. `Quantinuum TKET` vs. `Prometheus`)
+## 3. Live Multi-Cloud QPU Benchmarks (`SABRE O3` vs. `Quantinuum TKET` vs. `Prometheus`)
+
+### 3A. Live Amazon Braket QPU Benchmarks (`Rigetti Cepheus-1-108Q`, `IQM Garnet` 20Q, `IQM Emerald` 54Q)
+
+All 14 completed 3-way Amazon Braket `ProgramSet` tasks (`42` verbatim physical circuits, `125,952` physical shots) are recorded with full Task ARNs in [`aws_braket_qpu_14_jobs_ledger.json`](./aws_braket_qpu_14_jobs_ledger.json):
+
+| Amazon Braket QPU | Workload & Width | Shots / Circuit | Depth (`S / T /` **`P`**) | 2Q `CZ` (`S / T /` **`P`**) | Distribution Fidelity (`SABRE / TKET ->` **`Prometheus`**) | TVD (`SABRE / TKET ->` **`Prometheus`**) | Verifiable Amazon Braket Task ARN |
+| :--- | :--- | :-: | :-: | :-: | :--- | :--- | :--- |
+| **Rigetti `Cepheus-1-108Q`** | **Dense All-to-All (`9Q`)** | `1,024` | `137 / 131 /` **`63`** (`-54.0%`) | `80 / 83 /` **`54`** (`-32.5%`) | `0.0435 / 0.0211 ->` **`0.2088` (`+379.42%` vs S, `+887.34%` vs T; XEB `14.92` vs `1.65`)** | `0.9329 / 0.9515 ->` **`0.7966`** | `arn:aws:braket:us-west-1:893688540163:quantum-task/2df64966-8b30-4e19-a859-25efc2f2b136` |
+| **Rigetti `Cepheus-1-108Q`** | **Dense All-to-All (`6Q`)** | `4,096` | `63 / 82 /` **`40`** (`-36.5%`) | `31 / 33 /` **`23`** (`-25.8%`) | `0.0880 / 0.0955 ->` **`0.1903` (`+116.13%` vs S, `+99.23%` vs T; XEB `2.29` vs `0.20`)** | `0.9000 / 0.9034 ->` **`0.8195`** | `arn:aws:braket:us-west-1:893688540163:quantum-task/02427b15-5597-4721-95e1-b3d2547aafb8` |
+| **IQM `Emerald` (`54Q`)** | **Dense All-to-All (`6Q`)** | `4,096` | `57 / 56 /` **`41`** (`-28.1%`) | `28 / 33 /` **`23`** (`-17.9%`) | `0.7322 / 0.5931 ->` **`0.7853` (`+7.25%` vs S, `+32.39%` vs T; XEB `15.71` vs `13.67`)** | `0.3266 / 0.4296 ->` **`0.2785`** | `arn:aws:braket:eu-north-1:893688540163:quantum-task/b5317346-c659-4c3e-bd10-0c84df2e74d5` |
+| **IQM `Emerald` (`54Q`)** | **QFT (`6Q`)** | `4,096` | `88 / 89 /` **`64`** (`-27.3%`) | `44 / 48 /` **`38`** (`-13.6%`) | `0.8355 / 0.9648 ->` **`0.9602` (`+14.92%` vs S)** | `0.3425 / 0.1575 ->` **`0.1624` (`-52.6%` vs S)** | `arn:aws:braket:eu-north-1:893688540163:quantum-task/68dbffa0-f842-48c4-bdf5-c95d5a69036b` |
+| **IQM `Garnet` (`20Q`)** | **Dense All-to-All (`9Q`)** | `1,024` | `130 / 129 /` **`103`** (`-20.8%`) | `79 / 87 /` **`70`** (`-11.4%`) | `0.5513 / 0.6211 ->` **`0.6031` (`+9.39%` vs S; XEB `5.71` vs `3.99`; HOP `0.7764` #1)** | `0.5341 / 0.4738 ->` **`0.4790`** | `arn:aws:braket:eu-north-1:893688540163:quantum-task/8a04e33b-e945-4ec7-b7da-2801a644f610` |
+| **Rigetti `Cepheus-1-108Q`** | **QAOA MaxCut (`10Q`)** | `4,096` | `66 / 91 /` **`47`** (`-28.8%`) | `30 / 45 /` **`28`** (`-6.7%`) | `0.7783 / 0.8268 ->` **`0.8364` (`+7.46%` vs S, `+1.16%` vs T; 3-Way Winner)** | `0.3413 / 0.2979 ->` **`0.2783`** | `arn:aws:braket:us-west-1:893688540163:quantum-task/6c662e9c-d64e-41b9-b7a2-bb10477e073f` |
+| **Rigetti `Cepheus-1-108Q`** | **QFT (`8Q`)** | `4,096` | `181 / 261 /` **`129`** (`-28.7%`) | `82 / 95 /` **`70`** (`-14.6%`) | `0.9329 / 0.9528 ->` **`0.9664` (`+3.58%` vs S, `+1.43%` vs T; 3-Way Winner)** | `0.2039 / 0.1721 ->` **`0.1467` (`-28.1%` vs S)** | `arn:aws:braket:us-west-1:893688540163:quantum-task/eeee4e59-68e5-4ad0-b1fb-8b71dbd6638b` |
+| **IQM `Garnet` (`20Q`)** | **Dense All-to-All (`4Q`)** | `4,096` | `25 / 26 /` **`22`** (`-12.0%`) | `12 / 12 /` **`8`** (`-33.3%`) | `0.9612 / 0.9430 ->` **`0.9685` (`+0.76%` vs S, `+2.70%` vs T; 3-Way Winner)** | `0.0769 / 0.1653 ->` **`0.0676`** | `arn:aws:braket:eu-north-1:893688540163:quantum-task/8875ef13-5943-4401-9c79-b2abb37e91f8` |
+| **IQM `Garnet` (`20Q`)** | **QFT (`4Q`)** | `4,096` | `50 / 48 /` **`37`** (`-26.0%`) | `18 / 21 /` **`14`** (`-22.2%`) | `0.9791 / 0.9953 ->` **`0.9836` (`+0.46%` vs S)** | `0.1338 / 0.0527 ->` **`0.1030` (`-23.0%` vs S)** | `arn:aws:braket:eu-north-1:893688540163:quantum-task/904c6e83-0279-417f-a91c-080316c73ef0` |
+| **IQM `Garnet` (`20Q`)** | **QAOA MaxCut (`4Q`)** | `4,096` | `21 / 23 /` **`19`** (`-9.5%`) | `9 / 9 /` **`7`** (`-22.2%`) | `0.9967 / 0.9959 -> 0.9944` (`-0.23%` vs S; shallow 4Q tie at `>99.4%`) | `0.0461 / 0.0520 -> 0.0574` | `arn:aws:braket:eu-north-1:893688540163:quantum-task/7e3ad9a8-6038-4e5e-bf89-0b86bc425fe5` |
+| **IQM `Emerald` (`54Q`)** | **QAOA MaxCut (`7Q`)** | `4,096` | `36 / 47 /` **`34`** (`-5.6%`) | `19 / 22 /` **`17`** (`-10.5%`) | `0.9719 / 0.9802 -> 0.9585` (`-1.38%` vs S) | `0.1316 / 0.1123 -> 0.1621` | `arn:aws:braket:eu-north-1:893688540163:quantum-task/89cebd67-b2a4-460c-80a8-41e47b2a3d01` |
+
+### 3B. Live 156-Qubit IBM Heron Benchmarks (`ibm_marrakesh`, `ibm_fez`, `ibm_kingston`)
 
 All 107 completed 3-way hardware benchmark triplets (`321` physical circuits, `4,964,352` physical shots) are recorded in [`ibm_heron_156q_verified_benchmarks.json`](./ibm_heron_156q_verified_benchmarks.json). Representative highlights (`16,384 shots/compiler`):
 
@@ -132,16 +154,17 @@ Running `python validate_braket_local.py` executes two transparent steps:
 ## 6. Repository Files & Prometheus Dynamics Public Portfolio Index
 
 ### Files in This Repository
+- [`aws_braket_qpu_14_jobs_ledger.json`](./aws_braket_qpu_14_jobs_ledger.json) - Live 14-task (`42-circuit`, `125,952-shot`) Amazon Braket `ProgramSet` hardware benchmark ledger across **Rigetti `Cepheus-1-108Q`**, **IQM `Garnet` (`20Q`)**, and **IQM `Emerald` (`54Q`)** with verifiable Task ARNs.
 - [`ibm_heron_156q_verified_benchmarks.json`](./ibm_heron_156q_verified_benchmarks.json) - Reconciled 107-job (`321-circuit`, `4,964,352-shot`) physical 156Q IBM Heron benchmark ledger (`4Q`-`23Q`) + 3 documented unrecovered queue dispatches (`110` total dispatches).
 - [`veloxq_h100_hybrid_benchmarks.json`](./veloxq_h100_hybrid_benchmarks.json) - Complete 15-point multi-seed VeloxQ NVIDIA H100 (`VeloxQH100_1`) scaling dataset (`4`-`1,029` QUBO binary variables), 6 compression tiers, 5 operational constraint models, and the 45-operation `1,029-variable` schedule (`26h`) + HiGHS MILP lower-bound certificate.
-- [`verify_corpus_and_schedules.py`](./verify_corpus_and_schedules.py) - Standalone audit script verifying the 107-job IBM Heron win-rate arithmetic and the 45-operation `1,029-variable` schedule feasibility.
+- [`verify_corpus_and_schedules.py`](./verify_corpus_and_schedules.py) - Standalone audit script verifying the 107-job IBM Heron corpus, the 14-job live Amazon Braket QPU corpus, and the 45-operation `1,029-variable` schedule feasibility.
 - [`braket_local_validation_results.json`](./braket_local_validation_results.json) & [`validate_braket_local.py`](./validate_braket_local.py) - Archived structural compilation comparison metrics and Amazon Braket `LocalSimulator` logical-equivalence verifier.
-- [`AWS_BRAKET_SCOPED_PROPOSAL.md`](./AWS_BRAKET_SCOPED_PROPOSAL.md) - Scoped Phase 1 Amazon Braket QPU experiment specification and cost breakdown.
+- [`AWS_BRAKET_SCOPED_PROPOSAL.md`](./AWS_BRAKET_SCOPED_PROPOSAL.md) - Scoped Phase 1 Amazon Braket QPU experiment specification, live Braket QPU results, and cost breakdown.
 
 ### Related Public Repositories (`PrometheusDynamicsCanada`)
 | Repository | Primary Focus |
 | :--- | :--- |
-| **[`Hybrid-Quantum-HPC-Benchmarks`](https://github.com/PrometheusDynamicsCanada/Hybrid-Quantum-HPC-Benchmarks)** *(This Repo)* | Master multi-QPU (`107` completed 156Q IBM Heron jobs) and hybrid NVIDIA H100 (`4`-`1,029` QUBO binary variables) benchmark corpus and verification scripts. |
+| **[`Hybrid-Quantum-HPC-Benchmarks`](https://github.com/PrometheusDynamicsCanada/Hybrid-Quantum-HPC-Benchmarks)** *(This Repo)* | Master multi-cloud QPU (`121` completed 3-way jobs across AWS Braket & IBM Heron) and hybrid NVIDIA H100 (`4`-`1,029` QUBO binary variables) benchmark corpus and verification scripts. |
 | **[`qpu-selection-execution-quality`](https://github.com/PrometheusDynamicsCanada/qpu-selection-execution-quality)** | Cryptographically hashed (`SHA-256`) raw hardware execution packages, bitstring archives, and multi-QPU target-selection telemetry. |
 | **[`prometheus-quantum-telemetry`](https://github.com/PrometheusDynamicsCanada/prometheus-quantum-telemetry)** | Distributional concentration (`TVD`, `JSD`, `Hellinger`), randomized-instance robustness (`4Q`-`20Q`), and scaling inflection-surface studies with verification scripts. |
 | **[`prometheus-execution-intelligence`](https://github.com/PrometheusDynamicsCanada/prometheus-execution-intelligence)** | Architectural overview of the Prometheus compilation, hardware-risk arbitration, and hybrid execution-selection stack. |
@@ -151,3 +174,4 @@ Running `python validate_braket_local.py` executes two transparent steps:
 **Contact:**  
 William Denyer - Founder, Prometheus Dynamics  
 `william@prometheusdynamics.ca` | [`https://prometheusdynamics.ca`](https://prometheusdynamics.ca)
+

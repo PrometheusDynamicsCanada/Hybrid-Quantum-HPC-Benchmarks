@@ -1,0 +1,688 @@
+[
+  {
+    "task_arn": "arn:aws:braket:eu-north-1:893688540163:quantum-task/fe63dc72-97dc-4041-b8f4-f1f80a5ba92e",
+    "timestamp": "2026-10-19T17:49:22.854963",
+    "qpu": "aws_iqm_garnet",
+    "total_backend_qubits": 20,
+    "circuit_family": "Dense All-to-All (K_N)",
+    "shots_per_compiler": 1024,
+    "total_program_set_shots": 3072,
+    "execution_time_seconds": 55.69,
+    "logical_metrics": {
+      "qubits": 17,
+      "depth": 33,
+      "total_gates": 170
+    },
+    "compiled_structural_metrics": {
+      "sabre_o3_depth": 299,
+      "tket_depth": 447,
+      "prometheus_depth": 278,
+      "sabre_o3_2q_gates": 310,
+      "tket_2q_gates": 425,
+      "prometheus_2q_gates": 301
+    },
+    "physical_observables": {
+      "sabre": {
+        "fidelity": 0.0005042677464275286,
+        "tvd": 0.9900099556102039,
+        "hop": 0.56640625,
+        "xeb": 2.2149048724212927,
+        "entropy": 9.982421875,
+        "ideal_entropy": 8.800272639554555
+      },
+      "tket": {
+        "fidelity": 4.142678081136373e-05,
+        "tvd": 0.9984375573226613,
+        "hop": 0.4970703125,
+        "xeb": -0.8000062985318307,
+        "entropy": 9.98046875,
+        "ideal_entropy": 8.800272639554555
+      },
+      "prometheus": {
+        "fidelity": 0.000322873021914138,
+        "tvd": 0.9926045290150757,
+        "hop": 0.55078125,
+        "xeb": 1.6288489081738389,
+        "entropy": 9.982421875,
+        "ideal_entropy": 8.800272639554555
+      }
+    }
+  },
+  {
+    "task_arn": "arn:aws:braket:us-west-1:893688540163:quantum-task/58b458c9-a1b7-4303-8345-ddc33b3d2254",
+    "timestamp": "2026-10-19T17:49:23.157488",
+    "qpu": "aws_rigetti_cepheus",
+    "total_backend_qubits": 107,
+    "circuit_family": "Dense All-to-All (K_N)",
+    "shots_per_compiler": 1024,
+    "total_program_set_shots": 3072,
+    "execution_time_seconds": 53.74,
+    "logical_metrics": {
+      "qubits": 17,
+      "depth": 33,
+      "total_gates": 170
+    },
+    "compiled_structural_metrics": {
+      "sabre_o3_depth": 382,
+      "tket_depth": 508,
+      "prometheus_depth": 120,
+      "sabre_o3_2q_gates": 331,
+      "tket_2q_gates": 432,
+      "prometheus_2q_gates": 204
+    },
+    "physical_observables": {
+      "sabre": {
+        "fidelity": 0.0002765672793411373,
+        "tvd": 0.9924834619310667,
+        "hop": 0.5126953125,
+        "xeb": 1.4200112425596827,
+        "entropy": 9.990234375,
+        "ideal_entropy": 8.800272639554555
+      },
+      "tket": {
+        "fidelity": 8.05269018911862e-05,
+        "tvd": 0.9967654311535725,
+        "hop": 0.5126953125,
+        "xeb": -0.4649283374576535,
+        "entropy": 9.985590930173668,
+        "ideal_entropy": 8.800272639554555
+      },
+      "prometheus": {
+        "fidelity": 0.0001790292834050291,
+        "tvd": 0.9956460587817069,
+        "hop": 0.5244140625,
+        "xeb": 0.3788963016398197,
+        "entropy": 9.990234375,
+        "ideal_entropy": 8.800272639554555
+      }
+    }
+  },
+  {
+    "task_arn": "arn:aws:braket:eu-north-1:893688540163:quantum-task/8a04e33b-e945-4ec7-b7da-2801a644f610",
+    "timestamp": "2026-10-19T17:50:50.773727",
+    "qpu": "aws_iqm_garnet",
+    "total_backend_qubits": 20,
+    "circuit_family": "Dense All-to-All (K_N)",
+    "shots_per_compiler": 1024,
+    "total_program_set_shots": 3072,
+    "execution_time_seconds": 31.5,
+    "logical_metrics": {
+      "qubits": 9,
+      "depth": 17,
+      "total_gates": 54
+    },
+    "compiled_structural_metrics": {
+      "sabre_o3_depth": 130,
+      "tket_depth": 129,
+      "prometheus_depth": 103,
+      "sabre_o3_2q_gates": 79,
+      "tket_2q_gates": 87,
+      "prometheus_2q_gates": 70
+    },
+    "physical_observables": {
+      "sabre": {
+        "fidelity": 0.5513233565353511,
+        "tvd": 0.5340744204964694,
+        "hop": 0.75390625,
+        "xeb": 3.992708162765129,
+        "entropy": 7.7740822621339465,
+        "ideal_entropy": 5.995963091038077
+      },
+      "tket": {
+        "fidelity": 0.6211251721415528,
+        "tvd": 0.47383319522914735,
+        "hop": 0.771484375,
+        "xeb": 5.7506889164850135,
+        "entropy": 7.581236589198933,
+        "ideal_entropy": 5.995963091038077
+      },
+      "prometheus": {
+        "fidelity": 0.6030844016218134,
+        "tvd": 0.47897844775537485,
+        "hop": 0.7763671875,
+        "xeb": 5.713322011555299,
+        "entropy": 7.435297224462377,
+        "ideal_entropy": 5.995963091038077
+      }
+    }
+  },
+  {
+    "task_arn": "arn:aws:braket:us-west-1:893688540163:quantum-task/f337ec8e-9348-4414-8a8d-10f2ed333d07",
+    "timestamp": "2026-10-19T17:50:51.945737",
+    "qpu": "aws_rigetti_cepheus",
+    "total_backend_qubits": 107,
+    "circuit_family": "Dense All-to-All (K_N)",
+    "shots_per_compiler": 1024,
+    "total_program_set_shots": 3072,
+    "execution_time_seconds": 30.95,
+    "logical_metrics": {
+      "qubits": 9,
+      "depth": 17,
+      "total_gates": 54
+    },
+    "compiled_structural_metrics": {
+      "sabre_o3_depth": 125,
+      "tket_depth": 131,
+      "prometheus_depth": 87,
+      "sabre_o3_2q_gates": 76,
+      "tket_2q_gates": 83,
+      "prometheus_2q_gates": 69
+    },
+    "physical_observables": {
+      "sabre": {
+        "fidelity": 0.2704383869671107,
+        "tvd": 0.7388676683424253,
+        "hop": 0.5791015625,
+        "xeb": 0.6951088260316434,
+        "entropy": 8.241164520101087,
+        "ideal_entropy": 5.995963091038077
+      },
+      "tket": {
+        "fidelity": 0.22334250177867643,
+        "tvd": 0.7716517563294609,
+        "hop": 0.533203125,
+        "xeb": 0.13342698755828897,
+        "entropy": 8.572469810415205,
+        "ideal_entropy": 5.995963091038077
+      },
+      "prometheus": {
+        "fidelity": 0.23616960358680655,
+        "tvd": 0.7709508872449718,
+        "hop": 0.6259765625,
+        "xeb": 0.42059938825982846,
+        "entropy": 8.085751702081806,
+        "ideal_entropy": 5.995963091038077
+      }
+    }
+  },
+  {
+    "task_arn": "arn:aws:braket:us-west-1:893688540163:quantum-task/2df64966-8b30-4e19-a859-25efc2f2b136",
+    "timestamp": "2026-10-19T18:07:56.435604",
+    "qpu": "aws_rigetti_cepheus",
+    "total_backend_qubits": 107,
+    "circuit_family": "Dense All-to-All (K_N)",
+    "shots_per_compiler": 1024,
+    "total_program_set_shots": 3072,
+    "execution_time_seconds": 138.95,
+    "logical_metrics": {
+      "qubits": 9,
+      "depth": 17,
+      "total_gates": 54
+    },
+    "compiled_structural_metrics": {
+      "sabre_o3_depth": 137,
+      "tket_depth": 131,
+      "prometheus_depth": 63,
+      "sabre_o3_2q_gates": 80,
+      "tket_2q_gates": 83,
+      "prometheus_2q_gates": 54
+    },
+    "physical_observables": {
+      "sabre": {
+        "fidelity": 0.04354981078585761,
+        "tvd": 0.9328800779652802,
+        "hop": 0.5361328125,
+        "xeb": 1.651802602322069,
+        "entropy": 8.214792012285145,
+        "ideal_entropy": 2.9518556507470937
+      },
+      "tket": {
+        "fidelity": 0.021146325757210007,
+        "tvd": 0.9515104999948483,
+        "hop": 0.4892578125,
+        "xeb": -0.19615878154243527,
+        "entropy": 8.553084340475541,
+        "ideal_entropy": 2.9518556507470937
+      },
+      "prometheus": {
+        "fidelity": 0.208786418735829,
+        "tvd": 0.7966024632663148,
+        "hop": 0.60546875,
+        "xeb": 14.917732529070687,
+        "entropy": 7.860160503855612,
+        "ideal_entropy": 2.9518556507470937
+      }
+    }
+  },
+  {
+    "task_arn": "arn:aws:braket:us-west-1:893688540163:quantum-task/02427b15-5597-4721-95e1-b3d2547aafb8",
+    "timestamp": "2026-10-19T18:13:00.626259",
+    "qpu": "aws_rigetti_cepheus",
+    "total_backend_qubits": 107,
+    "circuit_family": "Dense All-to-All (K_N)",
+    "shots_per_compiler": 4096,
+    "total_program_set_shots": 12288,
+    "execution_time_seconds": 23.35,
+    "logical_metrics": {
+      "qubits": 6,
+      "depth": 11,
+      "total_gates": 27
+    },
+    "compiled_structural_metrics": {
+      "sabre_o3_depth": 63,
+      "tket_depth": 82,
+      "prometheus_depth": 40,
+      "sabre_o3_2q_gates": 31,
+      "tket_2q_gates": 33,
+      "prometheus_2q_gates": 23
+    },
+    "physical_observables": {
+      "sabre": {
+        "fidelity": 0.08804913918315291,
+        "tvd": 0.8999756423135029,
+        "hop": 0.47900390625,
+        "xeb": 0.20180374542030188,
+        "entropy": 5.652665807119349,
+        "ideal_entropy": 1.867728222482669
+      },
+      "tket": {
+        "fidelity": 0.09551800296610904,
+        "tvd": 0.9033936110635029,
+        "hop": 0.489013671875,
+        "xeb": 0.1780586616690707,
+        "entropy": 5.935920103681075,
+        "ideal_entropy": 1.867728222482669
+      },
+      "prometheus": {
+        "fidelity": 0.19030387863325726,
+        "tvd": 0.8195049382484746,
+        "hop": 0.635986328125,
+        "xeb": 2.294042924495585,
+        "entropy": 5.291398488435831,
+        "ideal_entropy": 1.867728222482669
+      }
+    }
+  },
+  {
+    "task_arn": "arn:aws:braket:eu-north-1:893688540163:quantum-task/b5317346-c659-4c3e-bd10-0c84df2e74d5",
+    "timestamp": "2026-10-19T18:13:50.797699",
+    "qpu": "aws_iqm_emerald",
+    "total_backend_qubits": 54,
+    "circuit_family": "Dense All-to-All (K_N)",
+    "shots_per_compiler": 4096,
+    "total_program_set_shots": 12288,
+    "execution_time_seconds": 28.98,
+    "logical_metrics": {
+      "qubits": 6,
+      "depth": 11,
+      "total_gates": 27
+    },
+    "compiled_structural_metrics": {
+      "sabre_o3_depth": 57,
+      "tket_depth": 56,
+      "prometheus_depth": 41,
+      "sabre_o3_2q_gates": 28,
+      "tket_2q_gates": 33,
+      "prometheus_2q_gates": 23
+    },
+    "physical_observables": {
+      "sabre": {
+        "fidelity": 0.7322114901143216,
+        "tvd": 0.32664195522091705,
+        "hop": 0.89892578125,
+        "xeb": 13.666475806432508,
+        "entropy": 3.6411412173007185,
+        "ideal_entropy": 1.867728222482669
+      },
+      "tket": {
+        "fidelity": 0.5931467032730917,
+        "tvd": 0.4296123601234746,
+        "hop": 0.761962890625,
+        "xeb": 13.097490330313567,
+        "entropy": 3.9002234536213356,
+        "ideal_entropy": 1.867728222482669
+      },
+      "prometheus": {
+        "fidelity": 0.7852774124030433,
+        "tvd": 0.2785445987142628,
+        "hop": 0.916259765625,
+        "xeb": 15.710215533321609,
+        "entropy": 3.328724950761169,
+        "ideal_entropy": 1.867728222482669
+      }
+    }
+  },
+  {
+    "task_arn": "arn:aws:braket:eu-north-1:893688540163:quantum-task/8875ef13-5943-4401-9c79-b2abb37e91f8",
+    "timestamp": "2026-10-19T18:14:34.640344",
+    "qpu": "aws_iqm_garnet",
+    "total_backend_qubits": 20,
+    "circuit_family": "Dense All-to-All (K_N)",
+    "shots_per_compiler": 4096,
+    "total_program_set_shots": 12288,
+    "execution_time_seconds": 20.89,
+    "logical_metrics": {
+      "qubits": 4,
+      "depth": 7,
+      "total_gates": 14
+    },
+    "compiled_structural_metrics": {
+      "sabre_o3_depth": 25,
+      "tket_depth": 26,
+      "prometheus_depth": 22,
+      "sabre_o3_2q_gates": 12,
+      "tket_2q_gates": 12,
+      "prometheus_2q_gates": 8
+    },
+    "physical_observables": {
+      "sabre": {
+        "fidelity": 0.9612320352736619,
+        "tvd": 0.07685951288485901,
+        "hop": 0.9765625,
+        "xeb": 5.228207947325597,
+        "entropy": 2.1059823947937963,
+        "ideal_entropy": 1.6311493957336467
+      },
+      "tket": {
+        "fidelity": 0.9430231305383522,
+        "tvd": 0.16534035798387925,
+        "hop": 0.970947265625,
+        "xeb": 4.620208985136204,
+        "entropy": 2.2527318978735877,
+        "ideal_entropy": 1.6311493957336467
+      },
+      "prometheus": {
+        "fidelity": 0.9685226397344628,
+        "tvd": 0.06758216913485901,
+        "hop": 0.983154296875,
+        "xeb": 5.442683570713925,
+        "entropy": 2.0094794204690323,
+        "ideal_entropy": 1.6311493957336467
+      }
+    }
+  },
+  {
+    "task_arn": "arn:aws:braket:eu-north-1:893688540163:quantum-task/7e3ad9a8-6038-4e5e-bf89-0b86bc425fe5",
+    "timestamp": "2026-10-19T18:15:26.582552",
+    "qpu": "aws_iqm_garnet",
+    "total_backend_qubits": 20,
+    "circuit_family": "QAOA MaxCut (3-Regular)",
+    "shots_per_compiler": 4096,
+    "total_program_set_shots": 12288,
+    "execution_time_seconds": 20.93,
+    "logical_metrics": {
+      "qubits": 4,
+      "depth": 7,
+      "total_gates": 14
+    },
+    "compiled_structural_metrics": {
+      "sabre_o3_depth": 21,
+      "tket_depth": 23,
+      "prometheus_depth": 19,
+      "sabre_o3_2q_gates": 9,
+      "tket_2q_gates": 9,
+      "prometheus_2q_gates": 7
+    },
+    "physical_observables": {
+      "sabre": {
+        "fidelity": 0.9967380812778586,
+        "tvd": 0.046142578125,
+        "hop": 0.0,
+        "xeb": -7.771561172376096e-16,
+        "entropy": 3.990672350730336,
+        "ideal_entropy": 3.9999999999999996
+      },
+      "tket": {
+        "fidelity": 0.9959138240530292,
+        "tvd": 0.052001953125,
+        "hop": 0.0,
+        "xeb": -7.771561172376096e-16,
+        "entropy": 3.988242190507529,
+        "ideal_entropy": 3.9999999999999996
+      },
+      "prometheus": {
+        "fidelity": 0.9944028268048375,
+        "tvd": 0.05737304687500004,
+        "hop": 0.0,
+        "xeb": -7.771561172376096e-16,
+        "entropy": 3.9840566611802446,
+        "ideal_entropy": 3.9999999999999996
+      }
+    }
+  },
+  {
+    "task_arn": "arn:aws:braket:eu-north-1:893688540163:quantum-task/89cebd67-b2a4-460c-80a8-41e47b2a3d01",
+    "timestamp": "2026-10-19T18:16:13.404642",
+    "qpu": "aws_iqm_emerald",
+    "total_backend_qubits": 54,
+    "circuit_family": "QAOA MaxCut (3-Regular)",
+    "shots_per_compiler": 4096,
+    "total_program_set_shots": 12288,
+    "execution_time_seconds": 24.88,
+    "logical_metrics": {
+      "qubits": 7,
+      "depth": 10,
+      "total_gates": 24
+    },
+    "compiled_structural_metrics": {
+      "sabre_o3_depth": 36,
+      "tket_depth": 47,
+      "prometheus_depth": 34,
+      "sabre_o3_2q_gates": 19,
+      "tket_2q_gates": 22,
+      "prometheus_2q_gates": 17
+    },
+    "physical_observables": {
+      "sabre": {
+        "fidelity": 0.971948144019407,
+        "tvd": 0.131591796875,
+        "hop": 0.0,
+        "xeb": -1.2212453270876722e-15,
+        "entropy": 6.9219466269921375,
+        "ideal_entropy": 6.999999999999999
+      },
+      "tket": {
+        "fidelity": 0.9802459240039849,
+        "tvd": 0.11230468749999993,
+        "hop": 0.0,
+        "xeb": -1.1102230246251565e-15,
+        "entropy": 6.942832793269197,
+        "ideal_entropy": 6.999999999999999
+      },
+      "prometheus": {
+        "fidelity": 0.9585140357189043,
+        "tvd": 0.16210937499999994,
+        "hop": 0.0,
+        "xeb": -1.1102230246251565e-15,
+        "entropy": 6.884387959092779,
+        "ideal_entropy": 6.999999999999999
+      }
+    }
+  },
+  {
+    "task_arn": "arn:aws:braket:us-west-1:893688540163:quantum-task/6c662e9c-d64e-41b9-b7a2-bb10477e073f",
+    "timestamp": "2026-10-19T18:17:12.396071",
+    "qpu": "aws_rigetti_cepheus",
+    "total_backend_qubits": 107,
+    "circuit_family": "QAOA MaxCut (3-Regular)",
+    "shots_per_compiler": 4096,
+    "total_program_set_shots": 12288,
+    "execution_time_seconds": 26.93,
+    "logical_metrics": {
+      "qubits": 10,
+      "depth": 13,
+      "total_gates": 35
+    },
+    "compiled_structural_metrics": {
+      "sabre_o3_depth": 66,
+      "tket_depth": 91,
+      "prometheus_depth": 47,
+      "sabre_o3_2q_gates": 30,
+      "tket_2q_gates": 45,
+      "prometheus_2q_gates": 28
+    },
+    "physical_observables": {
+      "sabre": {
+        "fidelity": 0.7783098147777839,
+        "tvd": 0.3413085937499999,
+        "hop": 0.0,
+        "xeb": -1.5543122344752192e-15,
+        "entropy": 9.430364676402627,
+        "ideal_entropy": 9.999999999999998
+      },
+      "tket": {
+        "fidelity": 0.826764553283259,
+        "tvd": 0.2978515625,
+        "hop": 0.0,
+        "xeb": -1.5543122344752192e-15,
+        "entropy": 9.558993868185038,
+        "ideal_entropy": 9.999999999999998
+      },
+      "prometheus": {
+        "fidelity": 0.8363887379655008,
+        "tvd": 0.2783203125,
+        "hop": 0.0,
+        "xeb": -1.5543122344752192e-15,
+        "entropy": 9.593060075831177,
+        "ideal_entropy": 9.999999999999998
+      }
+    }
+  },
+  {
+    "task_arn": "arn:aws:braket:us-west-1:893688540163:quantum-task/eeee4e59-68e5-4ad0-b1fb-8b71dbd6638b",
+    "timestamp": "2026-10-19T18:18:08.852773",
+    "qpu": "aws_rigetti_cepheus",
+    "total_backend_qubits": 107,
+    "circuit_family": "Quantum Fourier Transform",
+    "shots_per_compiler": 4096,
+    "total_program_set_shots": 12288,
+    "execution_time_seconds": 101.76,
+    "logical_metrics": {
+      "qubits": 8,
+      "depth": 16,
+      "total_gates": 44
+    },
+    "compiled_structural_metrics": {
+      "sabre_o3_depth": 181,
+      "tket_depth": 261,
+      "prometheus_depth": 129,
+      "sabre_o3_2q_gates": 82,
+      "tket_2q_gates": 95,
+      "prometheus_2q_gates": 70
+    },
+    "physical_observables": {
+      "sabre": {
+        "fidelity": 0.9329249202497147,
+        "tvd": 0.20385742187499994,
+        "hop": 0.0,
+        "xeb": -1.3322676295501878e-15,
+        "entropy": 7.810939759115092,
+        "ideal_entropy": 7.999999999999999
+      },
+      "tket": {
+        "fidelity": 0.9527609807585515,
+        "tvd": 0.17211914062499994,
+        "hop": 0.0,
+        "xeb": -1.3322676295501878e-15,
+        "entropy": 7.866194036452451,
+        "ideal_entropy": 7.999999999999999
+      },
+      "prometheus": {
+        "fidelity": 0.9663559163200329,
+        "tvd": 0.14672851562499994,
+        "hop": 0.0,
+        "xeb": -1.3322676295501878e-15,
+        "entropy": 7.903545377331113,
+        "ideal_entropy": 7.999999999999999
+      }
+    }
+  },
+  {
+    "task_arn": "arn:aws:braket:eu-north-1:893688540163:quantum-task/68dbffa0-f842-48c4-bdf5-c95d5a69036b",
+    "timestamp": "2026-10-19T18:20:12.214820",
+    "qpu": "aws_iqm_emerald",
+    "total_backend_qubits": 54,
+    "circuit_family": "Quantum Fourier Transform",
+    "shots_per_compiler": 4096,
+    "total_program_set_shots": 12288,
+    "execution_time_seconds": 158.6,
+    "logical_metrics": {
+      "qubits": 6,
+      "depth": 12,
+      "total_gates": 27
+    },
+    "compiled_structural_metrics": {
+      "sabre_o3_depth": 88,
+      "tket_depth": 89,
+      "prometheus_depth": 64,
+      "sabre_o3_2q_gates": 44,
+      "tket_2q_gates": 48,
+      "prometheus_2q_gates": 38
+    },
+    "physical_observables": {
+      "sabre": {
+        "fidelity": 0.8355071785987983,
+        "tvd": 0.3425292968749999,
+        "hop": 0.0,
+        "xeb": -8.881784197001252e-16,
+        "entropy": 5.514791778674879,
+        "ideal_entropy": 5.999999999999999
+      },
+      "tket": {
+        "fidelity": 0.9647907882496266,
+        "tvd": 0.157470703125,
+        "hop": 0.0,
+        "xeb": -8.881784197001252e-16,
+        "entropy": 5.898768877707722,
+        "ideal_entropy": 5.999999999999999
+      },
+      "prometheus": {
+        "fidelity": 0.9601853011604029,
+        "tvd": 0.162353515625,
+        "hop": 0.0,
+        "xeb": -8.881784197001252e-16,
+        "entropy": 5.8871015931103745,
+        "ideal_entropy": 5.999999999999999
+      }
+    }
+  },
+  {
+    "task_arn": "arn:aws:braket:eu-north-1:893688540163:quantum-task/904c6e83-0279-417f-a91c-080316c73ef0",
+    "timestamp": "2026-10-19T18:23:04.338753",
+    "qpu": "aws_iqm_garnet",
+    "total_backend_qubits": 20,
+    "circuit_family": "Quantum Fourier Transform",
+    "shots_per_compiler": 4096,
+    "total_program_set_shots": 12288,
+    "execution_time_seconds": 21.99,
+    "logical_metrics": {
+      "qubits": 4,
+      "depth": 8,
+      "total_gates": 14
+    },
+    "compiled_structural_metrics": {
+      "sabre_o3_depth": 50,
+      "tket_depth": 48,
+      "prometheus_depth": 37,
+      "sabre_o3_2q_gates": 18,
+      "tket_2q_gates": 21,
+      "prometheus_2q_gates": 14
+    },
+    "physical_observables": {
+      "sabre": {
+        "fidelity": 0.9791170686478541,
+        "tvd": 0.1337890625,
+        "hop": 0.0,
+        "xeb": -6.661338147750939e-16,
+        "entropy": 3.9403643940258917,
+        "ideal_entropy": 3.9999999999999996
+      },
+      "tket": {
+        "fidelity": 0.9952690416215971,
+        "tvd": 0.052734375,
+        "hop": 0.0,
+        "xeb": -6.661338147750939e-16,
+        "entropy": 3.986620398864723,
+        "ideal_entropy": 3.9999999999999996
+      },
+      "prometheus": {
+        "fidelity": 0.9836422876339405,
+        "tvd": 0.10302734375000004,
+        "hop": 0.0,
+        "xeb": -7.771561172376096e-16,
+        "entropy": 3.953132592744845,
+        "ideal_entropy": 3.9999999999999996
+      }
+    }
+  }
+]
