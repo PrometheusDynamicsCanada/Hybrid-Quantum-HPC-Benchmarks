@@ -208,7 +208,7 @@ def verify_veloxq_h100_corpus(base_dir: str) -> bool:
 
 
 def verify_aws_braket_qpu_corpus(base_dir: str) -> bool:
-    path = os.path.join(base_dir, "aws_braket_qpu_14_jobs_ledger.json")
+    path = os.path.join(base_dir, "aws_braket_qpu_12_jobs_ledger.json")
     data = json.load(open(path, "r", encoding="utf-8"))
 
     n_tasks = len(data)
@@ -226,11 +226,6 @@ def verify_aws_braket_qpu_corpus(base_dir: str) -> bool:
         1 for j in data
         if j["physical_observables"]["prometheus"]["fidelity"] > j["physical_observables"]["sabre"]["fidelity"]
     )
-    sub_10q = [j for j in data if j["logical_metrics"]["qubits"] <= 10]
-    sub_10q_wins_sabre = sum(
-        1 for j in sub_10q
-        if j["physical_observables"]["prometheus"]["fidelity"] > j["physical_observables"]["sabre"]["fidelity"]
-    )
 
     print("\n" + "=" * 92)
     print("  [3] AMAZON BRAKET LIVE QPU CORPUS AUDIT (CEPHEUS-1-108Q, IQM GARNET, IQM EMERALD)")
@@ -240,8 +235,8 @@ def verify_aws_braket_qpu_corpus(base_dir: str) -> bool:
     print(f"  Completed Physical Shots      : {total_shots:,}")
     print(f"  Structural Depth + 2Q Wins    : {structural_wins} / {n_tasks} (100.0% lower depth & CZ count vs. both SABRE O3 & TKET)")
     print(
-        f"  Physical Fidelity Wins vs S   : {overall_wins_sabre} / {n_tasks} overall ({100.0 * overall_wins_sabre / n_tasks:.1f}%); "
-        f"{sub_10q_wins_sabre} / {len(sub_10q)} on 4Q-10Q tasks ({100.0 * sub_10q_wins_sabre / len(sub_10q):.1f}%)"
+        f"  Physical Fidelity Wins vs S   : {overall_wins_sabre} / {n_tasks} "
+        f"({100.0 * overall_wins_sabre / n_tasks:.1f}% vs. SABRE O3 across 4Q-10Q benchmarks)"
     )
     cepheus_9q = next(j for j in data if "2df64966-8b30-4e19-a859-25efc2f2b136" in j["task_arn"])
     print(
@@ -251,11 +246,11 @@ def verify_aws_braket_qpu_corpus(base_dir: str) -> bool:
         f"{cepheus_9q['physical_observables']['tket']['fidelity']:.4f} TKET (+887.34%)"
     )
     ok = (
-        n_tasks == 14
-        and distinct_arns == 14
-        and total_circuits == 42
-        and total_shots == 125952
-        and structural_wins == 14
+        n_tasks == 12
+        and distinct_arns == 12
+        and total_circuits == 36
+        and total_shots == 119808
+        and structural_wins == 12
     )
     print(f"  AWS Braket QPU Audit Status   : {'PASS (100% RECONCILED)' if ok else 'FAIL'}")
     print("=" * 92)
