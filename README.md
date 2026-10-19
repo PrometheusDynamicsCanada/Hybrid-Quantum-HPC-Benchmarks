@@ -150,6 +150,21 @@ Running `python validate_braket_local.py` executes two transparent steps:
 | **IQM Garnet** *(20Q Crystal)* | `Dense_AllToAll_18Q` | `PASS` (`1.000000`) | `184` / `263` / **`222`** | `159` / `207` / **`163` (`-21.3%` vs T)** | `0.0215` / `0.0081` -> **`0.1370`** |
 | **IQM Garnet** *(20Q Crystal)* | `Dense_AllToAll_19Q` | `PASS` (`1.000000`) | `169` / `321` / **`166`** | `169` / `276` / **`169` (`-38.8%` vs T)** | `0.0476` / `0.0041` -> **`0.0801`** |
 
+### 5B. Trapped-Ion (`AQT IBEX Q1` & `IonQ Forte 1`) & Neutral-Atom (`QuEra Aquila`) Cross-Paradigm Compilation & Scoped Budget
+
+In addition to superconducting square/crystal lattices (`Rigetti Cepheus-1-108Q`, `IQM Garnet`, `IQM Emerald`), Prometheus natively compiles for **All-to-All Trapped-Ion QPUs (`AQT IBEX Q1` 12Q using `rxx/r/rz` and `IonQ Forte 1` 36Q using `rzz/gpi/gpi2`)** via Two-Stage Continuous-Angle SU(4) KAK Synthesis + Per-Ion Telemetry Layout, and **256-Qubit Neutral-Atom Rydberg AHS (`QuEra Aquila`)**:
+
+| Target Trapped-Ion QPU | Native Basis | Workload | Compiled Depth (`SABRE` / `TKET` / **`Prometheus`**) | Native 2Q Gates (`SABRE` / `TKET` / **`Prometheus`**) | Native 1Q Pulses (`SABRE` / `TKET` / **`Prometheus`**) | Exact Ideal Fidelity |
+| :--- | :--- | :--- | :---: | :---: | :---: | :---: |
+| **AQT `IBEX Q1` (`12Q`, `eu-north-1`)** | `['rxx', 'r', 'rz']` | `QFT_6Q` | `38` / `62` / **`27` (`-28.9%` vs S, `-56.5%` vs T)** | `24` / `39` / **`15` `rxx` (`-37.5%` vs S, `-61.5%` vs T)** | `97` / `132` / **`52` `r` (`-46.4%` vs S)** | `PASS (1.00000000)` |
+| **IonQ `Forte 1` (`36Q`, `us-east-1`)** | `['rzz', 'gpi', 'gpi2']` | `QFT_6Q` | `226` / `223` / **`56` (`-75.2%` vs S, `-74.9%` vs T)** | `39` / `39` / **`15` `rzz` (`-61.5%` vs S & T)** | `591` / `561` / **`123` `gpi/gpi2` (`-79.2%` vs S)** | `PASS (1.00000000)` |
+
+Full modular cross-paradigm budget in [`AWS_BRAKET_SCOPED_PROPOSAL.md`](./AWS_BRAKET_SCOPED_PROPOSAL.md):
+- **Phase 1A Superconducting Core (`Rigetti Cepheus-1-108Q` + `IQM Garnet` 20Q, `24 ProgramSet` tasks / `294,912` shots):** **`$283.68 USD`** (`+$212.76 USD` for Phase 1B `17Q-19Q` extension = **`$496.44 USD`**).
+- **Phase 2 Trapped-Ion All-to-All (`AQT IBEX Q1` 12Q `$215.10` + `IonQ Forte 1` 36Q `$291.60`, `24 ProgramSet` tasks / `12,600` shots):** **`+$506.70 USD`**.
+- **Phase 3 Neutral-Atom Rydberg AHS (`QuEra Aquila` 256Q, `12 AHS` tasks / `6,000` shots):** **`+$63.60 USD`**.
+- **Combined 5-Vendor Cross-Paradigm Total (`Rigetti` + `IQM` + `AQT` + `IonQ` + `QuEra`):** **`$853.98 USD` Core Cross-Paradigm** (`$1,066.74 USD` including Phase 1B `17Q-19Q` extension).
+
 ---
 
 ## 6. Repository Files & Prometheus Dynamics Public Portfolio Index

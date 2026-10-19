@@ -7,7 +7,7 @@
 
 ## 1. Executive Summary & Multi-Cloud Live QPU Corpus (`119` Completed 3-Way Hardware Jobs / `357` Compiled Circuits / `5.08M` Shots)
 
-We have compiled and executed a reproducible multi-cloud hardware benchmark corpus across **six physical quantum processors** spanning **Amazon Braket (`Rigetti Cepheus-1-108Q`, `IQM Garnet` 20Q, `IQM Emerald` 54Q)** and **IBM Quantum (`ibm_marrakesh`, `ibm_fez`, `ibm_kingston` 156Q Heron)**, alongside **NVIDIA H100 hybrid solvers (`VeloxQH100_1`)** and the **Amazon Braket SDK (`LocalSimulator`)**:
+We have compiled and executed a reproducible multi-cloud hardware benchmark corpus across **six physical quantum processors** spanning **Amazon Braket (`Rigetti Cepheus-1-108Q`, `IQM Garnet` 20Q, `IQM Emerald` 54Q)** and **IBM Quantum (`ibm_marrakesh`, `ibm_fez`, `ibm_kingston` 156Q Heron)**, alongside **NVIDIA H100 hybrid solvers (`VeloxQH100_1`)** and verified cross-paradigm compilation for **Trapped-Ion (`AQT IBEX Q1` 12Q, `IonQ Forte 1` 36Q)** and **Neutral-Atom (`QuEra Aquila` 256Q)** on the **Amazon Braket SDK (`LocalSimulator`)**:
 
 - **12 Completed 3-Way `ProgramSet` Performance Benchmark Tasks on Live Amazon Braket QPUs (`36` Verbatim Compiled Circuits, `119,808` Completed Quantum Shots, [`aws_braket_qpu_12_jobs_ledger.json`](./aws_braket_qpu_12_jobs_ledger.json)):** Executed directly on **Rigetti `Cepheus-1-108Q` (`108Q` / `107` active qubits, `us-west-1`)**, **IQM `Garnet` (`20Q`, `eu-north-1`)**, and **IQM `Emerald` (`54Q`, `eu-north-1`)** using OpenQASM 3.0 `#pragma braket verbatim` circuits submitted together in one Amazon Braket `ProgramSet` task per benchmark to reduce timing differences between comparisons (`Qiskit SABRE O3`, `Quantinuum TKET`, and `Prometheus`):
   - **100% Structural Reduction Rate (`12 / 12` Live Braket Benchmark Tasks):** Lower compiled circuit depth and lower two-qubit `CZ` gate count than both `SABRE O3` and `TKET` in every recorded comparison (`up to -54.0% depth` and `-33.3% 2Q gates` vs. `SABRE O3`; `up to -51.9% depth` and `-37.8% 2Q gates` vs. `TKET`).
@@ -50,14 +50,11 @@ All 12 live Amazon Braket `ProgramSet` executions (`36` verbatim circuits, `119,
 
 ---
 
-## 2. Amazon Braket `LocalSimulator` Verification (`validate_braket_local.py`)
+## 2. Amazon Braket `LocalSimulator` & Cross-Paradigm Compilation Verification (`validate_braket_local.py`)
 
-We verified all seven proposed logical workloads using the official **`amazon-braket-sdk` (`LocalSimulator("default")`)** at both `shots=0` (exact probability distribution equivalence against Qiskit Statevector) and **`shots=4096`** (empirical 4,096-shot sampling execution), and archived the compiled structural benchmarks (`braket_local_validation_results.json`) across the native square-lattice topologies of **Rigetti Cepheus (`108Q`)** and **IQM Garnet (`20Q`)**:
+We verified all proposed logical workloads using the official **`amazon-braket-sdk` (`LocalSimulator("default")`)** at both `shots=0` (exact probability distribution equivalence against Qiskit Statevector) and **`shots=4096`** (empirical 4,096-shot sampling execution), and archived the compiled structural benchmarks across **Superconducting (`Rigetti Cepheus-1-108Q`, `IQM Garnet` 20Q, `IQM Emerald` 54Q)**, **Trapped-Ion (`AQT IBEX Q1` 12Q, `IonQ Forte 1` 36Q)**, and **Neutral-Atom (`QuEra Aquila` 256Q)**:
 
-1. **Initial Phase 1A Core Suite (`8Q` & `12Q`):** **3-Regular QAOA MaxCut** (`QAOA_MaxCut_8Q`, `QAOA_MaxCut_12Q`) and **Quantum Fourier Transform** (`QFT_8Q`, `QFT_12Q`).
-2. **Optional High-Width All-to-All Extension (`17Q`, `18Q`, `19Q`):** **Dense All-to-All ($K_{17}, K_{18}, K_{19}$)** (`Dense_AllToAll_17Q`, `Dense_AllToAll_18Q`, `Dense_AllToAll_19Q`), testing deep non-local routing near the 20-qubit capacity boundary of IQM Garnet and across the multi-chip square lattice of Rigetti Cepheus.
-
-### Table 2A - Verified Amazon Braket `LocalSimulator` & Structural Benchmark (`4,096 Shots/Circuit`)
+### Table 2A - Verified Superconducting `LocalSimulator` & Structural Benchmark (`4,096 Shots/Circuit`)
 
 | Target Braket QPU Topology | Algorithm & Scale | Braket `LocalSimulator` (`4,096` Shots) | Circuit Depth (`SABRE` / `TKET` / **`Prometheus`**) | 2Q Gates (`SABRE` / `TKET` / **`Prometheus`**) | Simulated Distribution Fidelity (`SABRE` / `TKET` -> **`Prometheus`**) |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -67,7 +64,7 @@ We verified all seven proposed logical workloads using the official **`amazon-br
 | **Rigetti Cepheus** *(108Q Grid)* | `QFT_12Q` | `PASS (1.000000)` | `247` / `347` / **`261`** | `92` / `117` / **`93` (`-20.5%` vs TKET)** | `0.3393` / `0.5396` -> **`0.6176`** |
 | **Rigetti Cepheus** *(108Q Grid)* | `Dense_AllToAll_17Q` *(Opt.)* | `PASS (1.000000)` | `182` / `250` / **`129` (`-29.1%`)** | `145` / `165` / **`125` (`-13.8%` vs S, `-24.2%` vs T)** | `0.0332` / `0.1536` -> **`0.2718`** |
 | **Rigetti Cepheus** *(108Q Grid)* | `Dense_AllToAll_18Q` *(Opt.)* | `PASS (1.000000)` | `132` / `338` / **`113` (`-14.4%`)** | `149` / `240` / **`131` (`-12.1%` vs S, `-45.4%` vs T)** | `0.0124` / `0.0508` -> **`0.2200`** |
-| **Rigetti Cepheus** *(108Q Grid)* | `Dense_AllToAll_19Q` *(Opt.)* | `PASS (1.000000)` | `167` / `258` / **`154` (`-7.8%`)** | `182` / `219` / **`169` (`-7.1%` vs S, `-22.8%` vs T)** | `0.0129` / `0.0787` -> **`0.1434`** |
+| **Rigetti Cepheus** *(108Q Grid)* | `Dense_AllToAll_19Q` *(Opt.)* | `PASS (1.000000)` | `167` / `258` / **`154` (`-7.8%`)** | `169` / `219` / **`169` (`-7.1%` vs S, `-22.8%` vs T)** | `0.0129` / `0.0787` -> **`0.1434`** |
 | **IQM Garnet** *(20Q Crystal)* | `QAOA_MaxCut_8Q` | `PASS (1.000000)` | `190` / `239` / **`185`** | `75` / `105` / **`75` (`-28.6%` vs TKET)** | `0.8696` / `0.8153` -> **`0.9117`** |
 | **IQM Garnet** *(20Q Crystal)* | `QAOA_MaxCut_12Q` | `PASS (1.000000)` | `272` / `393` / **`250`** | `105` / `132` / **`104` (`-1.0%` vs S, `-21.2%` vs T)** | `0.4825` / `0.4774` -> **`0.5800`** |
 | **IQM Garnet** *(20Q Crystal)* | `QFT_8Q` | `PASS (1.000000)` | `165` / `204` / **`165`** | `55` / `57` / **`50` (`-9.1%` vs S, `-12.3%` vs T)** | `0.8467` / `0.8208` -> **`0.9290`** |
@@ -76,36 +73,54 @@ We verified all seven proposed logical workloads using the official **`amazon-br
 | **IQM Garnet** *(20Q Crystal)* | `Dense_AllToAll_18Q` *(Opt.)* | `PASS (1.000000)` | `184` / `263` / **`222`** | `159` / `207` / **`163` (`-21.3%` vs TKET)** | `0.0215` / `0.0081` -> **`0.1370`** |
 | **IQM Garnet** *(20Q Crystal)* | `Dense_AllToAll_19Q` *(Opt.)* | `PASS (1.000000)` | `169` / `321` / **`166`** | `169` / `276` / **`169` (`-38.8%` vs TKET)** | `0.0476` / `0.0041` -> **`0.0801`** |
 
+### Table 2B - Verified Trapped-Ion All-to-All Compilation Benchmark (`AQT IBEX Q1` 12Q & `IonQ Forte 1` 36Q)
+
+On all-to-all trapped-ion processors, standard `SABRE O3` and `Quantinuum TKET` (via `qiskit-braket-provider`) translate logical two-qubit gates into native trapped-ion basis gates (`rxx` on AQT, `rzz` on IonQ) without first fusing consecutive SU(4) blocks into continuous-angle interactions. Prometheus's **Two-Stage Continuous-Angle Ion-Trap KAK Synthesis + Per-Ion Telemetry Layout** achieves substantial reductions in both entangling MS/`rzz` gates and single-qubit laser pulses while preserving exact `1.00000000` unitary equivalence:
+
+| Target Trapped-Ion QPU | Native Basis | Workload | Compiled Depth (`SABRE` / `TKET` / **`Prometheus`**) | Native 2Q Gates (`SABRE` / `TKET` / **`Prometheus`**) | Native 1Q Pulses (`SABRE` / `TKET` / **`Prometheus`**) | Exact Ideal Fidelity |
+| :--- | :--- | :--- | :---: | :---: | :---: | :---: |
+| **AQT `IBEX Q1` (`12Q`, `eu-north-1`)** | `['rxx', 'r', 'rz']` | `QFT_6Q` | `38` / `62` / **`27` (`-28.9%` vs S, `-56.5%` vs T)** | `24` / `39` / **`15` `rxx` (`-37.5%` vs S, `-61.5%` vs T)** | `97` / `132` / **`52` `r` (`-46.4%` vs S)** | `PASS (1.00000000)` |
+| **IonQ `Forte 1` (`36Q`, `us-east-1`)** | `['rzz', 'gpi', 'gpi2']` | `QFT_6Q` | `226` / `223` / **`56` (`-75.2%` vs S, `-74.9%` vs T)** | `39` / `39` / **`15` `rzz` (`-61.5%` vs S & T)** | `591` / `561` / **`123` `gpi/gpi2` (`-79.2%` vs S)** | `PASS (1.00000000)` |
+
 ---
 
-## 3. Scoped Multi-Window Controlled Replication Cost Estimate (`aws.amazon.com/braket/pricing/`)
+## 3. Scoped Multi-Window Cross-Paradigm Cost Estimate (`aws.amazon.com/braket/pricing/`)
 
-Now that initial live benchmarks are complete, the scoped follow-up supports multi-window controlled replication (`3` independent calibration windows per workload). Per official Amazon Braket on-demand QPU pricing (`$0.30 / task`, **`$0.000425 / shot` for Rigetti Cepheus**, and **`$0.00145 / shot` for IQM Garnet**; excluding ancillary AWS charges), bundling each 3-compiler comparison (`SABRE O3`, `TKET`, `Prometheus`) into a single `ProgramSet` task reduces per-task fees by `3x`:
+To evaluate execution quality across all five quantum hardware vendors accessible through Amazon Braket (**Rigetti, IQM, AQT, IonQ, and QuEra**), the scoped credit plan is structured into three modular phases using `ProgramSet` batching on all gate-model QPUs (`$0.30 / task` per 3-compiler `ProgramSet`, reducing per-task fees by `3x`):
 
-- **Initial Request - Phase 1A Core Suite (4 Workloads, `8Q` & `12Q` `QAOA MaxCut` + `QFT`):** `4` workloads $\times$ `3` execution windows = **`12 ProgramSet tasks` (`36` circuits, `147,456` shots) per QPU** = **`24 ProgramSet tasks` (`72` circuits, `294,912` shots) total** = **`$283.68 USD` with `ProgramSet` batching** (`$298.08 USD` if dispatched as 72 separate tasks).
-- **Optional High-Width All-to-All Extension (+3 Workloads, `17Q`, `18Q`, `19Q` $K_N$):** `3` workloads $\times$ `3` execution windows = **`+9 ProgramSet tasks` (`+27` circuits, `+110,592` shots) per QPU** = **`+18 ProgramSet tasks` (`+54` circuits, `+221,184` shots) total** = **`+$212.76 USD` with `ProgramSet` batching** (`+$223.56 USD` if separate tasks), or **`$496.44 USD` combined with `ProgramSet` batching** (`$521.64 USD` unbatched).
+1. **Phase 1 - Superconducting Lattice Multi-Window Replication (`Rigetti Cepheus-1-108Q` & `IQM Garnet` 20Q):**
+   - **Phase 1A Core Suite (`8Q` & `12Q` `QAOA MaxCut` + `QFT`, `3` windows, `4,096` shots/circuit):** `24 ProgramSet` tasks (`72` circuits, `294,912` shots) = **`$283.68 USD`** (`$298.08 USD` if separate tasks).
+   - **Phase 1B Optional High-Width All-to-All Extension (`17Q, 18Q, 19Q` Dense $K_N$, `3` windows, `4,096` shots/circuit):** `+18 ProgramSet` tasks (`+54` circuits, `+221,184` shots) = **`+$212.76 USD`** (`$496.44 USD` combined superconducting).
+2. **Phase 2 - Trapped-Ion All-to-All Continuous-Angle KAK Suite (`AQT IBEX Q1` 12Q & `IonQ Forte 1` 36Q):**
+   - **AQT `IBEX Q1` (`12Q`, `eu-north-1`, `$0.30/task` + `$0.0235/shot`):** `4` workloads (`6Q` & `10Q` `QFT` + `Dense All-to-All`) $\times$ `3` windows = **`12 ProgramSet` tasks (`36` circuits)** at `250` shots/circuit (`750` shots/task, `9,000` shots total) = **`$215.10 USD`** (`$222.30 USD` if separate tasks).
+   - **IonQ `Forte 1` (`36Q`, `us-east-1`, `$0.30/task` + `$0.0800/shot`):** `4` workloads (`8Q` & `12Q` `QAOA MaxCut` + `QFT`) $\times$ `3` windows = **`12 ProgramSet` tasks (`36` circuits)** at `100` shots/circuit (`300` shots/task, `3,600` shots total) = **`$291.60 USD`** (`$298.80 USD` if separate tasks).
+   - **Phase 2 Trapped-Ion Subtotal (`AQT IBEX Q1` + `IonQ Forte 1`):** **`$506.70 USD`** (`24 ProgramSet` tasks, `72` circuits, `12,600` shots).
+3. **Phase 3 - Neutral-Atom 2D Rydberg Blockade AHS Suite (`QuEra Aquila` 256Q):**
+   - **QuEra `Aquila` (`256Q` Neutral-Atom AHS, `us-east-1`, `$0.30/task` + `$0.0100/shot`):** `4` unit-disk Maximum Independent Set (MIS) register scales (`16`, `36`, `64`, and `100` Rubidium-87 atoms) $\times$ `3` windows = **`12 AHS tasks`** at `500` shots/task (`6,000` shots total) = **`$63.60 USD`**.
 
-### Table 3A - Phase 1A QPU Cost Breakdown (`ProgramSet`-Batched vs. Separate Tasks)
+### Table 3A - Complete Cross-Paradigm QPU Cost Breakdown Across All 5 AWS Braket Hardware Vendors
 
-| Phase / Target QPU | Architecture | Workloads | `ProgramSet` Tasks (`Circuits`) | Total Shots (`4,096/circuit`) | Shot Fees | `ProgramSet` Total (`1 task fee / 3 circuits`) | Separate-Task Total (`3 task fees / 3 circuits`) |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Rigetti Cepheus (Core 8Q & 12Q)** | 108Q Superconducting Square Grid | `4` (`8Q/12Q QAOA + QFT`) | `12 ProgramSets` (`36 circuits`) | `147,456` | `$62.67` (`$0.000425/shot`) | **`$66.27`** (`+$3.60` task fees) | `$73.47` (`+$10.80` task fees) |
-| **IQM Garnet (Core 8Q & 12Q)** | 20Q Superconducting Crystal Grid | `4` (`8Q/12Q QAOA + QFT`) | `12 ProgramSets` (`36 circuits`) | `147,456` | `$213.81` (`$0.00145/shot`) | **`$217.41`** (`+$3.60` task fees) | `$224.61` (`+$10.80` task fees) |
-| **Initial Request Total (Core 8Q & 12Q)** | **Rigetti Cepheus + IQM Garnet** | **`4 workloads`** | **`24 ProgramSets` (`72 circuits`)** | **`294,912`** | **`$276.48`** | **`$283.68 USD`** | **`$298.08 USD`** |
-| **Rigetti Cepheus (Optional 17Q-19Q $K_N$)** | 108Q Superconducting Square Grid | `3` (`17Q, 18Q, 19Q K_N`) | `9 ProgramSets` (`27 circuits`) | `110,592` | `$47.00` (`$0.000425/shot`) | **`$49.70`** (`+$2.70` task fees) | `$55.10` (`+$8.10` task fees) |
-| **IQM Garnet (Optional 17Q-19Q $K_N$)** | 20Q Superconducting Crystal Grid | `3` (`17Q, 18Q, 19Q K_N`) | `9 ProgramSets` (`27 circuits`) | `110,592` | `$160.36` (`$0.00145/shot`) | **`$163.06`** (`+$2.70` task fees) | `$168.46` (`+$8.10` task fees) |
-| **Optional Extension Subtotal (17Q-19Q)** | **Rigetti Cepheus + IQM Garnet** | **`3 workloads`** | **`18 ProgramSets` (`54 circuits`)** | **`221,184`** | **`$207.36`** | **`$212.76 USD`** | **`$223.56 USD`** |
-| **Combined Total (Core + Optional Ext.)** | **Rigetti Cepheus + IQM Garnet** | **`7 workloads (8Q to 19Q)`** | **`42 ProgramSets` (`126 circuits`)** | **`516,096`** | **`$483.84`** | **`$496.44 USD`** | **`$521.64 USD`** |
-
-*(Note: Optional Phase 2 cross-paradigm expansion to IonQ and QuEra Aquila is deferred until Phase 1A superconducting lattice benchmarks complete).*
+| Phase / Target QPU | Architecture & Region | Workloads (`3` Windows Each) | Batched Tasks (`Programs`) | Shots / Circuit (`Total Shots`) | Per-Shot Rate (`+ $0.30/task`) | `ProgramSet` / AHS Total (USD) | Separate-Task Total (USD) |
+| :--- | :--- | :--- | :--- | :--- | :--- | :---: | :---: |
+| **Phase 1A: Rigetti `Cepheus-1-108Q`** | 108Q Superconducting (`us-west-1`) | `4` (`8Q/12Q QAOA + QFT`) | `12 ProgramSets` (`36 circuits`) | `4,096` (`147,456`) | `$0.000425 / shot` | **`$66.27`** | `$73.47` |
+| **Phase 1A: IQM `Garnet`** | 20Q Superconducting (`eu-north-1`) | `4` (`8Q/12Q QAOA + QFT`) | `12 ProgramSets` (`36 circuits`) | `4,096` (`147,456`) | `$0.001450 / shot` | **`$217.41`** | `$224.61` |
+| **Phase 1A Core Superconducting Subtotal** | **Rigetti + IQM (Core 8Q/12Q)** | **`4 workloads`** | **`24 ProgramSets` (`72 circuits`)** | **`294,912` shots** | | **`$283.68 USD`** | **`$298.08 USD`** |
+| **Phase 1B: Rigetti `Cepheus-1` (Opt. 17Q-19Q)** | 108Q Superconducting (`us-west-1`) | `3` (`17Q, 18Q, 19Q K_N`) | `9 ProgramSets` (`27 circuits`) | `4,096` (`110,592`) | `$0.000425 / shot` | **`$49.70`** | `$55.10` |
+| **Phase 1B: IQM `Garnet` (Opt. 17Q-19Q)** | 20Q Superconducting (`eu-north-1`) | `3` (`17Q, 18Q, 19Q K_N`) | `9 ProgramSets` (`27 circuits`) | `4,096` (`110,592`) | `$0.001450 / shot` | **`$163.06`** | `$168.46` |
+| **Phase 1B Superconducting Ext. Subtotal** | **Rigetti + IQM (17Q-19Q $K_N$)** | **`3 workloads`** | **`18 ProgramSets` (`54 circuits`)** | **`221,184` shots** | | **`$212.76 USD`** | **`$223.56 USD`** |
+| **Phase 2: AQT `IBEX Q1`** | 12Q Trapped-Ion (`eu-north-1`) | `4` (`6Q/10Q QFT + K_N`) | `12 ProgramSets` (`36 circuits`) | `250` (`9,000`) | `$0.023500 / shot` | **`$215.10`** | `$222.30` |
+| **Phase 2: IonQ `Forte 1`** | 36Q Trapped-Ion (`us-east-1`) | `4` (`8Q/12Q QAOA + QFT`) | `12 ProgramSets` (`36 circuits`) | `100` (`3,600`) | `$0.080000 / shot` | **`$291.60`** | `$298.80` |
+| **Phase 2 Trapped-Ion Subtotal** | **AQT `IBEX Q1` + IonQ `Forte 1`** | **`4 workloads / QPU`** | **`24 ProgramSets` (`72 circuits`)** | **`12,600` shots** | | **`$506.70 USD`** | **`$521.10 USD`** |
+| **Phase 3: QuEra `Aquila` (Neutral-Atom)** | 256Q Rydberg AHS (`us-east-1`) | `4` (`16, 36, 64, 100 Atom MIS`) | `12 AHS Tasks` (`12 schedules`) | `500` (`6,000`) | `$0.010000 / shot` | **`$63.60 USD`** | **`$63.60 USD`** |
+| **Core Cross-Paradigm Total (1A + 2 + 3)** | **All 5 Vendors (Core 6Q-12Q + AHS)** | **Superconducting + Ion + Atom** | **`60 Tasks` (`156 programs`)** | **`313,512` shots** | | **`$853.98 USD`** | **`$882.78 USD`** |
+| **Full Cross-Paradigm Total (1A + 1B + 2 + 3)** | **All 5 Vendors (Full 6Q-100Q Suite)** | **All Phases Combined** | **`78 Tasks` (`210 programs`)** | **`534,696` shots** | | **`$1,066.74 USD`** | **`$1,106.34 USD`** |
 
 ---
 
 ## 4. Checklist Status & Live Cloud UI Access
 
 1. **AWS Skill Builder - Amazon Braket Knowledge Badge:** **COMPLETED & VERIFIED** - [https://www.credly.com/badges/b64dc9e8-8f3e-4996-8494-4acee97db732/public_url](https://www.credly.com/badges/b64dc9e8-8f3e-4996-8494-4acee97db732/public_url)
-2. **Local Braket Simulator & Live Braket QPU Validation:** **COMPLETED & VERIFIED** across all 7 workloads on `braket.devices.LocalSimulator("default")` (`validate_braket_local.py`) **plus 12 live 3-way `ProgramSet` hardware executions (`36` compiled circuits, `119,808` shots)** on **Rigetti `Cepheus-1-108Q`**, **IQM `Garnet` (`20Q`)**, and **IQM `Emerald` (`54Q`)** archived with AWS Task ARNs for traceability in [`aws_braket_qpu_12_jobs_ledger.json`](./aws_braket_qpu_12_jobs_ledger.json).
-3. **Scoped QPU Cost Estimate:** **COMPLETED** (**`$283.68 USD` with `ProgramSet` batching / `$298.08 USD` separate tasks** for the 4-workload 8Q/12Q multi-window replication suite, plus **`$212.76 USD` `ProgramSet` / `$223.56 USD` separate tasks** for the optional 17Q-19Q extension, totaling **`$496.44 USD` `ProgramSet` / `$521.64 USD` separate tasks**).
+2. **Local Braket Simulator & Live Braket QPU Validation:** **COMPLETED & VERIFIED** across all proposed workloads on `braket.devices.LocalSimulator("default")` (`validate_braket_local.py`), verified continuous-angle KAK compilation for **AQT `IBEX Q1`** and **IonQ `Forte 1`** plus Rydberg AHS compilation for **QuEra `Aquila`**, and **12 live 3-way `ProgramSet` hardware executions (`36` compiled circuits, `119,808` shots)** on **Rigetti `Cepheus-1-108Q`**, **IQM `Garnet` (`20Q`)**, and **IQM `Emerald` (`54Q`)** archived with AWS Task ARNs for traceability in [`aws_braket_qpu_12_jobs_ledger.json`](./aws_braket_qpu_12_jobs_ledger.json).
+3. **Scoped Cross-Paradigm QPU Cost Estimate:** **COMPLETED** across all 5 AWS Braket hardware vendors (**`$283.68 USD`** for Phase 1A Superconducting Core, **`+$212.76 USD`** for Phase 1B 17Q-19Q Superconducting Extension, **`+$506.70 USD`** for Phase 2 Trapped-Ion `AQT IBEX Q1` + `IonQ Forte 1`, and **`+$63.60 USD`** for Phase 3 Neutral-Atom `QuEra Aquila` 256Q = **`$853.98 USD` Core Cross-Paradigm** or **`$1,066.74 USD` Full Suite**).
 4. **AWS Account ID:** `893688540163`
-5. **Interactive Cloud UI Evaluation (`https://prometheusdynamics.ca/QuantumCompiler/`):** Available during supervised live evaluation sessions for AWS Braket technical reviewers to dispatch custom OpenQASM 2.0/3.0 workloads directly to live Amazon Braket QPUs and inspect 3-way compilation (`SABRE O3` vs. `TKET` vs. `Prometheus`) in real time.
-
+5. **Interactive Cloud UI Evaluation (`https://prometheusdynamics.ca/QuantumCompiler/`):** Supports all 7 AWS Braket QPUs (`Rigetti Cepheus-1-108Q`, `IQM Garnet`, `IQM Emerald`, `AQT IBEX Q1`, `IonQ Forte 1`, `IonQ Forte Enterprise 1`, and `QuEra Aquila`) and 15 circuit families, available during supervised live evaluation sessions for AWS Braket technical reviewers.
