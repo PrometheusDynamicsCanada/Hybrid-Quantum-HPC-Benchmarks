@@ -1,0 +1,598 @@
+{
+  "timestamp": "2026-10-19T15:41:19.127638",
+  "sdk": "amazon-braket-sdk + qiskit-braket-provider (LocalSimulator 'default', 4,096 shots/circuit)",
+  "target_devices": {
+    "rigetti_cepheus": "Rigetti Cepheus-1 (108Q Multi-Chip Square Lattice, $0.000425/shot, $0.30/task)",
+    "iqm_garnet": "IQM Garnet (20Q Crystal Square Lattice, $0.00145/shot, $0.30/task)"
+  },
+  "benchmarks": [
+    {
+      "device": "rigetti_cepheus",
+      "workload": "QAOA_MaxCut_8Q",
+      "logical_qubits": 8,
+      "braket_local_simulator_verified": true,
+      "sabre_o3": {
+        "depth": 180,
+        "two_q_gates": 74,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.79,
+        "tvd": 0.3637,
+        "shots": 4096,
+        "simulated_fidelity": 0.79
+      },
+      "tket": {
+        "depth": 254,
+        "two_q_gates": 105,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.8871,
+        "tvd": 0.2508,
+        "shots": 4096,
+        "simulated_fidelity": 0.8871
+      },
+      "prometheus": {
+        "depth": 156,
+        "two_q_gates": 77,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.9253,
+        "tvd": 0.1987,
+        "shots": 4096,
+        "simulated_fidelity": 0.9253
+      },
+      "deltas": {
+        "fidelity_gain_vs_sabre_pct": 17.13,
+        "two_q_gate_reduction_vs_sabre_pct": -4.05,
+        "two_q_gate_reduction_vs_tket_pct": 26.67
+      },
+      "elapsed_sec": 2.31
+    },
+    {
+      "device": "rigetti_cepheus",
+      "workload": "QAOA_MaxCut_12Q",
+      "logical_qubits": 12,
+      "braket_local_simulator_verified": true,
+      "sabre_o3": {
+        "depth": 261,
+        "two_q_gates": 106,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.4375,
+        "tvd": 0.5787,
+        "shots": 4096,
+        "simulated_fidelity": 0.4375
+      },
+      "tket": {
+        "depth": 398,
+        "two_q_gates": 168,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.5001,
+        "tvd": 0.5277,
+        "shots": 4096,
+        "simulated_fidelity": 0.5001
+      },
+      "prometheus": {
+        "depth": 248,
+        "two_q_gates": 97,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.6014,
+        "tvd": 0.4322,
+        "shots": 4096,
+        "simulated_fidelity": 0.6014
+      },
+      "deltas": {
+        "fidelity_gain_vs_sabre_pct": 37.46,
+        "two_q_gate_reduction_vs_sabre_pct": 8.49,
+        "two_q_gate_reduction_vs_tket_pct": 42.26
+      },
+      "elapsed_sec": 3.87
+    },
+    {
+      "device": "rigetti_cepheus",
+      "workload": "QFT_8Q",
+      "logical_qubits": 8,
+      "braket_local_simulator_verified": true,
+      "sabre_o3": {
+        "depth": 163,
+        "two_q_gates": 54,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.6932,
+        "tvd": 0.4573,
+        "shots": 4096,
+        "simulated_fidelity": 0.6932
+      },
+      "tket": {
+        "depth": 197,
+        "two_q_gates": 57,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.9028,
+        "tvd": 0.2266,
+        "shots": 4096,
+        "simulated_fidelity": 0.9028
+      },
+      "prometheus": {
+        "depth": 151,
+        "two_q_gates": 53,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.9396,
+        "tvd": 0.1737,
+        "shots": 4096,
+        "simulated_fidelity": 0.9396
+      },
+      "deltas": {
+        "fidelity_gain_vs_sabre_pct": 35.55,
+        "two_q_gate_reduction_vs_sabre_pct": 1.85,
+        "two_q_gate_reduction_vs_tket_pct": 7.02
+      },
+      "elapsed_sec": 2.16
+    },
+    {
+      "device": "rigetti_cepheus",
+      "workload": "QFT_12Q",
+      "logical_qubits": 12,
+      "braket_local_simulator_verified": true,
+      "sabre_o3": {
+        "depth": 247,
+        "two_q_gates": 92,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.3393,
+        "tvd": 0.6732,
+        "shots": 4096,
+        "simulated_fidelity": 0.3393
+      },
+      "tket": {
+        "depth": 347,
+        "two_q_gates": 117,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.5396,
+        "tvd": 0.5138,
+        "shots": 4096,
+        "simulated_fidelity": 0.5396
+      },
+      "prometheus": {
+        "depth": 261,
+        "two_q_gates": 93,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.6176,
+        "tvd": 0.4328,
+        "shots": 4096,
+        "simulated_fidelity": 0.6176
+      },
+      "deltas": {
+        "fidelity_gain_vs_sabre_pct": 82.02,
+        "two_q_gate_reduction_vs_sabre_pct": -1.09,
+        "two_q_gate_reduction_vs_tket_pct": 20.51
+      },
+      "elapsed_sec": 3.48
+    },
+    {
+      "device": "rigetti_cepheus",
+      "workload": "Dense_AllToAll_17Q",
+      "logical_qubits": 17,
+      "braket_local_simulator_verified": true,
+      "sabre_o3": {
+        "depth": 182,
+        "two_q_gates": 145,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.0332,
+        "tvd": 0.9393,
+        "shots": 4096,
+        "simulated_fidelity": 0.0332
+      },
+      "tket": {
+        "depth": 250,
+        "two_q_gates": 165,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.1536,
+        "tvd": 0.7885,
+        "shots": 4096,
+        "simulated_fidelity": 0.1536
+      },
+      "prometheus": {
+        "depth": 129,
+        "two_q_gates": 125,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.2718,
+        "tvd": 0.6599,
+        "shots": 4096,
+        "simulated_fidelity": 0.2718
+      },
+      "deltas": {
+        "fidelity_gain_vs_sabre_pct": 718.67,
+        "two_q_gate_reduction_vs_sabre_pct": 13.79,
+        "two_q_gate_reduction_vs_tket_pct": 24.24
+      },
+      "elapsed_sec": 25.28
+    },
+    {
+      "device": "rigetti_cepheus",
+      "workload": "Dense_AllToAll_18Q",
+      "logical_qubits": 18,
+      "braket_local_simulator_verified": true,
+      "sabre_o3": {
+        "depth": 132,
+        "two_q_gates": 149,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.0124,
+        "tvd": 0.9682,
+        "shots": 4096,
+        "simulated_fidelity": 0.0124
+      },
+      "tket": {
+        "depth": 338,
+        "two_q_gates": 240,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.0508,
+        "tvd": 0.9056,
+        "shots": 4096,
+        "simulated_fidelity": 0.0508
+      },
+      "prometheus": {
+        "depth": 113,
+        "two_q_gates": 131,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.22,
+        "tvd": 0.6961,
+        "shots": 4096,
+        "simulated_fidelity": 0.22
+      },
+      "deltas": {
+        "fidelity_gain_vs_sabre_pct": 1674.19,
+        "two_q_gate_reduction_vs_sabre_pct": 12.08,
+        "two_q_gate_reduction_vs_tket_pct": 45.42
+      },
+      "elapsed_sec": 26.16
+    },
+    {
+      "device": "rigetti_cepheus",
+      "workload": "Dense_AllToAll_19Q",
+      "logical_qubits": 19,
+      "braket_local_simulator_verified": true,
+      "sabre_o3": {
+        "depth": 167,
+        "two_q_gates": 182,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.0129,
+        "tvd": 0.9645,
+        "shots": 4096,
+        "simulated_fidelity": 0.0129
+      },
+      "tket": {
+        "depth": 258,
+        "two_q_gates": 219,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.0787,
+        "tvd": 0.8601,
+        "shots": 4096,
+        "simulated_fidelity": 0.0787
+      },
+      "prometheus": {
+        "depth": 154,
+        "two_q_gates": 169,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.1434,
+        "tvd": 0.7769,
+        "shots": 4096,
+        "simulated_fidelity": 0.1434
+      },
+      "deltas": {
+        "fidelity_gain_vs_sabre_pct": 1011.63,
+        "two_q_gate_reduction_vs_sabre_pct": 7.14,
+        "two_q_gate_reduction_vs_tket_pct": 22.83
+      },
+      "elapsed_sec": 38.1
+    },
+    {
+      "device": "iqm_garnet",
+      "workload": "QAOA_MaxCut_8Q",
+      "logical_qubits": 8,
+      "braket_local_simulator_verified": true,
+      "sabre_o3": {
+        "depth": 190,
+        "two_q_gates": 75,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.8696,
+        "tvd": 0.2765,
+        "shots": 4096,
+        "simulated_fidelity": 0.8696
+      },
+      "tket": {
+        "depth": 239,
+        "two_q_gates": 105,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.8153,
+        "tvd": 0.3386,
+        "shots": 4096,
+        "simulated_fidelity": 0.8153
+      },
+      "prometheus": {
+        "depth": 185,
+        "two_q_gates": 75,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.9117,
+        "tvd": 0.2218,
+        "shots": 4096,
+        "simulated_fidelity": 0.9117
+      },
+      "deltas": {
+        "fidelity_gain_vs_sabre_pct": 4.84,
+        "two_q_gate_reduction_vs_sabre_pct": 0.0,
+        "two_q_gate_reduction_vs_tket_pct": 28.57
+      },
+      "elapsed_sec": 2.06
+    },
+    {
+      "device": "iqm_garnet",
+      "workload": "QAOA_MaxCut_12Q",
+      "logical_qubits": 12,
+      "braket_local_simulator_verified": true,
+      "sabre_o3": {
+        "depth": 272,
+        "two_q_gates": 105,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.4825,
+        "tvd": 0.5438,
+        "shots": 4096,
+        "simulated_fidelity": 0.4825
+      },
+      "tket": {
+        "depth": 393,
+        "two_q_gates": 132,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.4774,
+        "tvd": 0.5471,
+        "shots": 4096,
+        "simulated_fidelity": 0.4774
+      },
+      "prometheus": {
+        "depth": 250,
+        "two_q_gates": 104,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.58,
+        "tvd": 0.4561,
+        "shots": 4096,
+        "simulated_fidelity": 0.58
+      },
+      "deltas": {
+        "fidelity_gain_vs_sabre_pct": 20.21,
+        "two_q_gate_reduction_vs_sabre_pct": 0.95,
+        "two_q_gate_reduction_vs_tket_pct": 21.21
+      },
+      "elapsed_sec": 2.84
+    },
+    {
+      "device": "iqm_garnet",
+      "workload": "QFT_8Q",
+      "logical_qubits": 8,
+      "braket_local_simulator_verified": true,
+      "sabre_o3": {
+        "depth": 165,
+        "two_q_gates": 55,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.8467,
+        "tvd": 0.3016,
+        "shots": 4096,
+        "simulated_fidelity": 0.8467
+      },
+      "tket": {
+        "depth": 204,
+        "two_q_gates": 57,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.8208,
+        "tvd": 0.342,
+        "shots": 4096,
+        "simulated_fidelity": 0.8208
+      },
+      "prometheus": {
+        "depth": 165,
+        "two_q_gates": 50,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.929,
+        "tvd": 0.1854,
+        "shots": 4096,
+        "simulated_fidelity": 0.929
+      },
+      "deltas": {
+        "fidelity_gain_vs_sabre_pct": 9.72,
+        "two_q_gate_reduction_vs_sabre_pct": 9.09,
+        "two_q_gate_reduction_vs_tket_pct": 12.28
+      },
+      "elapsed_sec": 1.32
+    },
+    {
+      "device": "iqm_garnet",
+      "workload": "QFT_12Q",
+      "logical_qubits": 12,
+      "braket_local_simulator_verified": true,
+      "sabre_o3": {
+        "depth": 276,
+        "two_q_gates": 97,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.4629,
+        "tvd": 0.5859,
+        "shots": 4096,
+        "simulated_fidelity": 0.4629
+      },
+      "tket": {
+        "depth": 365,
+        "two_q_gates": 114,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.4096,
+        "tvd": 0.6279,
+        "shots": 4096,
+        "simulated_fidelity": 0.4096
+      },
+      "prometheus": {
+        "depth": 231,
+        "two_q_gates": 89,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.556,
+        "tvd": 0.4966,
+        "shots": 4096,
+        "simulated_fidelity": 0.556
+      },
+      "deltas": {
+        "fidelity_gain_vs_sabre_pct": 20.11,
+        "two_q_gate_reduction_vs_sabre_pct": 8.25,
+        "two_q_gate_reduction_vs_tket_pct": 21.93
+      },
+      "elapsed_sec": 1.15
+    },
+    {
+      "device": "iqm_garnet",
+      "workload": "Dense_AllToAll_17Q",
+      "logical_qubits": 17,
+      "braket_local_simulator_verified": true,
+      "sabre_o3": {
+        "depth": 175,
+        "two_q_gates": 135,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.05,
+        "tvd": 0.9147,
+        "shots": 4096,
+        "simulated_fidelity": 0.05
+      },
+      "tket": {
+        "depth": 262,
+        "two_q_gates": 204,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.0142,
+        "tvd": 0.9661,
+        "shots": 4096,
+        "simulated_fidelity": 0.0142
+      },
+      "prometheus": {
+        "depth": 151,
+        "two_q_gates": 131,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.2012,
+        "tvd": 0.7323,
+        "shots": 4096,
+        "simulated_fidelity": 0.2012
+      },
+      "deltas": {
+        "fidelity_gain_vs_sabre_pct": 302.4,
+        "two_q_gate_reduction_vs_sabre_pct": 2.96,
+        "two_q_gate_reduction_vs_tket_pct": 35.78
+      },
+      "elapsed_sec": 1.41
+    },
+    {
+      "device": "iqm_garnet",
+      "workload": "Dense_AllToAll_18Q",
+      "logical_qubits": 18,
+      "braket_local_simulator_verified": true,
+      "sabre_o3": {
+        "depth": 184,
+        "two_q_gates": 159,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.0215,
+        "tvd": 0.9518,
+        "shots": 4096,
+        "simulated_fidelity": 0.0215
+      },
+      "tket": {
+        "depth": 263,
+        "two_q_gates": 207,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.0081,
+        "tvd": 0.976,
+        "shots": 4096,
+        "simulated_fidelity": 0.0081
+      },
+      "prometheus": {
+        "depth": 222,
+        "two_q_gates": 163,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.137,
+        "tvd": 0.7953,
+        "shots": 4096,
+        "simulated_fidelity": 0.137
+      },
+      "deltas": {
+        "fidelity_gain_vs_sabre_pct": 537.21,
+        "two_q_gate_reduction_vs_sabre_pct": -2.52,
+        "two_q_gate_reduction_vs_tket_pct": 21.26
+      },
+      "elapsed_sec": 1.65
+    },
+    {
+      "device": "iqm_garnet",
+      "workload": "Dense_AllToAll_19Q",
+      "logical_qubits": 19,
+      "braket_local_simulator_verified": true,
+      "sabre_o3": {
+        "depth": 169,
+        "two_q_gates": 169,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.0476,
+        "tvd": 0.9041,
+        "shots": 4096,
+        "simulated_fidelity": 0.0476
+      },
+      "tket": {
+        "depth": 321,
+        "two_q_gates": 276,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.0041,
+        "tvd": 0.984,
+        "shots": 4096,
+        "simulated_fidelity": 0.0041
+      },
+      "prometheus": {
+        "depth": 166,
+        "two_q_gates": 169,
+        "braket_local_sim_verified": true,
+        "braket_sv_max_diff": 0.0,
+        "state_fidelity": 0.0801,
+        "tvd": 0.8584,
+        "shots": 4096,
+        "simulated_fidelity": 0.0801
+      },
+      "deltas": {
+        "fidelity_gain_vs_sabre_pct": 68.28,
+        "two_q_gate_reduction_vs_sabre_pct": 0.0,
+        "two_q_gate_reduction_vs_tket_pct": 38.77
+      },
+      "elapsed_sec": 3.7
+    }
+  ]
+}

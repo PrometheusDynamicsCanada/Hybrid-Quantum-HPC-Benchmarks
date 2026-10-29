@@ -1,0 +1,4799 @@
+{
+  "corpus_title": "Prometheus Dynamics \u2014 Master 156Q IBM Heron Hardware Benchmark Corpus",
+  "organization": "Prometheus Dynamics (https://prometheusdynamics.ca)",
+  "qpu_fleet": [
+    "ibm_marrakesh (156Q)",
+    "ibm_fez (156Q)",
+    "ibm_kingston (156Q)"
+  ],
+  "completed_triplets_with_full_observables": 107,
+  "completed_compiled_circuits_executed": 321,
+  "completed_physical_quantum_shots": 4964352,
+  "corpus_accounting": {
+    "completed_verified_3way_jobs": 107,
+    "completed_compiled_circuits": 321,
+    "completed_physical_shots": 4964352,
+    "unrecovered_queue_dispatches_count": 3,
+    "unrecovered_queue_circuits": 9,
+    "unrecovered_queue_shots": 147456,
+    "total_historical_dispatches": 110,
+    "total_historical_compiled_circuits": 330,
+    "total_historical_dispatched_shots": 5111808,
+    "reconciliation_note": "All win rates (80/107 vs. SABRE O3; 100/107 vs. TKET) and physical observables are computed strictly over the 107 completed 3-way hardware benchmark jobs (321 compiled physical circuits, 4,964,352 completed physical shots). Three earlier 8Q Dense All-to-All queue dispatches (147,456 shots across 9 circuits) remained in PENDING_IN_QUEUE on an expired session and are listed separately in `unrecovered_queue_dispatches` for full ledger reconciliation (107 + 3 = 110)."
+  },
+  "observable_definitions": {
+    "fidelity": "Classical Computational-Basis Distribution Fidelity (Bhattacharyya Overlap): F_dist(P_ideal, P_meas) = sum_x sqrt(P_ideal(x) * P_meas(x)) over computational-basis bitstrings x in {0,1}^n, where P_ideal(x) is the noiseless ideal measurement probability and P_meas(x) is the empirical hardware bitstring frequency over 16,384 shots. Note: This is the classical computational-basis distribution overlap (square root of classical Hellinger fidelity), distinct from full 4^n quantum state tomography.",
+    "tvd": "Total Variation Distance: TVD(P_ideal, P_meas) = 0.5 * sum_x |P_ideal(x) - P_meas(x)| in [0, 1] (lower is better).",
+    "hop": "Heavy-Output Probability: HOP = sum_{x : P_ideal(x) > median(P_ideal)} P_meas(x). Methodological Note: Crossing the 2/3 (66.67%) heavy-output reference threshold on a specific deterministic workload (such as the 19Q Dense All-to-All K_19 benchmark on ibm_kingston, HOP = 70.45%) demonstrates heavy-output survival on that circuit, but is NOT a formal Quantum Volume (QV) certification, which requires Qiskit's random SU(4) model-circuit ensemble across >= 100 independent trials and a 2-sigma confidence bound.",
+    "xeb": "Linear Cross-Entropy Benchmarking score: (2^n) * sum_x P_ideal(x) * P_meas(x) - 1."
+  },
+  "qubit_scales_tested": [
+    4,
+    6,
+    7,
+    8,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "win_rate_vs_tket": "100 / 107 (93.5%)",
+  "win_rate_vs_sabre_o3": "80 / 107 (74.8%)",
+  "max_2q_gate_reduction_vs_tket_pct": -54.5,
+  "max_2q_gate_reduction_vs_sabre_pct": -34.8,
+  "verified_jobs": [
+    {
+      "job_id": "dbajlrhgv2cc73e6vuj0",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 19,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-18T18:32:31.477481",
+      "circuit_metrics": {
+        "sabre_depth": 358,
+        "tket_depth": 501,
+        "prometheus_depth": 281,
+        "sabre_2q_gates": 444,
+        "tket_2q_gates": 717,
+        "prometheus_2q_gates": 358
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.18983590374960158,
+          "tvd": 0.7749563437222045,
+          "hop": 0.63275146484375,
+          "xeb": 563.3907231318447,
+          "entropy": 13.096833553912576,
+          "ideal_entropy": 9.46308414709691
+        },
+        "tket": {
+          "fidelity": 0.01618676926758091,
+          "tvd": 0.9552109625123623,
+          "hop": 0.54376220703125,
+          "xeb": 42.774319103753704,
+          "entropy": 13.796282057074052,
+          "ideal_entropy": 9.46308414709691
+        },
+        "prometheus": {
+          "fidelity": 0.24264907595571308,
+          "tvd": 0.7250678709083496,
+          "hop": 0.7044677734375,
+          "xeb": 767.1899070922425,
+          "entropy": 12.76658504838262,
+          "ideal_entropy": 9.46308414709691
+        }
+      }
+    },
+    {
+      "job_id": "dbajlrhgv2cc73e6vuig",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 19,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-18T18:32:31.418295",
+      "circuit_metrics": {
+        "sabre_depth": 414,
+        "tket_depth": 501,
+        "prometheus_depth": 313,
+        "sabre_2q_gates": 429,
+        "tket_2q_gates": 717,
+        "prometheus_2q_gates": 390
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.035722900392852676,
+          "tvd": 0.9352439903755977,
+          "hop": 0.5496826171875,
+          "xeb": 126.94278504912637,
+          "entropy": 13.779199222608458,
+          "ideal_entropy": 9.46308414709691
+        },
+        "tket": {
+          "fidelity": 0.022034983136232426,
+          "tvd": 0.9479333914333088,
+          "hop": 0.6094970703125,
+          "xeb": 54.862767466454855,
+          "entropy": 13.792211246287632,
+          "ideal_entropy": 9.46308414709691
+        },
+        "prometheus": {
+          "fidelity": 0.06543930535897806,
+          "tvd": 0.9026891875723855,
+          "hop": 0.55145263671875,
+          "xeb": 208.53248942111387,
+          "entropy": 13.666442296161796,
+          "ideal_entropy": 9.46308414709691
+        }
+      }
+    },
+    {
+      "job_id": "dbajlqpgv2cc73e6vuhg",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 19,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-18T18:32:30.345406",
+      "circuit_metrics": {
+        "sabre_depth": 459,
+        "tket_depth": 501,
+        "prometheus_depth": 281,
+        "sabre_2q_gates": 482,
+        "tket_2q_gates": 717,
+        "prometheus_2q_gates": 358
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.06273600627522644,
+          "tvd": 0.9025438664069595,
+          "hop": 0.5218505859375,
+          "xeb": 148.55509259199226,
+          "entropy": 13.67005060710185,
+          "ideal_entropy": 9.46308414709691
+        },
+        "tket": {
+          "fidelity": 0.03257844574677085,
+          "tvd": 0.9322860996513452,
+          "hop": 0.62872314453125,
+          "xeb": 57.79316870491829,
+          "entropy": 13.8192722351316,
+          "ideal_entropy": 9.46308414709691
+        },
+        "prometheus": {
+          "fidelity": 0.127774150508421,
+          "tvd": 0.8411012921358254,
+          "hop": 0.60455322265625,
+          "xeb": 339.79607497430675,
+          "entropy": 13.478644339349694,
+          "ideal_entropy": 9.46308414709691
+        }
+      }
+    },
+    {
+      "job_id": "dbaio50c77vs7382t5qg",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Fourier Transform",
+      "logical_qubits": 12,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-18T17:29:08.943900",
+      "circuit_metrics": {
+        "sabre_depth": 375,
+        "tket_depth": 573,
+        "prometheus_depth": 329,
+        "sabre_2q_gates": 236,
+        "tket_2q_gates": 375,
+        "prometheus_2q_gates": 203
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.8975966051655766,
+          "tvd": 0.22283935546875008,
+          "hop": 0.0,
+          "xeb": -2.1094237467877974e-15,
+          "entropy": 11.747800438611751,
+          "ideal_entropy": 11.999999999999998
+        },
+        "tket": {
+          "fidelity": 0.7918009914442579,
+          "tvd": 0.3261718749999999,
+          "hop": 0.0,
+          "xeb": -2.1094237467877974e-15,
+          "entropy": 11.472335360724266,
+          "ideal_entropy": 11.999999999999998
+        },
+        "prometheus": {
+          "fidelity": 0.9116956123619943,
+          "tvd": 0.2105712890625001,
+          "hop": 0.0,
+          "xeb": -1.9984014443252818e-15,
+          "entropy": 11.779868021747257,
+          "ideal_entropy": 11.999999999999998
+        }
+      }
+    },
+    {
+      "job_id": "dbaio50c77vs7382t5pg",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Fourier Transform",
+      "logical_qubits": 12,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-18T17:29:08.713645",
+      "circuit_metrics": {
+        "sabre_depth": 337,
+        "tket_depth": 573,
+        "prometheus_depth": 361,
+        "sabre_2q_gates": 233,
+        "tket_2q_gates": 375,
+        "prometheus_2q_gates": 205
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.8845417885044898,
+          "tvd": 0.24023437500000006,
+          "hop": 0.0,
+          "xeb": -1.9984014443252818e-15,
+          "entropy": 11.714181854324684,
+          "ideal_entropy": 11.999999999999998
+        },
+        "tket": {
+          "fidelity": 0.8800764156120066,
+          "tvd": 0.24645996093750003,
+          "hop": 0.0,
+          "xeb": -2.1094237467877974e-15,
+          "entropy": 11.701254918701503,
+          "ideal_entropy": 11.999999999999998
+        },
+        "prometheus": {
+          "fidelity": 0.8640976373910059,
+          "tvd": 0.26092529296875,
+          "hop": 0.0,
+          "xeb": -1.9984014443252818e-15,
+          "entropy": 11.665143270055388,
+          "ideal_entropy": 11.999999999999998
+        }
+      }
+    },
+    {
+      "job_id": "dbaio4vi0auc73923sk0",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Fourier Transform",
+      "logical_qubits": 12,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-18T17:29:07.965377",
+      "circuit_metrics": {
+        "sabre_depth": 394,
+        "tket_depth": 573,
+        "prometheus_depth": 288,
+        "sabre_2q_gates": 245,
+        "tket_2q_gates": 375,
+        "prometheus_2q_gates": 205
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.8573465406887467,
+          "tvd": 0.2664794921875,
+          "hop": 0.0,
+          "xeb": -2.1094237467877974e-15,
+          "entropy": 11.649572349644538,
+          "ideal_entropy": 11.999999999999998
+        },
+        "tket": {
+          "fidelity": 0.7450107426271209,
+          "tvd": 0.36541748046874983,
+          "hop": 0.0,
+          "xeb": -1.9984014443252818e-15,
+          "entropy": 11.352549330877693,
+          "ideal_entropy": 11.999999999999998
+        },
+        "prometheus": {
+          "fidelity": 0.8498735947233508,
+          "tvd": 0.2752685546875,
+          "hop": 0.0,
+          "xeb": -2.1094237467877974e-15,
+          "entropy": 11.616939700842591,
+          "ideal_entropy": 11.999999999999998
+        }
+      }
+    },
+    {
+      "job_id": "dbaijjgc77vs7382srkg",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Fourier Transform",
+      "logical_qubits": 8,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-18T17:19:27.233597",
+      "circuit_metrics": {
+        "sabre_depth": 199,
+        "tket_depth": 288,
+        "prometheus_depth": 208,
+        "sabre_2q_gates": 93,
+        "tket_2q_gates": 137,
+        "prometheus_2q_gates": 85
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.990913379132676,
+          "tvd": 0.07696533203124999,
+          "hop": 0.0,
+          "xeb": -1.5543122344752192e-15,
+          "entropy": 7.973879269093624,
+          "ideal_entropy": 7.999999999999999
+        },
+        "tket": {
+          "fidelity": 0.9785130616305681,
+          "tvd": 0.11773681640624997,
+          "hop": 0.0,
+          "xeb": -1.3322676295501878e-15,
+          "entropy": 7.93861492090629,
+          "ideal_entropy": 7.999999999999999
+        },
+        "prometheus": {
+          "fidelity": 0.7784901748909765,
+          "tvd": 0.40875244140625,
+          "hop": 0.0,
+          "xeb": -1.5543122344752192e-15,
+          "entropy": 7.414634002065771,
+          "ideal_entropy": 7.999999999999999
+        }
+      }
+    },
+    {
+      "job_id": "dbaijj9gv2cc73e6ubn0",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Fourier Transform",
+      "logical_qubits": 8,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-18T17:19:26.452915",
+      "circuit_metrics": {
+        "sabre_depth": 186,
+        "tket_depth": 288,
+        "prometheus_depth": 207,
+        "sabre_2q_gates": 91,
+        "tket_2q_gates": 137,
+        "prometheus_2q_gates": 85
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.9782596368198235,
+          "tvd": 0.12268066406249994,
+          "hop": 0.0,
+          "xeb": -1.3322676295501878e-15,
+          "entropy": 7.936996718284981,
+          "ideal_entropy": 7.999999999999999
+        },
+        "tket": {
+          "fidelity": 0.9095354486565095,
+          "tvd": 0.24377441406249983,
+          "hop": 0.0,
+          "xeb": -1.3322676295501878e-15,
+          "entropy": 7.733777802623589,
+          "ideal_entropy": 7.999999999999999
+        },
+        "prometheus": {
+          "fidelity": 0.9841831150729108,
+          "tvd": 0.10333251953124994,
+          "hop": 0.0,
+          "xeb": -1.3322676295501878e-15,
+          "entropy": 7.954175090966351,
+          "ideal_entropy": 7.999999999999999
+        }
+      }
+    },
+    {
+      "job_id": "dbaijj9gv2cc73e6ubmg",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Fourier Transform",
+      "logical_qubits": 8,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-18T17:19:26.210762",
+      "circuit_metrics": {
+        "sabre_depth": 226,
+        "tket_depth": 288,
+        "prometheus_depth": 175,
+        "sabre_2q_gates": 104,
+        "tket_2q_gates": 137,
+        "prometheus_2q_gates": 85
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.9862491941824874,
+          "tvd": 0.09234619140625004,
+          "hop": 0.0,
+          "xeb": -1.5543122344752192e-15,
+          "entropy": 7.960795774543629,
+          "ideal_entropy": 7.999999999999999
+        },
+        "tket": {
+          "fidelity": 0.9578866673326198,
+          "tvd": 0.16436767578124992,
+          "hop": 0.0,
+          "xeb": -1.4432899320127035e-15,
+          "entropy": 7.87621580632909,
+          "ideal_entropy": 7.999999999999999
+        },
+        "prometheus": {
+          "fidelity": 0.992858806852467,
+          "tvd": 0.06799316406250001,
+          "hop": 0.0,
+          "xeb": -1.3322676295501878e-15,
+          "entropy": 7.979533736018028,
+          "ideal_entropy": 7.999999999999999
+        }
+      }
+    },
+    {
+      "job_id": "dbaign8c77vs7382smbg",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "QAOA MaxCut (3-Regular)",
+      "logical_qubits": 12,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-18T17:13:18.703615",
+      "circuit_metrics": {
+        "sabre_depth": 110,
+        "tket_depth": 212,
+        "prometheus_depth": 165,
+        "sabre_2q_gates": 63,
+        "tket_2q_gates": 108,
+        "prometheus_2q_gates": 54
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.8913515683815688,
+          "tvd": 0.23205566406250006,
+          "hop": 0.0,
+          "xeb": -2.1094237467877974e-15,
+          "entropy": 11.733698299188083,
+          "ideal_entropy": 11.999999999999998
+        },
+        "tket": {
+          "fidelity": 0.8552030803120146,
+          "tvd": 0.26824951171875,
+          "hop": 0.0,
+          "xeb": -1.9984014443252818e-15,
+          "entropy": 11.649968610623318,
+          "ideal_entropy": 11.999999999999998
+        },
+        "prometheus": {
+          "fidelity": 0.9002471643821476,
+          "tvd": 0.22241210937500008,
+          "hop": 0.0,
+          "xeb": -2.220446049250313e-15,
+          "entropy": 11.752070377952114,
+          "ideal_entropy": 11.999999999999998
+        }
+      }
+    },
+    {
+      "job_id": "dbaign9gv2cc73e6u5sg",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "QAOA MaxCut (3-Regular)",
+      "logical_qubits": 12,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-18T17:13:18.656654",
+      "circuit_metrics": {
+        "sabre_depth": 124,
+        "tket_depth": 212,
+        "prometheus_depth": 115,
+        "sabre_2q_gates": 58,
+        "tket_2q_gates": 108,
+        "prometheus_2q_gates": 54
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.8611969747070548,
+          "tvd": 0.263427734375,
+          "hop": 0.0,
+          "xeb": -2.1094237467877974e-15,
+          "entropy": 11.66183426606714,
+          "ideal_entropy": 11.999999999999998
+        },
+        "tket": {
+          "fidelity": 0.8835222788782074,
+          "tvd": 0.23712158203125006,
+          "hop": 0.0,
+          "xeb": -2.220446049250313e-15,
+          "entropy": 11.717389981855497,
+          "ideal_entropy": 11.999999999999998
+        },
+        "prometheus": {
+          "fidelity": 0.9120565346474109,
+          "tvd": 0.2110595703125001,
+          "hop": 0.0,
+          "xeb": -2.220446049250313e-15,
+          "entropy": 11.778599442897216,
+          "ideal_entropy": 11.999999999999998
+        }
+      }
+    },
+    {
+      "job_id": "dbaignc24mrc7385fgbg",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "QAOA MaxCut (3-Regular)",
+      "logical_qubits": 12,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-18T17:13:18.411955",
+      "circuit_metrics": {
+        "sabre_depth": 106,
+        "tket_depth": 212,
+        "prometheus_depth": 106,
+        "sabre_2q_gates": 54,
+        "tket_2q_gates": 108,
+        "prometheus_2q_gates": 51
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.8982617100098247,
+          "tvd": 0.22589111328125006,
+          "hop": 0.0,
+          "xeb": -2.1094237467877974e-15,
+          "entropy": 11.746144998021359,
+          "ideal_entropy": 11.999999999999998
+        },
+        "tket": {
+          "fidelity": 0.8351553182224039,
+          "tvd": 0.28955078124999994,
+          "hop": 0.0,
+          "xeb": -2.1094237467877974e-15,
+          "entropy": 11.590837627170151,
+          "ideal_entropy": 11.999999999999998
+        },
+        "prometheus": {
+          "fidelity": 0.9066870319249417,
+          "tvd": 0.21716308593750008,
+          "hop": 0.0,
+          "xeb": -2.220446049250313e-15,
+          "entropy": 11.767607846458155,
+          "ideal_entropy": 11.999999999999998
+        }
+      }
+    },
+    {
+      "job_id": "dbaehak24mrc73859340",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "QAOA MaxCut (3-Regular)",
+      "logical_qubits": 12,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-18T12:41:31.026682",
+      "circuit_metrics": {
+        "sabre_depth": 118,
+        "tket_depth": 212,
+        "prometheus_depth": 170,
+        "sabre_2q_gates": 66,
+        "tket_2q_gates": 108,
+        "prometheus_2q_gates": 57
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.8387927767016006,
+          "tvd": 0.28778076171875,
+          "hop": 0.0,
+          "xeb": -2.220446049250313e-15,
+          "entropy": 11.60493996723983,
+          "ideal_entropy": 11.999999999999998
+        },
+        "tket": {
+          "fidelity": 0.8318073502415484,
+          "tvd": 0.29467773437499994,
+          "hop": 0.0,
+          "xeb": -2.1094237467877974e-15,
+          "entropy": 11.575006748424137,
+          "ideal_entropy": 11.999999999999998
+        },
+        "prometheus": {
+          "fidelity": 0.9066972966272638,
+          "tvd": 0.21343994140625008,
+          "hop": 0.0,
+          "xeb": -2.1094237467877974e-15,
+          "entropy": 11.770229764143485,
+          "ideal_entropy": 11.999999999999998
+        }
+      }
+    },
+    {
+      "job_id": "dbaehani0auc7391sthg",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "QAOA MaxCut (3-Regular)",
+      "logical_qubits": 12,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-18T12:41:30.682995",
+      "circuit_metrics": {
+        "sabre_depth": 103,
+        "tket_depth": 212,
+        "prometheus_depth": 114,
+        "sabre_2q_gates": 54,
+        "tket_2q_gates": 108,
+        "prometheus_2q_gates": 54
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.907228793936417,
+          "tvd": 0.2138061523437501,
+          "hop": 0.0,
+          "xeb": -2.220446049250313e-15,
+          "entropy": 11.771141556912797,
+          "ideal_entropy": 11.999999999999998
+        },
+        "tket": {
+          "fidelity": 0.8975125754666612,
+          "tvd": 0.22863769531250006,
+          "hop": 0.0,
+          "xeb": -2.1094237467877974e-15,
+          "entropy": 11.741791282170967,
+          "ideal_entropy": 11.999999999999998
+        },
+        "prometheus": {
+          "fidelity": 0.9051098420355265,
+          "tvd": 0.21954345703125008,
+          "hop": 0.0,
+          "xeb": -2.1094237467877974e-15,
+          "entropy": 11.765078335415415,
+          "ideal_entropy": 11.999999999999998
+        }
+      }
+    },
+    {
+      "job_id": "dbaehani0auc7391sth0",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "QAOA MaxCut (3-Regular)",
+      "logical_qubits": 12,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-18T12:41:30.456267",
+      "circuit_metrics": {
+        "sabre_depth": 103,
+        "tket_depth": 212,
+        "prometheus_depth": 105,
+        "sabre_2q_gates": 51,
+        "tket_2q_gates": 108,
+        "prometheus_2q_gates": 58
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.9043901106982877,
+          "tvd": 0.21746826171875008,
+          "hop": 0.0,
+          "xeb": -2.1094237467877974e-15,
+          "entropy": 11.762159835451259,
+          "ideal_entropy": 11.999999999999998
+        },
+        "tket": {
+          "fidelity": 0.8546109479665878,
+          "tvd": 0.26953125,
+          "hop": 0.0,
+          "xeb": -2.220446049250313e-15,
+          "entropy": 11.64712819138666,
+          "ideal_entropy": 11.999999999999998
+        },
+        "prometheus": {
+          "fidelity": 0.9003371247564096,
+          "tvd": 0.21972656250000006,
+          "hop": 0.0,
+          "xeb": -2.220446049250313e-15,
+          "entropy": 11.75626212680474,
+          "ideal_entropy": 11.999999999999998
+        }
+      }
+    },
+    {
+      "job_id": "db9nfnfi0auc7390uvvg",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "QAOA MaxCut (3-Regular)",
+      "logical_qubits": 4,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-17T10:27:57.621607",
+      "circuit_metrics": {
+        "sabre_depth": 126,
+        "tket_depth": 134,
+        "prometheus_depth": 119,
+        "sabre_2q_gates": 42,
+        "tket_2q_gates": 33,
+        "prometheus_2q_gates": 33
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.9643760766956918,
+          "tvd": 0.1079709414024067,
+          "hop": 0.93695068359375,
+          "xeb": 1.189049748636542,
+          "entropy": 3.145739714104793,
+          "ideal_entropy": 2.9201702012505053
+        },
+        "tket": {
+          "fidelity": 0.9435948934426803,
+          "tvd": 0.16097734953951473,
+          "hop": 0.9384765625,
+          "xeb": 1.1418642155140466,
+          "entropy": 3.146695479885559,
+          "ideal_entropy": 2.9201702012505053
+        },
+        "prometheus": {
+          "fidelity": 0.9633955975269584,
+          "tvd": 0.10720050763386285,
+          "hop": 0.928955078125,
+          "xeb": 1.1516205508411685,
+          "entropy": 3.2053576432763617,
+          "ideal_entropy": 2.9201702012505053
+        }
+      }
+    },
+    {
+      "job_id": "db9nfmvi0auc7390uvug",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "QAOA MaxCut (3-Regular)",
+      "logical_qubits": 4,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-17T10:27:55.100689",
+      "circuit_metrics": {
+        "sabre_depth": 126,
+        "tket_depth": 134,
+        "prometheus_depth": 120,
+        "sabre_2q_gates": 42,
+        "tket_2q_gates": 33,
+        "prometheus_2q_gates": 33
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.9397430180690501,
+          "tvd": 0.1340176504317596,
+          "hop": 0.90380859375,
+          "xeb": 1.0971076207894992,
+          "entropy": 3.2952466408157814,
+          "ideal_entropy": 2.9201702012505053
+        },
+        "tket": {
+          "fidelity": 0.8968306012363408,
+          "tvd": 0.23108754916215035,
+          "hop": 0.8651123046875,
+          "xeb": 0.9778181679658902,
+          "entropy": 3.307057771087354,
+          "ideal_entropy": 2.9201702012505053
+        },
+        "prometheus": {
+          "fidelity": 0.9403729492696435,
+          "tvd": 0.14401875750761456,
+          "hop": 0.91143798828125,
+          "xeb": 1.119256165441977,
+          "entropy": 3.2455465831182497,
+          "ideal_entropy": 2.9201702012505053
+        }
+      }
+    },
+    {
+      "job_id": "db9nflpgv2cc73e5q9l0",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "QAOA MaxCut (3-Regular)",
+      "logical_qubits": 4,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-17T10:27:51.256883",
+      "circuit_metrics": {
+        "sabre_depth": 123,
+        "tket_depth": 134,
+        "prometheus_depth": 118,
+        "sabre_2q_gates": 42,
+        "tket_2q_gates": 33,
+        "prometheus_2q_gates": 33
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.9608683536351255,
+          "tvd": 0.12715900372761285,
+          "hop": 0.93951416015625,
+          "xeb": 1.1911291387534186,
+          "entropy": 3.1270710084435445,
+          "ideal_entropy": 2.9201702012505053
+        },
+        "tket": {
+          "fidelity": 0.9672762677119257,
+          "tvd": 0.08952302152550959,
+          "hop": 0.93365478515625,
+          "xeb": 1.1703393437476066,
+          "entropy": 3.187531958241695,
+          "ideal_entropy": 2.9201702012505053
+        },
+        "prometheus": {
+          "fidelity": 0.9500005048270681,
+          "tvd": 0.11375397855675959,
+          "hop": 0.90765380859375,
+          "xeb": 1.1150636318804192,
+          "entropy": 3.259948021826833,
+          "ideal_entropy": 2.9201702012505053
+        }
+      }
+    },
+    {
+      "job_id": "db9n970c77vs7381obqg",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "QAOA MaxCut (3-Regular)",
+      "logical_qubits": 12,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-17T10:14:04.166890",
+      "circuit_metrics": {
+        "sabre_depth": 101,
+        "tket_depth": 212,
+        "prometheus_depth": 127,
+        "sabre_2q_gates": 57,
+        "tket_2q_gates": 108,
+        "prometheus_2q_gates": 62
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.8836473625324827,
+          "tvd": 0.24084472656250003,
+          "hop": 0.0,
+          "xeb": -2.220446049250313e-15,
+          "entropy": 11.716839604862157,
+          "ideal_entropy": 11.999999999999998
+        },
+        "tket": {
+          "fidelity": 0.8173807244275791,
+          "tvd": 0.3060913085937499,
+          "hop": 0.0,
+          "xeb": -2.1094237467877974e-15,
+          "entropy": 11.55142456099228,
+          "ideal_entropy": 11.999999999999998
+        },
+        "prometheus": {
+          "fidelity": 0.9078392139654651,
+          "tvd": 0.21600341796875006,
+          "hop": 0.0,
+          "xeb": -2.1094237467877974e-15,
+          "entropy": 11.77094532854206,
+          "ideal_entropy": 11.999999999999998
+        }
+      }
+    },
+    {
+      "job_id": "db71072mb58s738cjeqg",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "QAOA MaxCut (3-Regular)",
+      "logical_qubits": 6,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-13T08:03:57.777228",
+      "circuit_metrics": {
+        "sabre_depth": 51,
+        "tket_depth": 62,
+        "prometheus_depth": 43,
+        "sabre_2q_gates": 27,
+        "tket_2q_gates": 27,
+        "prometheus_2q_gates": 25
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.9904120888237412,
+          "tvd": 0.07812499999999989,
+          "hop": 0.0,
+          "xeb": -8.881784197001252e-16,
+          "entropy": 5.971941650149082,
+          "ideal_entropy": 5.999999999999999
+        },
+        "tket": {
+          "fidelity": 0.7027127070122631,
+          "tvd": 0.4522705078125,
+          "hop": 0.0,
+          "xeb": -8.881784197001252e-16,
+          "entropy": 5.241273803579102,
+          "ideal_entropy": 5.999999999999999
+        },
+        "prometheus": {
+          "fidelity": 0.9952599359727293,
+          "tvd": 0.0563964843749999,
+          "hop": 0.0,
+          "xeb": -8.881784197001252e-16,
+          "entropy": 5.986232601302054,
+          "ideal_entropy": 5.999999999999999
+        }
+      }
+    },
+    {
+      "job_id": "db70tn2mb58s738cj96g",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "QAOA MaxCut (3-Regular)",
+      "logical_qubits": 8,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-13T07:58:37.810503",
+      "circuit_metrics": {
+        "sabre_depth": 73,
+        "tket_depth": 93,
+        "prometheus_depth": 87,
+        "sabre_2q_gates": 42,
+        "tket_2q_gates": 54,
+        "prometheus_2q_gates": 43
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.9754251727470318,
+          "tvd": 0.12164306640624994,
+          "hop": 0.0,
+          "xeb": -1.4432899320127035e-15,
+          "entropy": 7.929881611726849,
+          "ideal_entropy": 7.999999999999999
+        },
+        "tket": {
+          "fidelity": 0.9651437905941241,
+          "tvd": 0.15417480468749994,
+          "hop": 0.0,
+          "xeb": -1.3322676295501878e-15,
+          "entropy": 7.900333754414186,
+          "ideal_entropy": 7.999999999999999
+        },
+        "prometheus": {
+          "fidelity": 0.9496358969317212,
+          "tvd": 0.18603515624999994,
+          "hop": 0.0,
+          "xeb": -1.3322676295501878e-15,
+          "entropy": 7.856307040294248,
+          "ideal_entropy": 7.999999999999999
+        }
+      }
+    },
+    {
+      "job_id": "db70svcvf2bc73d209bg",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "QAOA MaxCut (3-Regular)",
+      "logical_qubits": 7,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-13T07:57:03.260192",
+      "circuit_metrics": {
+        "sabre_depth": 67,
+        "tket_depth": 87,
+        "prometheus_depth": 53,
+        "sabre_2q_gates": 32,
+        "tket_2q_gates": 49,
+        "prometheus_2q_gates": 27
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.9888802934746584,
+          "tvd": 0.08697509765624996,
+          "hop": 0.0,
+          "xeb": -1.2212453270876722e-15,
+          "entropy": 6.9675232268225695,
+          "ideal_entropy": 6.999999999999999
+        },
+        "tket": {
+          "fidelity": 0.9787330721041506,
+          "tvd": 0.11541748046874992,
+          "hop": 0.0,
+          "xeb": -1.1102230246251565e-15,
+          "entropy": 6.937588911541162,
+          "ideal_entropy": 6.999999999999999
+        },
+        "prometheus": {
+          "fidelity": 0.9844602093538098,
+          "tvd": 0.10400390624999993,
+          "hop": 0.0,
+          "xeb": -1.2212453270876722e-15,
+          "entropy": 6.954541033271561,
+          "ideal_entropy": 6.999999999999999
+        }
+      }
+    },
+    {
+      "job_id": "db3vgg84qg6s73c1dv90",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 8,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-10-08T17:08:33.414853",
+      "circuit_metrics": {
+        "sabre_depth": 91,
+        "tket_depth": 142,
+        "prometheus_depth": 91,
+        "sabre_2q_gates": 59,
+        "tket_2q_gates": 96,
+        "prometheus_2q_gates": 57
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.7789498677490129,
+          "tvd": 0.2611190474297649,
+          "hop": 0.837158203125,
+          "xeb": 19.184317588509984,
+          "entropy": 5.818234609476817,
+          "ideal_entropy": 4.114558038263982
+        },
+        "tket": {
+          "fidelity": 0.5314561785307548,
+          "tvd": 0.4940674325014158,
+          "hop": 0.59326171875,
+          "xeb": 11.661467510250946,
+          "entropy": 6.243579901284559,
+          "ideal_entropy": 4.114558038263982
+        },
+        "prometheus": {
+          "fidelity": 0.7773007117703815,
+          "tvd": 0.26569360497551014,
+          "hop": 0.83587646484375,
+          "xeb": 18.8600007948764,
+          "entropy": 5.85995240758444,
+          "ideal_entropy": 4.114558038263982
+        }
+      }
+    },
+    {
+      "job_id": "dakkn2ni3e6s738rnm4g",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 20,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-15T10:43:38.642894",
+      "circuit_metrics": {
+        "sabre_depth": 338,
+        "tket_depth": 596,
+        "prometheus_depth": 336,
+        "sabre_2q_gates": 422,
+        "tket_2q_gates": 799,
+        "prometheus_2q_gates": 412
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.040115617008733825,
+          "tvd": 0.903836879323318,
+          "hop": 0.65093994140625,
+          "xeb": 51.997815569472706,
+          "entropy": 13.908572968735141,
+          "ideal_entropy": 12.899646501958356
+        },
+        "tket": {
+          "fidelity": 0.012918697438354169,
+          "tvd": 0.9489404242122329,
+          "hop": 0.642578125,
+          "xeb": 18.70205723887563,
+          "entropy": 13.937370770260499,
+          "ideal_entropy": 12.899646501958356
+        },
+        "prometheus": {
+          "fidelity": 0.04398020479291201,
+          "tvd": 0.8957834353880154,
+          "hop": 0.7027587890625,
+          "xeb": 48.8529664879519,
+          "entropy": 13.90062041379319,
+          "ideal_entropy": 12.899646501958356
+        }
+      }
+    },
+    {
+      "job_id": "dai8ngni3e6s738ooldg",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 18,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-11T20:16:18.969049",
+      "circuit_metrics": {
+        "sabre_depth": 458,
+        "tket_depth": 478,
+        "prometheus_depth": 330,
+        "sabre_2q_gates": 483,
+        "tket_2q_gates": 633,
+        "prometheus_2q_gates": 392
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.10372778651547561,
+          "tvd": 0.8441803050532617,
+          "hop": 0.52227783203125,
+          "xeb": 49.95992175716665,
+          "entropy": 13.514997775764666,
+          "ideal_entropy": 11.033665108355203
+        },
+        "tket": {
+          "fidelity": 0.08839419959489377,
+          "tvd": 0.8600766080940103,
+          "hop": 0.5894775390625,
+          "xeb": 37.49331145465963,
+          "entropy": 13.687757675877616,
+          "ideal_entropy": 11.033665108355203
+        },
+        "prometheus": {
+          "fidelity": 0.14439160210767868,
+          "tvd": 0.7991381364819768,
+          "hop": 0.6138916015625,
+          "xeb": 53.9308936276777,
+          "entropy": 13.517838796951702,
+          "ideal_entropy": 11.033665108355203
+        }
+      }
+    },
+    {
+      "job_id": "dai8nfomhr3c73e7fb5g",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 18,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-11T20:16:15.374031",
+      "circuit_metrics": {
+        "sabre_depth": 370,
+        "tket_depth": 478,
+        "prometheus_depth": 265,
+        "sabre_2q_gates": 439,
+        "tket_2q_gates": 633,
+        "prometheus_2q_gates": 323
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.18189517034960193,
+          "tvd": 0.764516995251737,
+          "hop": 0.608154296875,
+          "xeb": 71.02772805114637,
+          "entropy": 13.43213084065954,
+          "ideal_entropy": 11.033665108355203
+        },
+        "tket": {
+          "fidelity": 0.07322405642349883,
+          "tvd": 0.8554639760128786,
+          "hop": 0.51715087890625,
+          "xeb": 41.46486231466143,
+          "entropy": 13.325976538870275,
+          "ideal_entropy": 11.033665108355203
+        },
+        "prometheus": {
+          "fidelity": 0.2708701234672576,
+          "tvd": 0.6763843672206461,
+          "hop": 0.6431884765625,
+          "xeb": 129.4697860893258,
+          "entropy": 13.073233950384008,
+          "ideal_entropy": 11.033665108355203
+        }
+      }
+    },
+    {
+      "job_id": "dai8nf0mhr3c73e7fb40",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 18,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-11T20:16:12.731032",
+      "circuit_metrics": {
+        "sabre_depth": 265,
+        "tket_depth": 478,
+        "prometheus_depth": 260,
+        "sabre_2q_gates": 322,
+        "tket_2q_gates": 633,
+        "prometheus_2q_gates": 348
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.12697707107272688,
+          "tvd": 0.8211033730808035,
+          "hop": 0.549072265625,
+          "xeb": 59.49578835880065,
+          "entropy": 13.525796846192794,
+          "ideal_entropy": 11.033665108355203
+        },
+        "tket": {
+          "fidelity": 0.014673703268037531,
+          "tvd": 0.9550060534898813,
+          "hop": 0.53497314453125,
+          "xeb": 8.614542957882065,
+          "entropy": 13.869976370414177,
+          "ideal_entropy": 11.033665108355203
+        },
+        "prometheus": {
+          "fidelity": 0.1361737254444944,
+          "tvd": 0.8144532289952437,
+          "hop": 0.56787109375,
+          "xeb": 60.31606597890499,
+          "entropy": 13.579131252975039,
+          "ideal_entropy": 11.033665108355203
+        }
+      }
+    },
+    {
+      "job_id": "dai8fqvi3e6s738ooebg",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 18,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-11T19:59:55.709402",
+      "circuit_metrics": {
+        "sabre_depth": 322,
+        "tket_depth": 478,
+        "prometheus_depth": 262,
+        "sabre_2q_gates": 351,
+        "tket_2q_gates": 633,
+        "prometheus_2q_gates": 317
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.24858034476733612,
+          "tvd": 0.7342347209288367,
+          "hop": 0.66827392578125,
+          "xeb": 642.8633514209852,
+          "entropy": 12.753377523198605,
+          "ideal_entropy": 8.55528639502492
+        },
+        "tket": {
+          "fidelity": 0.11985431984041271,
+          "tvd": 0.8491233944484322,
+          "hop": 0.64678955078125,
+          "xeb": 254.83432115767084,
+          "entropy": 13.323279451530611,
+          "ideal_entropy": 8.55528639502492
+        },
+        "prometheus": {
+          "fidelity": 0.26205663896643666,
+          "tvd": 0.7230556146787012,
+          "hop": 0.65496826171875,
+          "xeb": 677.625968646762,
+          "entropy": 12.657887917840242,
+          "ideal_entropy": 8.55528639502492
+        }
+      }
+    },
+    {
+      "job_id": "dai8fqomhr3c73e7f430",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 18,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-11T19:59:55.463531",
+      "circuit_metrics": {
+        "sabre_depth": 367,
+        "tket_depth": 478,
+        "prometheus_depth": 414,
+        "sabre_2q_gates": 410,
+        "tket_2q_gates": 633,
+        "prometheus_2q_gates": 402
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.21129498441448602,
+          "tvd": 0.7698908535720221,
+          "hop": 0.63018798828125,
+          "xeb": 514.2606415722903,
+          "entropy": 12.939456798854195,
+          "ideal_entropy": 8.55528639502492
+        },
+        "tket": {
+          "fidelity": 0.06577385291504777,
+          "tvd": 0.9043787291895122,
+          "hop": 0.53692626953125,
+          "xeb": 136.56342129584942,
+          "entropy": 13.231154349640363,
+          "ideal_entropy": 8.55528639502492
+        },
+        "prometheus": {
+          "fidelity": 0.20480964709951344,
+          "tvd": 0.7726660565336658,
+          "hop": 0.63372802734375,
+          "xeb": 559.5661092739068,
+          "entropy": 12.943956814411449,
+          "ideal_entropy": 8.55528639502492
+        }
+      }
+    },
+    {
+      "job_id": "dai8fqomhr3c73e7f42g",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 18,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-11T19:59:55.429046",
+      "circuit_metrics": {
+        "sabre_depth": 459,
+        "tket_depth": 478,
+        "prometheus_depth": 369,
+        "sabre_2q_gates": 476,
+        "tket_2q_gates": 633,
+        "prometheus_2q_gates": 428
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.0498129979920233,
+          "tvd": 0.9110595635983493,
+          "hop": 0.568115234375,
+          "xeb": 124.84322039537882,
+          "entropy": 13.529461043851876,
+          "ideal_entropy": 8.55528639502492
+        },
+        "tket": {
+          "fidelity": 0.019203297275772215,
+          "tvd": 0.9562783439851761,
+          "hop": 0.60455322265625,
+          "xeb": 35.17343470991379,
+          "entropy": 13.823208398830833,
+          "ideal_entropy": 8.55528639502492
+        },
+        "prometheus": {
+          "fidelity": 0.1082763912145605,
+          "tvd": 0.8626272719818262,
+          "hop": 0.583251953125,
+          "xeb": 197.44821199065444,
+          "entropy": 13.421212324067465,
+          "ideal_entropy": 8.55528639502492
+        }
+      }
+    },
+    {
+      "job_id": "dai80nb9k43c73afmc2g",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 18,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-11T19:27:42.918560",
+      "circuit_metrics": {
+        "sabre_depth": 345,
+        "tket_depth": 478,
+        "prometheus_depth": 315,
+        "sabre_2q_gates": 407,
+        "tket_2q_gates": 633,
+        "prometheus_2q_gates": 346
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.10707285988008705,
+          "tvd": 0.8769678862840472,
+          "hop": 0.56768798828125,
+          "xeb": 479.616986302309,
+          "entropy": 13.111267305556895,
+          "ideal_entropy": 6.51519287218352
+        },
+        "tket": {
+          "fidelity": 0.039975175721820876,
+          "tvd": 0.9455724865956396,
+          "hop": 0.5625,
+          "xeb": 201.4922410099494,
+          "entropy": 13.679753906505358,
+          "ideal_entropy": 6.51519287218352
+        },
+        "prometheus": {
+          "fidelity": 0.14083001336109494,
+          "tvd": 0.8399259911897574,
+          "hop": 0.60809326171875,
+          "xeb": 611.0634539534262,
+          "entropy": 12.948797577748579,
+          "ideal_entropy": 6.51519287218352
+        }
+      }
+    },
+    {
+      "job_id": "dai24jphvn6c73csmfvg",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Volume (Random SU4)",
+      "logical_qubits": 10,
+      "shots_per_compiler": 4096,
+      "total_job_shots": 12288,
+      "timestamp": "2026-09-11T12:46:24.688422",
+      "circuit_metrics": {
+        "sabre_depth": 44,
+        "tket_depth": 52,
+        "prometheus_depth": 44,
+        "sabre_2q_gates": 36,
+        "tket_2q_gates": 36,
+        "prometheus_2q_gates": 36
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.9032140328846292,
+          "tvd": 0.19195125326595938,
+          "hop": 0.91650390625,
+          "xeb": 5.358500758913391,
+          "entropy": 8.429033473540995,
+          "ideal_entropy": 8.225240723836086
+        },
+        "tket": {
+          "fidelity": 0.8920903589944165,
+          "tvd": 0.22132398867483216,
+          "hop": 0.898681640625,
+          "xeb": 4.865716551368212,
+          "entropy": 8.56402996071698,
+          "ideal_entropy": 8.225240723836086
+        },
+        "prometheus": {
+          "fidelity": 0.9092271753975072,
+          "tvd": 0.17692741391420447,
+          "hop": 0.9130859375,
+          "xeb": 5.607945183176142,
+          "entropy": 8.402868752771514,
+          "ideal_entropy": 8.225240723836086
+        }
+      }
+    },
+    {
+      "job_id": "dai242fi3e6s738oh800",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 21,
+      "shots_per_compiler": 4096,
+      "total_job_shots": 12288,
+      "timestamp": "2026-09-11T12:45:14.324970",
+      "circuit_metrics": {
+        "sabre_depth": 571,
+        "tket_depth": 631,
+        "prometheus_depth": 382,
+        "sabre_2q_gates": 643,
+        "tket_2q_gates": 893,
+        "prometheus_2q_gates": 503
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.03602644297632704,
+          "tvd": 0.9169628895133461,
+          "hop": 0.575439453125,
+          "xeb": 997.3117949739258,
+          "entropy": 11.880744808362332,
+          "ideal_entropy": 9.674679987365401
+        },
+        "tket": {
+          "fidelity": 0.0002583422148113876,
+          "tvd": 0.991880836413607,
+          "hop": 0.49609375,
+          "xeb": 6.349282508457348,
+          "entropy": 11.985167263793418,
+          "ideal_entropy": 9.674679987365401
+        },
+        "prometheus": {
+          "fidelity": 0.02962964634229773,
+          "tvd": 0.9240312882091312,
+          "hop": 0.598876953125,
+          "xeb": 739.8934134820433,
+          "entropy": 11.923053763680564,
+          "ideal_entropy": 9.674679987365401
+        }
+      }
+    },
+    {
+      "job_id": "dai21m0mhr3c73e78030",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 21,
+      "shots_per_compiler": 4096,
+      "total_job_shots": 12288,
+      "timestamp": "2026-09-11T12:40:09.795000",
+      "circuit_metrics": {
+        "sabre_depth": 376,
+        "tket_depth": 631,
+        "prometheus_depth": 411,
+        "sabre_2q_gates": 465,
+        "tket_2q_gates": 893,
+        "prometheus_2q_gates": 492
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.0332539105515103,
+          "tvd": 0.9279199269935998,
+          "hop": 0.626220703125,
+          "xeb": 848.3413319768307,
+          "entropy": 11.910120126887051,
+          "ideal_entropy": 9.30080064912653
+        },
+        "tket": {
+          "fidelity": 0.00012852988414106952,
+          "tvd": 0.9952739203351418,
+          "hop": 0.6123046875,
+          "xeb": 6.4696493533157815,
+          "entropy": 11.990234375,
+          "ideal_entropy": 9.30080064912653
+        },
+        "prometheus": {
+          "fidelity": 0.02352419015846656,
+          "tvd": 0.9383875104460302,
+          "hop": 0.6259765625,
+          "xeb": 662.2975540627252,
+          "entropy": 11.910012053033608,
+          "ideal_entropy": 9.30080064912653
+        }
+      }
+    },
+    {
+      "job_id": "dai20h8mhr3c73e77ut0",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Volume (Random SU4)",
+      "logical_qubits": 10,
+      "shots_per_compiler": 4096,
+      "total_job_shots": 12288,
+      "timestamp": "2026-09-11T12:37:42.669451",
+      "circuit_metrics": {
+        "sabre_depth": 44,
+        "tket_depth": 52,
+        "prometheus_depth": 44,
+        "sabre_2q_gates": 36,
+        "tket_2q_gates": 36,
+        "prometheus_2q_gates": 36
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.9147622142139196,
+          "tvd": 0.1770545870688277,
+          "hop": 0.94677734375,
+          "xeb": 3.8017772666889336,
+          "entropy": 8.384954430292954,
+          "ideal_entropy": 8.335124045582745
+        },
+        "tket": {
+          "fidelity": 0.917946536039147,
+          "tvd": 0.17092818646477922,
+          "hop": 0.943603515625,
+          "xeb": 3.8160585338317965,
+          "entropy": 8.454372493133873,
+          "ideal_entropy": 8.335124045582745
+        },
+        "prometheus": {
+          "fidelity": 0.9166079876190049,
+          "tvd": 0.1882907554115639,
+          "hop": 0.94580078125,
+          "xeb": 3.5845459597789677,
+          "entropy": 8.452824717677332,
+          "ideal_entropy": 8.335124045582745
+        }
+      }
+    },
+    {
+      "job_id": "dai1tmomhr3c73e77rd0",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Volume (Random SU4)",
+      "logical_qubits": 10,
+      "shots_per_compiler": 4096,
+      "total_job_shots": 12288,
+      "timestamp": "2026-09-11T12:31:40.367349",
+      "circuit_metrics": {
+        "sabre_depth": 44,
+        "tket_depth": 52,
+        "prometheus_depth": 44,
+        "sabre_2q_gates": 36,
+        "tket_2q_gates": 36,
+        "prometheus_2q_gates": 36
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.9151664770049212,
+          "tvd": 0.17644469509112154,
+          "hop": 0.940185546875,
+          "xeb": 3.746688538640467,
+          "entropy": 8.43314858589467,
+          "ideal_entropy": 8.335124045582745
+        },
+        "tket": {
+          "fidelity": 0.9216156144738572,
+          "tvd": 0.1707771559152581,
+          "hop": 0.934814453125,
+          "xeb": 3.6530804824390506,
+          "entropy": 8.509946179341616,
+          "ideal_entropy": 8.335124045582745
+        },
+        "prometheus": {
+          "fidelity": 0.9163210630067309,
+          "tvd": 0.17950396344275898,
+          "hop": 0.948974609375,
+          "xeb": 3.742594041397176,
+          "entropy": 8.379867298234833,
+          "ideal_entropy": 8.335124045582745
+        }
+      }
+    },
+    {
+      "job_id": "dai1ouphvn6c73csm34g",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Volume (Random SU4)",
+      "logical_qubits": 10,
+      "shots_per_compiler": 4096,
+      "total_job_shots": 12288,
+      "timestamp": "2026-09-11T12:21:32.139979",
+      "circuit_metrics": {
+        "sabre_depth": 44,
+        "tket_depth": 52,
+        "prometheus_depth": 44,
+        "sabre_2q_gates": 36,
+        "tket_2q_gates": 36,
+        "prometheus_2q_gates": 36
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.9087000433699031,
+          "tvd": 0.18500802953995782,
+          "hop": 0.922607421875,
+          "xeb": 3.733042664446387,
+          "entropy": 8.539118074439408,
+          "ideal_entropy": 8.318914244339704
+        },
+        "tket": {
+          "fidelity": 0.9021248343378072,
+          "tvd": 0.19940880069621522,
+          "hop": 0.910888671875,
+          "xeb": 3.4471607101693333,
+          "entropy": 8.648133700033314,
+          "ideal_entropy": 8.318914244339704
+        },
+        "prometheus": {
+          "fidelity": 0.9063610568469954,
+          "tvd": 0.1893579198028903,
+          "hop": 0.92626953125,
+          "xeb": 3.8599622332640937,
+          "entropy": 8.49479001317308,
+          "ideal_entropy": 8.318914244339704
+        }
+      }
+    },
+    {
+      "job_id": "dai1ok0mhr3c73e77l7g",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Volume (Random SU4)",
+      "logical_qubits": 8,
+      "shots_per_compiler": 4096,
+      "total_job_shots": 12288,
+      "timestamp": "2026-09-11T12:20:48.919964",
+      "circuit_metrics": {
+        "sabre_depth": 44,
+        "tket_depth": 52,
+        "prometheus_depth": 44,
+        "sabre_2q_gates": 28,
+        "tket_2q_gates": 28,
+        "prometheus_2q_gates": 28
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.9730980445995193,
+          "tvd": 0.10625115754119802,
+          "hop": 0.86376953125,
+          "xeb": 1.6064603968382434,
+          "entropy": 7.189899600678195,
+          "ideal_entropy": 7.028864976958733
+        },
+        "tket": {
+          "fidelity": 0.9496269198862081,
+          "tvd": 0.15370991301962575,
+          "hop": 0.813720703125,
+          "xeb": 1.351752420660557,
+          "entropy": 7.3997715984311005,
+          "ideal_entropy": 7.028864976958733
+        },
+        "prometheus": {
+          "fidelity": 0.9718684863008855,
+          "tvd": 0.10902252894259218,
+          "hop": 0.86669921875,
+          "xeb": 1.6510256753701578,
+          "entropy": 7.165779019805701,
+          "ideal_entropy": 7.028864976958733
+        }
+      }
+    },
+    {
+      "job_id": "daht7tr9k43c73af9sj0",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Volume (Random SU4)",
+      "logical_qubits": 8,
+      "shots_per_compiler": 4096,
+      "total_job_shots": 12288,
+      "timestamp": "2026-09-11T07:12:08.494577",
+      "circuit_metrics": {
+        "sabre_depth": 44,
+        "tket_depth": 52,
+        "prometheus_depth": 44,
+        "sabre_2q_gates": 28,
+        "tket_2q_gates": 28,
+        "prometheus_2q_gates": 28
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.9738355389047479,
+          "tvd": 0.10466941770124616,
+          "hop": 0.8642578125,
+          "xeb": 1.5956650224371454,
+          "entropy": 7.1991832139621685,
+          "ideal_entropy": 7.028864976958733
+        },
+        "tket": {
+          "fidelity": 0.9333355093892414,
+          "tvd": 0.18267014933649178,
+          "hop": 0.794677734375,
+          "xeb": 1.1709150891706201,
+          "entropy": 7.505509482661006,
+          "ideal_entropy": 7.028864976958733
+        },
+        "prometheus": {
+          "fidelity": 0.9720967146131292,
+          "tvd": 0.11686294886999465,
+          "hop": 0.861328125,
+          "xeb": 1.6275570363628753,
+          "entropy": 7.1759923719845835,
+          "ideal_entropy": 7.028864976958733
+        }
+      }
+    },
+    {
+      "job_id": "daht45r9k43c73af9ol0",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Volume (Random SU4)",
+      "logical_qubits": 8,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-11T07:04:08.290111",
+      "circuit_metrics": {
+        "sabre_depth": 44,
+        "tket_depth": 52,
+        "prometheus_depth": 44,
+        "sabre_2q_gates": 28,
+        "tket_2q_gates": 28,
+        "prometheus_2q_gates": 28
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.9818393998575922,
+          "tvd": 0.0895707573997708,
+          "hop": 0.89361572265625,
+          "xeb": 2.196998055183017,
+          "entropy": 7.023739281491897,
+          "ideal_entropy": 6.785979941815522
+        },
+        "tket": {
+          "fidelity": 0.9725795022059234,
+          "tvd": 0.12589153811419102,
+          "hop": 0.88421630859375,
+          "xeb": 2.1831650859974836,
+          "entropy": 7.04988489414649,
+          "ideal_entropy": 6.785979941815522
+        },
+        "prometheus": {
+          "fidelity": 0.9821206036326147,
+          "tvd": 0.08567262778788104,
+          "hop": 0.8951416015625,
+          "xeb": 2.185698359781949,
+          "entropy": 7.031955112810328,
+          "ideal_entropy": 6.785979941815522
+        }
+      }
+    },
+    {
+      "job_id": "daht3nb9k43c73af9nsg",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Volume (Random SU4)",
+      "logical_qubits": 21,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-11T07:03:09.892405",
+      "circuit_metrics": {
+        "sabre_depth": 44,
+        "tket_depth": 52,
+        "prometheus_depth": 44,
+        "sabre_2q_gates": 80,
+        "tket_2q_gates": 80,
+        "prometheus_2q_gates": 80
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.19589623141992624,
+          "tvd": 0.7263769124055037,
+          "hop": 0.9920654296875,
+          "xeb": 73.43402704076787,
+          "entropy": 13.640723973455975,
+          "ideal_entropy": 16.303750105385234
+        },
+        "tket": {
+          "fidelity": 0.17250036273442662,
+          "tvd": 0.7502445069702995,
+          "hop": 0.988037109375,
+          "xeb": 61.61147898339371,
+          "entropy": 13.715501522605116,
+          "ideal_entropy": 16.303750105385234
+        },
+        "prometheus": {
+          "fidelity": 0.19350925430291924,
+          "tvd": 0.7278405891538218,
+          "hop": 0.99176025390625,
+          "xeb": 72.35917248181605,
+          "entropy": 13.638470531687998,
+          "ideal_entropy": 16.303750105385234
+        }
+      }
+    },
+    {
+      "job_id": "dahsptgmhr3c73e71s3g",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Volume (Random SU4)",
+      "logical_qubits": 21,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-11T06:42:15.320670",
+      "circuit_metrics": {
+        "sabre_depth": 44,
+        "tket_depth": 52,
+        "prometheus_depth": 44,
+        "sabre_2q_gates": 80,
+        "tket_2q_gates": 80,
+        "prometheus_2q_gates": 80
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.17231586792662215,
+          "tvd": 0.7519330634951684,
+          "hop": 0.99029541015625,
+          "xeb": 72.75208798819355,
+          "entropy": 13.650670045146278,
+          "ideal_entropy": 16.688982837398296
+        },
+        "tket": {
+          "fidelity": 0.14813436803314,
+          "tvd": 0.7752977072100529,
+          "hop": 0.98321533203125,
+          "xeb": 62.73799370619739,
+          "entropy": 13.715619376224288,
+          "ideal_entropy": 16.688982837398296
+        },
+        "prometheus": {
+          "fidelity": 0.1725019894984078,
+          "tvd": 0.7500600169641969,
+          "hop": 0.991455078125,
+          "xeb": 72.15442671648991,
+          "entropy": 13.6586809185031,
+          "ideal_entropy": 16.688982837398296
+        }
+      }
+    },
+    {
+      "job_id": "dahspq1hvn6c73csg8ag",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Volume (Random SU4)",
+      "logical_qubits": 21,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-11T06:42:02.217947",
+      "circuit_metrics": {
+        "sabre_depth": 44,
+        "tket_depth": 52,
+        "prometheus_depth": 44,
+        "sabre_2q_gates": 80,
+        "tket_2q_gates": 80,
+        "prometheus_2q_gates": 80
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.16821081377658867,
+          "tvd": 0.7539005559688663,
+          "hop": 0.988037109375,
+          "xeb": 73.14425121429521,
+          "entropy": 13.656314270164161,
+          "ideal_entropy": 16.688982837398296
+        },
+        "tket": {
+          "fidelity": 0.13779700765108,
+          "tvd": 0.7863165672649418,
+          "hop": 0.98382568359375,
+          "xeb": 58.154101898403965,
+          "entropy": 13.730916778557868,
+          "ideal_entropy": 16.688982837398296
+        },
+        "prometheus": {
+          "fidelity": 0.16713477873008112,
+          "tvd": 0.7537383239938851,
+          "hop": 0.98992919921875,
+          "xeb": 72.00762646435157,
+          "entropy": 13.670439125730798,
+          "ideal_entropy": 16.688982837398296
+        }
+      }
+    },
+    {
+      "job_id": "dahsplvi3e6s738ob01g",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Volume (Random SU4)",
+      "logical_qubits": 21,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-11T06:41:44.218953",
+      "circuit_metrics": {
+        "sabre_depth": 44,
+        "tket_depth": 52,
+        "prometheus_depth": 44,
+        "sabre_2q_gates": 80,
+        "tket_2q_gates": 80,
+        "prometheus_2q_gates": 80
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.154864339389873,
+          "tvd": 0.7682622266098202,
+          "hop": 0.988525390625,
+          "xeb": 64.29322127940483,
+          "entropy": 13.711409408035884,
+          "ideal_entropy": 16.688982837398296
+        },
+        "tket": {
+          "fidelity": 0.05354673096257883,
+          "tvd": 0.894533744941283,
+          "hop": 0.9522705078125,
+          "xeb": 28.205164182307577,
+          "entropy": 13.704077544896581,
+          "ideal_entropy": 16.688982837398296
+        },
+        "prometheus": {
+          "fidelity": 0.16145601832036363,
+          "tvd": 0.761564461683739,
+          "hop": 0.98809814453125,
+          "xeb": 66.39062101290399,
+          "entropy": 13.697177213134106,
+          "ideal_entropy": 16.688982837398296
+        }
+      }
+    },
+    {
+      "job_id": "dahl4e7i3e6s738nvvo0",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Fourier Transform (QFT)",
+      "logical_qubits": 22,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-10T21:58:33.375707",
+      "circuit_metrics": {
+        "sabre_depth": 866,
+        "tket_depth": 1377,
+        "prometheus_depth": 677,
+        "sabre_2q_gates": 859,
+        "tket_2q_gates": 1158,
+        "prometheus_2q_gates": 706
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.0038902988514356797,
+          "tvd": 0.996107339859007,
+          "hop": 0.0,
+          "xeb": -3.552713678800501e-15,
+          "entropy": 13.992995917510854,
+          "ideal_entropy": 21.999999999999996
+        },
+        "tket": {
+          "fidelity": 0.003887511812314762,
+          "tvd": 0.996109724044798,
+          "hop": 0.0,
+          "xeb": -3.552713678800501e-15,
+          "entropy": 13.991775214385854,
+          "ideal_entropy": 21.999999999999996
+        },
+        "prometheus": {
+          "fidelity": 0.00389369049838099,
+          "tvd": 0.9961044788360578,
+          "hop": 0.0,
+          "xeb": -3.4416913763379853e-15,
+          "entropy": 13.9945068359375,
+          "ideal_entropy": 21.999999999999996
+        }
+      }
+    },
+    {
+      "job_id": "dahl4e7i3e6s738nvvmg",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Fourier Transform (QFT)",
+      "logical_qubits": 22,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-10T21:58:33.227542",
+      "circuit_metrics": {
+        "sabre_depth": 819,
+        "tket_depth": 1377,
+        "prometheus_depth": 663,
+        "sabre_2q_gates": 805,
+        "tket_2q_gates": 1158,
+        "prometheus_2q_gates": 717
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.0038934116280426945,
+          "tvd": 0.9961047172546369,
+          "hop": 0.0,
+          "xeb": -3.552713678800501e-15,
+          "entropy": 13.994384765625,
+          "ideal_entropy": 21.999999999999996
+        },
+        "tket": {
+          "fidelity": 0.003849269464794755,
+          "tvd": 0.9961423873901349,
+          "hop": 0.0,
+          "xeb": -3.552713678800501e-15,
+          "entropy": 13.974883436584209,
+          "ideal_entropy": 21.999999999999996
+        },
+        "prometheus": {
+          "fidelity": 0.003890344713453923,
+          "tvd": 0.996107339859007,
+          "hop": 0.0,
+          "xeb": -3.4416913763379853e-15,
+          "entropy": 13.9930419921875,
+          "ideal_entropy": 21.999999999999996
+        }
+      }
+    },
+    {
+      "job_id": "dahl3rb9k43c73aeuaj0",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Fourier Transform (QFT)",
+      "logical_qubits": 22,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-10T21:57:18.678355",
+      "circuit_metrics": {
+        "sabre_depth": 822,
+        "tket_depth": 1377,
+        "prometheus_depth": 669,
+        "sabre_2q_gates": 847,
+        "tket_2q_gates": 1158,
+        "prometheus_2q_gates": 686
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.0038700478102416465,
+          "tvd": 0.9961245059967023,
+          "hop": 0.0,
+          "xeb": -3.552713678800501e-15,
+          "entropy": 13.983992635345064,
+          "ideal_entropy": 21.999999999999996
+        },
+        "tket": {
+          "fidelity": 0.0038596506678035248,
+          "tvd": 0.9961335659027082,
+          "hop": 0.0,
+          "xeb": -3.552713678800501e-15,
+          "entropy": 13.979522108459207,
+          "ideal_entropy": 21.999999999999996
+        },
+        "prometheus": {
+          "fidelity": 0.0038953180385409773,
+          "tvd": 0.9961030483245832,
+          "hop": 0.0,
+          "xeb": -3.6637359812630166e-15,
+          "entropy": 13.995193183135854,
+          "ideal_entropy": 21.999999999999996
+        }
+      }
+    },
+    {
+      "job_id": "dahkt01hvn6c73cs53c0",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Fourier Transform (QFT)",
+      "logical_qubits": 21,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-10T21:42:41.171606",
+      "circuit_metrics": {
+        "sabre_depth": 831,
+        "tket_depth": 1321,
+        "prometheus_depth": 645,
+        "sabre_2q_gates": 780,
+        "tket_2q_gates": 1077,
+        "prometheus_2q_gates": 670
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.007740508920854202,
+          "tvd": 0.9922490119934069,
+          "hop": 0.0,
+          "xeb": -3.3306690738754696e-15,
+          "entropy": 13.984206855010854,
+          "ideal_entropy": 20.999999999999996
+        },
+        "tket": {
+          "fidelity": 0.007643971361827323,
+          "tvd": 0.9923315048217759,
+          "hop": 0.0,
+          "xeb": -3.3306690738754696e-15,
+          "entropy": 13.962766168211834,
+          "ideal_entropy": 20.999999999999996
+        },
+        "prometheus": {
+          "fidelity": 0.007751077848233887,
+          "tvd": 0.9922399520874009,
+          "hop": 0.0,
+          "xeb": -3.3306690738754696e-15,
+          "entropy": 13.986526190948354,
+          "ideal_entropy": 20.999999999999996
+        }
+      }
+    },
+    {
+      "job_id": "dahkt00mhr3c73e6mkj0",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Fourier Transform (QFT)",
+      "logical_qubits": 21,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-10T21:42:40.920819",
+      "circuit_metrics": {
+        "sabre_depth": 935,
+        "tket_depth": 1321,
+        "prometheus_depth": 655,
+        "sabre_2q_gates": 868,
+        "tket_2q_gates": 1077,
+        "prometheus_2q_gates": 685
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.0077594268315669054,
+          "tvd": 0.9922327995300277,
+          "hop": 0.0,
+          "xeb": -3.3306690738754696e-15,
+          "entropy": 13.988357245635854,
+          "ideal_entropy": 20.999999999999996
+        },
+        "tket": {
+          "fidelity": 0.00757754681972336,
+          "tvd": 0.992387771606444,
+          "hop": 0.0,
+          "xeb": -3.3306690738754696e-15,
+          "entropy": 13.947670751187143,
+          "ideal_entropy": 20.999999999999996
+        },
+        "prometheus": {
+          "fidelity": 0.007763973085710749,
+          "tvd": 0.992228984832762,
+          "hop": 0.0,
+          "xeb": -3.219646771412954e-15,
+          "entropy": 13.9893798828125,
+          "ideal_entropy": 20.999999999999996
+        }
+      }
+    },
+    {
+      "job_id": "dahksf0mhr3c73e6mk0g",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Fourier Transform (QFT)",
+      "logical_qubits": 21,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-10T21:41:34.340098",
+      "circuit_metrics": {
+        "sabre_depth": 774,
+        "tket_depth": 1321,
+        "prometheus_depth": 648,
+        "sabre_2q_gates": 757,
+        "tket_2q_gates": 1077,
+        "prometheus_2q_gates": 677
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.007738101855348397,
+          "tvd": 0.9922509193420396,
+          "hop": 0.0,
+          "xeb": -3.3306690738754696e-15,
+          "entropy": 13.983626424407564,
+          "ideal_entropy": 20.999999999999996
+        },
+        "tket": {
+          "fidelity": 0.0077433810223163846,
+          "tvd": 0.9922466278076156,
+          "hop": 0.0,
+          "xeb": -3.3306690738754696e-15,
+          "entropy": 13.98486328125,
+          "ideal_entropy": 20.999999999999996
+        },
+        "prometheus": {
+          "fidelity": 0.0077678719574396276,
+          "tvd": 0.9922256469726545,
+          "hop": 0.0,
+          "xeb": -3.3306690738754696e-15,
+          "entropy": 13.990234375,
+          "ideal_entropy": 20.999999999999996
+        }
+      }
+    },
+    {
+      "job_id": "dahkmtni3e6s738nvg6g",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Quantum Fourier Transform (QFT)",
+      "logical_qubits": 21,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-10T21:29:43.005490",
+      "circuit_metrics": {
+        "sabre_depth": 795,
+        "tket_depth": 1321,
+        "prometheus_depth": 645,
+        "sabre_2q_gates": 818,
+        "tket_2q_gates": 1077,
+        "prometheus_2q_gates": 670
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.007732725904080738,
+          "tvd": 0.9922556877136215,
+          "hop": 0.0,
+          "xeb": -3.3306690738754696e-15,
+          "entropy": 13.982497870635854,
+          "ideal_entropy": 20.999999999999996
+        },
+        "tket": {
+          "fidelity": 0.007649771117444474,
+          "tvd": 0.992326736450194,
+          "hop": 0.0,
+          "xeb": -3.3306690738754696e-15,
+          "entropy": 13.964125095366771,
+          "ideal_entropy": 20.999999999999996
+        },
+        "prometheus": {
+          "fidelity": 0.007761745598430183,
+          "tvd": 0.992230892181395,
+          "hop": 0.0,
+          "xeb": -3.3306690738754696e-15,
+          "entropy": 13.9888916015625,
+          "ideal_entropy": 20.999999999999996
+        }
+      }
+    },
+    {
+      "job_id": "dah7m99hvn6c73crkvr0",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 22,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-10T06:40:53.991931",
+      "circuit_metrics": {
+        "sabre_depth": 386,
+        "tket_depth": 707,
+        "prometheus_depth": 391,
+        "sabre_2q_gates": 536,
+        "tket_2q_gates": 1003,
+        "prometheus_2q_gates": 569
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.06362260993800882,
+          "tvd": 0.8823362974237952,
+          "hop": 0.5828857421875,
+          "xeb": 1087.4592419831233,
+          "entropy": 13.713783241728377,
+          "ideal_entropy": 10.728147280808406
+        },
+        "tket": {
+          "fidelity": 0.00025632717632632235,
+          "tvd": 0.9939970636124011,
+          "hop": 0.5828857421875,
+          "xeb": 7.957278621633245,
+          "entropy": 13.983962714385854,
+          "ideal_entropy": 10.728147280808406
+        },
+        "prometheus": {
+          "fidelity": 0.09441034803680498,
+          "tvd": 0.8538835820129833,
+          "hop": 0.6346435546875,
+          "xeb": 1761.4273969917072,
+          "entropy": 13.680723101686661,
+          "ideal_entropy": 10.728147280808406
+        }
+      }
+    },
+    {
+      "job_id": "dah7m29hvn6c73crkvj0",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 22,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-10T06:40:26.558074",
+      "circuit_metrics": {
+        "sabre_depth": 568,
+        "tket_depth": 707,
+        "prometheus_depth": 336,
+        "sabre_2q_gates": 698,
+        "tket_2q_gates": 1003,
+        "prometheus_2q_gates": 484
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.00019131329967634613,
+          "tvd": 0.9958812673140016,
+          "hop": 0.49725341796875,
+          "xeb": 17.311965755528448,
+          "entropy": 13.9908447265625,
+          "ideal_entropy": 10.728147280808406
+        },
+        "tket": {
+          "fidelity": 0.0005002050324295239,
+          "tvd": 0.9923887154443077,
+          "hop": 0.6031494140625,
+          "xeb": 24.37768490662411,
+          "entropy": 13.984678982543416,
+          "ideal_entropy": 10.728147280808406
+        },
+        "prometheus": {
+          "fidelity": 0.027459444881083313,
+          "tvd": 0.9379372233483859,
+          "hop": 0.53338623046875,
+          "xeb": 609.8649711682613,
+          "entropy": 13.885787886811695,
+          "ideal_entropy": 10.728147280808406
+        }
+      }
+    },
+    {
+      "job_id": "dah7lqhhvn6c73crkv7g",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 22,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-10T06:39:55.059154",
+      "circuit_metrics": {
+        "sabre_depth": 389,
+        "tket_depth": 707,
+        "prometheus_depth": 334,
+        "sabre_2q_gates": 549,
+        "tket_2q_gates": 1003,
+        "prometheus_2q_gates": 502
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.10357230697341566,
+          "tvd": 0.8465129933693785,
+          "hop": 0.63690185546875,
+          "xeb": 2071.200693709692,
+          "entropy": 13.633294211665808,
+          "ideal_entropy": 10.728147280808406
+        },
+        "tket": {
+          "fidelity": 0.0021241703438118534,
+          "tvd": 0.9854654813142469,
+          "hop": 0.555419921875,
+          "xeb": 84.54977975663208,
+          "entropy": 13.977216539763479,
+          "ideal_entropy": 10.728147280808406
+        },
+        "prometheus": {
+          "fidelity": 0.08148304153322629,
+          "tvd": 0.8704874973878299,
+          "hop": 0.58697509765625,
+          "xeb": 1617.2259815393663,
+          "entropy": 13.67427578015096,
+          "ideal_entropy": 10.728147280808406
+        }
+      }
+    },
+    {
+      "job_id": "dah7jq39k43c73aedltg",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 21,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-10T06:35:37.358358",
+      "circuit_metrics": {
+        "sabre_depth": 433,
+        "tket_depth": 631,
+        "prometheus_depth": 318,
+        "sabre_2q_gates": 479,
+        "tket_2q_gates": 893,
+        "prometheus_2q_gates": 438
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.013279004095056649,
+          "tvd": 0.958866698611268,
+          "hop": 0.5380859375,
+          "xeb": 103.29966622494535,
+          "entropy": 13.952820720123746,
+          "ideal_entropy": 11.248255498605449
+        },
+        "tket": {
+          "fidelity": 0.0012333195432996645,
+          "tvd": 0.9871591509057771,
+          "hop": 0.6043701171875,
+          "xeb": 12.07972767108435,
+          "entropy": 13.977400838470063,
+          "ideal_entropy": 11.248255498605449
+        },
+        "prometheus": {
+          "fidelity": 0.034532393388195796,
+          "tvd": 0.9247751738394856,
+          "hop": 0.5325927734375,
+          "xeb": 191.82434173942727,
+          "entropy": 13.883739418140548,
+          "ideal_entropy": 11.248255498605449
+        }
+      }
+    },
+    {
+      "job_id": "dah7jq7i3e6s738nf8h0",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 21,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-10T06:35:37.324887",
+      "circuit_metrics": {
+        "sabre_depth": 442,
+        "tket_depth": 631,
+        "prometheus_depth": 458,
+        "sabre_2q_gates": 492,
+        "tket_2q_gates": 893,
+        "prometheus_2q_gates": 555
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.10589069470132238,
+          "tvd": 0.8384754186527832,
+          "hop": 0.62896728515625,
+          "xeb": 600.6544872141839,
+          "entropy": 13.643655137498351,
+          "ideal_entropy": 11.248255498605449
+        },
+        "tket": {
+          "fidelity": 0.001968946072268718,
+          "tvd": 0.9837009044865914,
+          "hop": 0.56787109375,
+          "xeb": 18.747798770610533,
+          "entropy": 13.953534899138479,
+          "ideal_entropy": 11.248255498605449
+        },
+        "prometheus": {
+          "fidelity": 0.08125843479049925,
+          "tvd": 0.8694784087663043,
+          "hop": 0.644775390625,
+          "xeb": 380.5738263724597,
+          "entropy": 13.782049644320852,
+          "ideal_entropy": 11.248255498605449
+        }
+      }
+    },
+    {
+      "job_id": "dah7jdfi3e6s738nf7v0",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 21,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-10T06:34:45.783253",
+      "circuit_metrics": {
+        "sabre_depth": 375,
+        "tket_depth": 631,
+        "prometheus_depth": 311,
+        "sabre_2q_gates": 470,
+        "tket_2q_gates": 893,
+        "prometheus_2q_gates": 434
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.06407149251820009,
+          "tvd": 0.8862790333381724,
+          "hop": 0.60003662109375,
+          "xeb": 277.081153574046,
+          "entropy": 13.816826143425756,
+          "ideal_entropy": 11.248255498605449
+        },
+        "tket": {
+          "fidelity": 0.013619161461613108,
+          "tvd": 0.9573872904593733,
+          "hop": 0.5953369140625,
+          "xeb": 104.89524502696348,
+          "entropy": 13.936684212530512,
+          "ideal_entropy": 11.248255498605449
+        },
+        "prometheus": {
+          "fidelity": 0.09039473664104616,
+          "tvd": 0.8588537184869607,
+          "hop": 0.6031494140625,
+          "xeb": 394.4026227939945,
+          "entropy": 13.756250684953045,
+          "ideal_entropy": 11.248255498605449
+        }
+      }
+    },
+    {
+      "job_id": "dah7ekgmhr3c73e665kg",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 20,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-10T06:24:34.344164",
+      "circuit_metrics": {
+        "sabre_depth": 337,
+        "tket_depth": 596,
+        "prometheus_depth": 300,
+        "sabre_2q_gates": 439,
+        "tket_2q_gates": 799,
+        "prometheus_2q_gates": 396
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.02925157973761014,
+          "tvd": 0.9032468087112757,
+          "hop": 0.538818359375,
+          "xeb": 19.442951667178207,
+          "entropy": 13.911173816892468,
+          "ideal_entropy": 13.343868218782976
+        },
+        "tket": {
+          "fidelity": 0.006694178010314206,
+          "tvd": 0.9578089826043814,
+          "hop": 0.53814697265625,
+          "xeb": 7.665736943085843,
+          "entropy": 13.954859132382877,
+          "ideal_entropy": 13.343868218782976
+        },
+        "prometheus": {
+          "fidelity": 0.057724197308681474,
+          "tvd": 0.8608549106316409,
+          "hop": 0.5758056640625,
+          "xeb": 38.15833153926256,
+          "entropy": 13.869707427507624,
+          "ideal_entropy": 13.343868218782976
+        }
+      }
+    },
+    {
+      "job_id": "dah7efgmhr3c73e665g0",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 20,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-10T06:24:15.264504",
+      "circuit_metrics": {
+        "sabre_depth": 512,
+        "tket_depth": 596,
+        "prometheus_depth": 315,
+        "sabre_2q_gates": 600,
+        "tket_2q_gates": 799,
+        "prometheus_2q_gates": 409
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.024903295703207592,
+          "tvd": 0.9147412170419236,
+          "hop": 0.5235595703125,
+          "xeb": 19.745876069125174,
+          "entropy": 13.927608044246366,
+          "ideal_entropy": 13.343868218782976
+        },
+        "tket": {
+          "fidelity": 0.002144463096267062,
+          "tvd": 0.9788613151744139,
+          "hop": 0.48797607421875,
+          "xeb": 2.1114626948165642,
+          "entropy": 13.943412057491415,
+          "ideal_entropy": 13.343868218782976
+        },
+        "prometheus": {
+          "fidelity": 0.09807156119437317,
+          "tvd": 0.8088810817663199,
+          "hop": 0.6175537109375,
+          "xeb": 58.14744456270627,
+          "entropy": 13.811533683452438,
+          "ideal_entropy": 13.343868218782976
+        }
+      }
+    },
+    {
+      "job_id": "dah7efb9k43c73aedfp0",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 20,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-10T06:24:14.185201",
+      "circuit_metrics": {
+        "sabre_depth": 390,
+        "tket_depth": 596,
+        "prometheus_depth": 315,
+        "sabre_2q_gates": 474,
+        "tket_2q_gates": 799,
+        "prometheus_2q_gates": 405
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.02268284738390866,
+          "tvd": 0.9193487924054504,
+          "hop": 0.53887939453125,
+          "xeb": 20.072441071313374,
+          "entropy": 13.938122077360617,
+          "ideal_entropy": 13.343868218782976
+        },
+        "tket": {
+          "fidelity": 0.0021953876502365218,
+          "tvd": 0.9779054915289529,
+          "hop": 0.5263671875,
+          "xeb": 2.6433632183440388,
+          "entropy": 13.971587538146707,
+          "ideal_entropy": 13.343868218782976
+        },
+        "prometheus": {
+          "fidelity": 0.03569584662411765,
+          "tvd": 0.8960165621331121,
+          "hop": 0.54302978515625,
+          "xeb": 27.109045795995165,
+          "entropy": 13.921291075745167,
+          "ideal_entropy": 13.343868218782976
+        }
+      }
+    },
+    {
+      "job_id": "dah048r9k43c73ae14kg",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 23,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T22:04:35.878570",
+      "circuit_metrics": {
+        "sabre_depth": 420,
+        "tket_depth": 849,
+        "prometheus_depth": 363,
+        "sabre_2q_gates": 609,
+        "tket_2q_gates": 1112,
+        "prometheus_2q_gates": 562
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.028280798852604365,
+          "tvd": 0.9388776307417751,
+          "hop": 0.561279296875,
+          "xeb": 902.5645227476828,
+          "entropy": 13.92812872348241,
+          "ideal_entropy": 10.56330642775303
+        },
+        "tket": {
+          "fidelity": 0.0008219602108705578,
+          "tvd": 0.9894853682894459,
+          "hop": 0.5076904296875,
+          "xeb": 62.51866332363437,
+          "entropy": 13.9912109375,
+          "ideal_entropy": 10.56330642775303
+        },
+        "prometheus": {
+          "fidelity": 0.027977816424855032,
+          "tvd": 0.9378760013275125,
+          "hop": 0.55419921875,
+          "xeb": 943.5282200393115,
+          "entropy": 13.900086309330232,
+          "ideal_entropy": 10.56330642775303
+        }
+      }
+    },
+    {
+      "job_id": "dah0071hvn6c73cr8b10",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 22,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T21:55:56.785225",
+      "circuit_metrics": {
+        "sabre_depth": 367,
+        "tket_depth": 707,
+        "prometheus_depth": 346,
+        "sabre_2q_gates": 513,
+        "tket_2q_gates": 1003,
+        "prometheus_2q_gates": 529
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.01708304685122489,
+          "tvd": 0.9353012274801691,
+          "hop": 0.56573486328125,
+          "xeb": 89.35024335593339,
+          "entropy": 13.957908935552917,
+          "ideal_entropy": 14.245637414424184
+        },
+        "tket": {
+          "fidelity": 0.003063904216089717,
+          "tvd": 0.9760196345651095,
+          "hop": 0.53546142578125,
+          "xeb": 24.035288422303147,
+          "entropy": 13.984236775970063,
+          "ideal_entropy": 14.245637414424184
+        },
+        "prometheus": {
+          "fidelity": 0.006357063594659148,
+          "tvd": 0.9621260341885439,
+          "hop": 0.5108642578125,
+          "xeb": 37.40449250110909,
+          "entropy": 13.979796170043418,
+          "ideal_entropy": 14.245637414424184
+        }
+      }
+    },
+    {
+      "job_id": "dagvtu8mhr3c73e5poe0",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 21,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T21:51:05.177311",
+      "circuit_metrics": {
+        "sabre_depth": 440,
+        "tket_depth": 631,
+        "prometheus_depth": 319,
+        "sabre_2q_gates": 583,
+        "tket_2q_gates": 893,
+        "prometheus_2q_gates": 438
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.009379445167911869,
+          "tvd": 0.9678576491852096,
+          "hop": 0.50164794921875,
+          "xeb": 63.447574569619945,
+          "entropy": 13.903126127504475,
+          "ideal_entropy": 11.063062794790772
+        },
+        "tket": {
+          "fidelity": 0.010916803355367065,
+          "tvd": 0.9598403957138109,
+          "hop": 0.55120849609375,
+          "xeb": 59.04276375503189,
+          "entropy": 13.955041044613795,
+          "ideal_entropy": 11.063062794790772
+        },
+        "prometheus": {
+          "fidelity": 0.06999932100901725,
+          "tvd": 0.8797626327493532,
+          "hop": 0.5562744140625,
+          "xeb": 348.0783844069393,
+          "entropy": 13.75636772332026,
+          "ideal_entropy": 11.063062794790772
+        }
+      }
+    },
+    {
+      "job_id": "dagvq10mhr3c73e5pjvg",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 20,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T21:42:44.762146",
+      "circuit_metrics": {
+        "sabre_depth": 438,
+        "tket_depth": 596,
+        "prometheus_depth": 312,
+        "sabre_2q_gates": 561,
+        "tket_2q_gates": 799,
+        "prometheus_2q_gates": 403
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.033956307019448614,
+          "tvd": 0.9051209131216401,
+          "hop": 0.544677734375,
+          "xeb": 36.01469546145835,
+          "entropy": 13.901328022616678,
+          "ideal_entropy": 13.481753497606821
+        },
+        "tket": {
+          "fidelity": 0.01340010206841331,
+          "tvd": 0.9440056189650446,
+          "hop": 0.56109619140625,
+          "xeb": 12.645367336748318,
+          "entropy": 13.946794009977634,
+          "ideal_entropy": 13.481753497606821
+        },
+        "prometheus": {
+          "fidelity": 0.05799789931528826,
+          "tvd": 0.8676695744449447,
+          "hop": 0.563232421875,
+          "xeb": 53.780259012107734,
+          "entropy": 13.831515021800314,
+          "ideal_entropy": 13.481753497606821
+        }
+      }
+    },
+    {
+      "job_id": "dagvm5phvn6c73cr7vp0",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 19,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T21:34:31.308038",
+      "circuit_metrics": {
+        "sabre_depth": 321,
+        "tket_depth": 501,
+        "prometheus_depth": 281,
+        "sabre_2q_gates": 372,
+        "tket_2q_gates": 717,
+        "prometheus_2q_gates": 358
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.1397368226399545,
+          "tvd": 0.8245211634729317,
+          "hop": 0.61639404296875,
+          "xeb": 489.09168445571066,
+          "entropy": 13.349553150769706,
+          "ideal_entropy": 9.161746958203137
+        },
+        "tket": {
+          "fidelity": 0.09154338707309793,
+          "tvd": 0.8717786445209101,
+          "hop": 0.63739013671875,
+          "xeb": 257.10835412130155,
+          "entropy": 13.532833588028506,
+          "ideal_entropy": 9.161746958203137
+        },
+        "prometheus": {
+          "fidelity": 0.17703950133332474,
+          "tvd": 0.7908558415283989,
+          "hop": 0.61981201171875,
+          "xeb": 707.4361766176047,
+          "entropy": 13.14820095183799,
+          "ideal_entropy": 9.161746958203137
+        }
+      }
+    },
+    {
+      "job_id": "dagvjqvi3e6s738n23kg",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 18,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T21:29:31.791278",
+      "circuit_metrics": {
+        "sabre_depth": 447,
+        "tket_depth": 478,
+        "prometheus_depth": 278,
+        "sabre_2q_gates": 467,
+        "tket_2q_gates": 633,
+        "prometheus_2q_gates": 339
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.04890278225081678,
+          "tvd": 0.9206025904276944,
+          "hop": 0.55712890625,
+          "xeb": 51.453188194582324,
+          "entropy": 13.682999182301074,
+          "ideal_entropy": 9.526984814371103
+        },
+        "tket": {
+          "fidelity": 0.07749519720471659,
+          "tvd": 0.8868406876324194,
+          "hop": 0.59002685546875,
+          "xeb": 58.95819246682352,
+          "entropy": 13.680266857323327,
+          "ideal_entropy": 9.526984814371103
+        },
+        "prometheus": {
+          "fidelity": 0.20763248208867027,
+          "tvd": 0.762953219258675,
+          "hop": 0.62322998046875,
+          "xeb": 210.48063392202576,
+          "entropy": 13.135706341739928,
+          "ideal_entropy": 9.526984814371103
+        }
+      }
+    },
+    {
+      "job_id": "dagvglvi3e6s738n1vvg",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 17,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T21:22:48.001784",
+      "circuit_metrics": {
+        "sabre_depth": 409,
+        "tket_depth": 437,
+        "prometheus_depth": 250,
+        "sabre_2q_gates": 399,
+        "tket_2q_gates": 559,
+        "prometheus_2q_gates": 286
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.09627315249861645,
+          "tvd": 0.8631047310255532,
+          "hop": 0.59185791015625,
+          "xeb": 25.935306565401348,
+          "entropy": 13.568293269958112,
+          "ideal_entropy": 10.642618238858125
+        },
+        "tket": {
+          "fidelity": 0.11036289853963763,
+          "tvd": 0.8465168990854964,
+          "hop": 0.58343505859375,
+          "xeb": 25.65332811062798,
+          "entropy": 13.567457830302136,
+          "ideal_entropy": 10.642618238858125
+        },
+        "prometheus": {
+          "fidelity": 0.28845301313039423,
+          "tvd": 0.6827810818007873,
+          "hop": 0.701416015625,
+          "xeb": 87.32271567628955,
+          "entropy": 13.031455578313711,
+          "ideal_entropy": 10.642618238858125
+        }
+      }
+    },
+    {
+      "job_id": "dagvd3gmhr3c73e5p3p0",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 16,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T21:15:10.284512",
+      "circuit_metrics": {
+        "sabre_depth": 307,
+        "tket_depth": 345,
+        "prometheus_depth": 230,
+        "sabre_2q_gates": 325,
+        "tket_2q_gates": 454,
+        "prometheus_2q_gates": 253
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.23373260386955402,
+          "tvd": 0.7591504186099529,
+          "hop": 0.63848876953125,
+          "xeb": 203.72801554278922,
+          "entropy": 12.454116642920818,
+          "ideal_entropy": 7.181323744328407
+        },
+        "tket": {
+          "fidelity": 0.12885054368444446,
+          "tvd": 0.8509131456807686,
+          "hop": 0.629150390625,
+          "xeb": 93.88499094703695,
+          "entropy": 12.973517465442123,
+          "ideal_entropy": 7.181323744328407
+        },
+        "prometheus": {
+          "fidelity": 0.18763996754194678,
+          "tvd": 0.806490847897867,
+          "hop": 0.56622314453125,
+          "xeb": 185.66879486374916,
+          "entropy": 12.510873325786662,
+          "ideal_entropy": 7.181323744328407
+        }
+      }
+    },
+    {
+      "job_id": "dagv5eb9k43c73advts0",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 23,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T20:58:49.892622",
+      "circuit_metrics": {
+        "sabre_depth": 409,
+        "tket_depth": 849,
+        "prometheus_depth": 372,
+        "sabre_2q_gates": 570,
+        "tket_2q_gates": 1112,
+        "prometheus_2q_gates": 587
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.02162431452057691,
+          "tvd": 0.9471235511541047,
+          "hop": 0.63494873046875,
+          "xeb": 653.8015711077389,
+          "entropy": 13.896444357220185,
+          "ideal_entropy": 11.029506306862341
+        },
+        "tket": {
+          "fidelity": 1.2861183622113626e-05,
+          "tvd": 0.9989069359241817,
+          "hop": 0.48150634765625,
+          "xeb": 3.568713999448714,
+          "entropy": 13.9964599609375,
+          "ideal_entropy": 11.029506306862341
+        },
+        "prometheus": {
+          "fidelity": 0.0665925090254252,
+          "tvd": 0.888825433511049,
+          "hop": 0.61407470703125,
+          "xeb": 1489.0774904088946,
+          "entropy": 13.81372654939204,
+          "ideal_entropy": 11.029506306862341
+        }
+      }
+    },
+    {
+      "job_id": "dagv33phvn6c73cr76n0",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 22,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T20:53:51.607743",
+      "circuit_metrics": {
+        "sabre_depth": 517,
+        "tket_depth": 707,
+        "prometheus_depth": 337,
+        "sabre_2q_gates": 680,
+        "tket_2q_gates": 1003,
+        "prometheus_2q_gates": 538
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.020963248860216114,
+          "tvd": 0.9370519552134502,
+          "hop": 0.55010986328125,
+          "xeb": 157.38733978910454,
+          "entropy": 13.948182647560131,
+          "ideal_entropy": 12.59733200300877
+        },
+        "tket": {
+          "fidelity": 0.00015925181721699949,
+          "tvd": 0.9952910642176144,
+          "hop": 0.4661865234375,
+          "xeb": 3.6572673485950613,
+          "entropy": 13.9913330078125,
+          "ideal_entropy": 12.59733200300877
+        },
+        "prometheus": {
+          "fidelity": 0.05367636644617144,
+          "tvd": 0.8874892793013011,
+          "hop": 0.59979248046875,
+          "xeb": 312.4252653319055,
+          "entropy": 13.868195612436708,
+          "ideal_entropy": 12.59733200300877
+        }
+      }
+    },
+    {
+      "job_id": "dagv1mfi3e6s738n1afg",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 21,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T20:50:49.842552",
+      "circuit_metrics": {
+        "sabre_depth": 400,
+        "tket_depth": 631,
+        "prometheus_depth": 344,
+        "sabre_2q_gates": 535,
+        "tket_2q_gates": 893,
+        "prometheus_2q_gates": 509
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.0740455672234208,
+          "tvd": 0.8689189664875474,
+          "hop": 0.5758056640625,
+          "xeb": 278.5825769412975,
+          "entropy": 13.804097733799098,
+          "ideal_entropy": 11.729291381066403
+        },
+        "tket": {
+          "fidelity": 0.0012229460645789849,
+          "tvd": 0.988045076227249,
+          "hop": 0.47576904296875,
+          "xeb": 14.86587073789484,
+          "entropy": 13.980162380980918,
+          "ideal_entropy": 11.729291381066403
+        },
+        "prometheus": {
+          "fidelity": 0.10677105517310115,
+          "tvd": 0.8314686755441597,
+          "hop": 0.589599609375,
+          "xeb": 473.2355947149299,
+          "entropy": 13.685063047877263,
+          "ideal_entropy": 11.729291381066403
+        }
+      }
+    },
+    {
+      "job_id": "dagv15ni3e6s738n19v0",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 20,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T20:49:42.415050",
+      "circuit_metrics": {
+        "sabre_depth": 484,
+        "tket_depth": 596,
+        "prometheus_depth": 296,
+        "sabre_2q_gates": 544,
+        "tket_2q_gates": 799,
+        "prometheus_2q_gates": 433
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.08650282828471886,
+          "tvd": 0.8442361142648508,
+          "hop": 0.5732421875,
+          "xeb": 117.75048842089024,
+          "entropy": 13.737349252611352,
+          "ideal_entropy": 11.954140258304385
+        },
+        "tket": {
+          "fidelity": 0.008614568204702881,
+          "tvd": 0.9566872771323139,
+          "hop": 0.51605224609375,
+          "xeb": 9.684791464366596,
+          "entropy": 13.914306089012763,
+          "ideal_entropy": 11.954140258304385
+        },
+        "prometheus": {
+          "fidelity": 0.1452985024023707,
+          "tvd": 0.7810571660555341,
+          "hop": 0.60614013671875,
+          "xeb": 186.99182466314363,
+          "entropy": 13.610481719628048,
+          "ideal_entropy": 11.954140258304385
+        }
+      }
+    },
+    {
+      "job_id": "dagv0j0mhr3c73e5ojqg",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 19,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T20:48:28.877034",
+      "circuit_metrics": {
+        "sabre_depth": 367,
+        "tket_depth": 501,
+        "prometheus_depth": 317,
+        "sabre_2q_gates": 420,
+        "tket_2q_gates": 717,
+        "prometheus_2q_gates": 422
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.13579415422847876,
+          "tvd": 0.8183941685593799,
+          "hop": 0.59814453125,
+          "xeb": 333.6945812743991,
+          "entropy": 13.3314434020934,
+          "ideal_entropy": 10.099217290374673
+        },
+        "tket": {
+          "fidelity": 0.04347995195560989,
+          "tvd": 0.9144169178889527,
+          "hop": 0.5931396484375,
+          "xeb": 73.58311691942379,
+          "entropy": 13.700721165403424,
+          "ideal_entropy": 10.099217290374673
+        },
+        "prometheus": {
+          "fidelity": 0.26753243271294075,
+          "tvd": 0.6982166439565278,
+          "hop": 0.72003173828125,
+          "xeb": 756.0634666213473,
+          "entropy": 12.923809864332245,
+          "ideal_entropy": 10.099217290374673
+        }
+      }
+    },
+    {
+      "job_id": "dagv039hvn6c73cr72jg",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 18,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T20:47:26.044434",
+      "circuit_metrics": {
+        "sabre_depth": 353,
+        "tket_depth": 478,
+        "prometheus_depth": 303,
+        "sabre_2q_gates": 369,
+        "tket_2q_gates": 633,
+        "prometheus_2q_gates": 362
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.1559219694086138,
+          "tvd": 0.8117327307509158,
+          "hop": 0.63531494140625,
+          "xeb": 159.30443919752884,
+          "entropy": 13.173122335830382,
+          "ideal_entropy": 9.40088396931822
+        },
+        "tket": {
+          "fidelity": 0.025873194470072313,
+          "tvd": 0.9460803922768837,
+          "hop": 0.4805908203125,
+          "xeb": 27.963613358060698,
+          "entropy": 13.499133997684604,
+          "ideal_entropy": 9.40088396931822
+        },
+        "prometheus": {
+          "fidelity": 0.3117422261287917,
+          "tvd": 0.6444764153020931,
+          "hop": 0.672607421875,
+          "xeb": 675.0593915692168,
+          "entropy": 12.206684600069629,
+          "ideal_entropy": 9.40088396931822
+        }
+      }
+    },
+    {
+      "job_id": "daguvj8mhr3c73e5ohe0",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 17,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T20:46:21.505329",
+      "circuit_metrics": {
+        "sabre_depth": 251,
+        "tket_depth": 437,
+        "prometheus_depth": 283,
+        "sabre_2q_gates": 286,
+        "tket_2q_gates": 559,
+        "prometheus_2q_gates": 335
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.2930920686179768,
+          "tvd": 0.6927582711751871,
+          "hop": 0.7330322265625,
+          "xeb": 333.933939348623,
+          "entropy": 12.216071301498387,
+          "ideal_entropy": 8.783586781313202
+        },
+        "tket": {
+          "fidelity": 0.03587001967096649,
+          "tvd": 0.940011657589065,
+          "hop": 0.44970703125,
+          "xeb": 30.870269369720695,
+          "entropy": 13.366032762002446,
+          "ideal_entropy": 8.783586781313202
+        },
+        "prometheus": {
+          "fidelity": 0.30647105026017135,
+          "tvd": 0.6851452127948869,
+          "hop": 0.7052001953125,
+          "xeb": 264.99606874451536,
+          "entropy": 12.621176259344098,
+          "ideal_entropy": 8.783586781313202
+        }
+      }
+    },
+    {
+      "job_id": "dagurbni3e6s738n10f0",
+      "selected_qpu": "ibm_kingston",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 16,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T20:37:18.224743",
+      "circuit_metrics": {
+        "sabre_depth": 367,
+        "tket_depth": 345,
+        "prometheus_depth": 282,
+        "sabre_2q_gates": 377,
+        "tket_2q_gates": 454,
+        "prometheus_2q_gates": 282
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.24497629226351825,
+          "tvd": 0.7087636643836008,
+          "hop": 0.60845947265625,
+          "xeb": 35.040633453552275,
+          "entropy": 12.811389944088278,
+          "ideal_entropy": 10.365872717991481
+        },
+        "tket": {
+          "fidelity": 0.34773510366104526,
+          "tvd": 0.6179162161581458,
+          "hop": 0.7203369140625,
+          "xeb": 49.36301469265074,
+          "entropy": 12.542801597799391,
+          "ideal_entropy": 10.365872717991481
+        },
+        "prometheus": {
+          "fidelity": 0.3383057297691908,
+          "tvd": 0.6359201872646565,
+          "hop": 0.65673828125,
+          "xeb": 39.685422077526,
+          "entropy": 12.781064303523328,
+          "ideal_entropy": 10.365872717991481
+        }
+      }
+    },
+    {
+      "job_id": "dagtsg1hvn6c73cr5k4g",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 23,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T19:31:30.175000",
+      "circuit_metrics": {
+        "sabre_depth": 504,
+        "tket_depth": 849,
+        "prometheus_depth": 358,
+        "sabre_2q_gates": 671,
+        "tket_2q_gates": 1112,
+        "prometheus_2q_gates": 530
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.009241045145755652,
+          "tvd": 0.9672325469225687,
+          "hop": 0.56329345703125,
+          "xeb": 353.40892980406784,
+          "entropy": 13.975809583289438,
+          "ideal_entropy": 11.230651315552416
+        },
+        "tket": {
+          "fidelity": 0.0003897907475077933,
+          "tvd": 0.9935191614548902,
+          "hop": 0.55682373046875,
+          "xeb": 33.10890396109029,
+          "entropy": 13.992415486907564,
+          "ideal_entropy": 11.230651315552416
+        },
+        "prometheus": {
+          "fidelity": 0.01710105347108722,
+          "tvd": 0.9518391012757741,
+          "hop": 0.54437255859375,
+          "xeb": 555.4241703055038,
+          "entropy": 13.945611077302868,
+          "ideal_entropy": 11.230651315552416
+        }
+      }
+    },
+    {
+      "job_id": "dagtrq1hvn6c73cr5jc0",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 22,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T19:30:01.756704",
+      "circuit_metrics": {
+        "sabre_depth": 408,
+        "tket_depth": 707,
+        "prometheus_depth": 332,
+        "sabre_2q_gates": 534,
+        "tket_2q_gates": 1003,
+        "prometheus_2q_gates": 501
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.02289682954460454,
+          "tvd": 0.9444173912803024,
+          "hop": 0.5592041015625,
+          "xeb": 348.0719196162665,
+          "entropy": 13.922241730707647,
+          "ideal_entropy": 11.450780372869598
+        },
+        "tket": {
+          "fidelity": 0.0066543226489794655,
+          "tvd": 0.9689692687028861,
+          "hop": 0.661865234375,
+          "xeb": 82.62093743458573,
+          "entropy": 13.961939210507868,
+          "ideal_entropy": 11.450780372869598
+        },
+        "prometheus": {
+          "fidelity": 0.034582472408305316,
+          "tvd": 0.9263002613268931,
+          "hop": 0.58331298828125,
+          "xeb": 445.1505800529204,
+          "entropy": 13.900653876797392,
+          "ideal_entropy": 11.450780372869598
+        }
+      }
+    },
+    {
+      "job_id": "dagtqrni3e6s738mvmo0",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 21,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T19:27:59.329488",
+      "circuit_metrics": {
+        "sabre_depth": 348,
+        "tket_depth": 631,
+        "prometheus_depth": 330,
+        "sabre_2q_gates": 490,
+        "tket_2q_gates": 893,
+        "prometheus_2q_gates": 453
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.03502320866194487,
+          "tvd": 0.9052848482114926,
+          "hop": 0.60626220703125,
+          "xeb": 80.283915136602,
+          "entropy": 13.923767331307388,
+          "ideal_entropy": 13.564590082299121
+        },
+        "tket": {
+          "fidelity": 0.00314128439376727,
+          "tvd": 0.9760173370156505,
+          "hop": 0.58721923828125,
+          "xeb": 8.379237831233347,
+          "entropy": 13.976592420959207,
+          "ideal_entropy": 13.564590082299121
+        },
+        "prometheus": {
+          "fidelity": 0.013600436604195206,
+          "tvd": 0.9428241408763565,
+          "hop": 0.53448486328125,
+          "xeb": 38.49005627267862,
+          "entropy": 13.951820331969095,
+          "ideal_entropy": 13.564590082299121
+        }
+      }
+    },
+    {
+      "job_id": "dagtpv7i3e6s738mvkq0",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 20,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T19:26:05.247861",
+      "circuit_metrics": {
+        "sabre_depth": 509,
+        "tket_depth": 596,
+        "prometheus_depth": 300,
+        "sabre_2q_gates": 572,
+        "tket_2q_gates": 799,
+        "prometheus_2q_gates": 397
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.008649105491230286,
+          "tvd": 0.9623080765046129,
+          "hop": 0.50811767578125,
+          "xeb": 17.884072943914223,
+          "entropy": 13.949534113309522,
+          "ideal_entropy": 11.890004293211081
+        },
+        "tket": {
+          "fidelity": 0.00852828163695334,
+          "tvd": 0.9630191935394634,
+          "hop": 0.57635498046875,
+          "xeb": 18.19806822748201,
+          "entropy": 13.949610108945379,
+          "ideal_entropy": 11.890004293211081
+        },
+        "prometheus": {
+          "fidelity": 0.07510056226531418,
+          "tvd": 0.868490930190998,
+          "hop": 0.56439208984375,
+          "xeb": 119.61303707704614,
+          "entropy": 13.801626995825645,
+          "ideal_entropy": 11.890004293211081
+        }
+      }
+    },
+    {
+      "job_id": "dagtpbj9k43c73adu2r0",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 19,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T19:24:47.643726",
+      "circuit_metrics": {
+        "sabre_depth": 355,
+        "tket_depth": 501,
+        "prometheus_depth": 284,
+        "sabre_2q_gates": 436,
+        "tket_2q_gates": 717,
+        "prometheus_2q_gates": 358
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.09634302785712925,
+          "tvd": 0.8571390527269183,
+          "hop": 0.57977294921875,
+          "xeb": 209.27931029415015,
+          "entropy": 13.621215895032043,
+          "ideal_entropy": 10.398235145575239
+        },
+        "tket": {
+          "fidelity": 0.03862188196011242,
+          "tvd": 0.9203890105462544,
+          "hop": 0.6297607421875,
+          "xeb": 72.63173946291337,
+          "entropy": 13.812598506299484,
+          "ideal_entropy": 10.398235145575239
+        },
+        "prometheus": {
+          "fidelity": 0.12635219527217276,
+          "tvd": 0.8298217183549164,
+          "hop": 0.5919189453125,
+          "xeb": 280.21910751898383,
+          "entropy": 13.492268095700133,
+          "ideal_entropy": 10.398235145575239
+        }
+      }
+    },
+    {
+      "job_id": "dagton39k43c73adu1pg",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 18,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T19:23:25.512888",
+      "circuit_metrics": {
+        "sabre_depth": 527,
+        "tket_depth": 478,
+        "prometheus_depth": 266,
+        "sabre_2q_gates": 427,
+        "tket_2q_gates": 633,
+        "prometheus_2q_gates": 321
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.03525126030370527,
+          "tvd": 0.9128346214541165,
+          "hop": 0.5325927734375,
+          "xeb": 8.387811222589955,
+          "entropy": 13.859853950524679,
+          "ideal_entropy": 12.115779968659421
+        },
+        "tket": {
+          "fidelity": 0.05890796044990266,
+          "tvd": 0.8814577650563872,
+          "hop": 0.60186767578125,
+          "xeb": 14.047214837390392,
+          "entropy": 13.814373628281821,
+          "ideal_entropy": 12.115779968659421
+        },
+        "prometheus": {
+          "fidelity": 0.16607660850271008,
+          "tvd": 0.7668809101924341,
+          "hop": 0.62017822265625,
+          "xeb": 47.70689366827901,
+          "entropy": 13.568704407161686,
+          "ideal_entropy": 12.115779968659421
+        }
+      }
+    },
+    {
+      "job_id": "dagto3hhvn6c73cr5d90",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 17,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T19:22:07.919005",
+      "circuit_metrics": {
+        "sabre_depth": 342,
+        "tket_depth": 437,
+        "prometheus_depth": 248,
+        "sabre_2q_gates": 339,
+        "tket_2q_gates": 559,
+        "prometheus_2q_gates": 286
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.10634671193704837,
+          "tvd": 0.833277635625918,
+          "hop": 0.5728759765625,
+          "xeb": 6.673943336554034,
+          "entropy": 13.746322171907977,
+          "ideal_entropy": 12.656772897531546
+        },
+        "tket": {
+          "fidelity": 0.08359153855567907,
+          "tvd": 0.858627624555967,
+          "hop": 0.595947265625,
+          "xeb": 4.583470819693454,
+          "entropy": 13.785611590047386,
+          "ideal_entropy": 12.656772897531546
+        },
+        "prometheus": {
+          "fidelity": 0.19003709078960834,
+          "tvd": 0.7538378190473792,
+          "hop": 0.6549072265625,
+          "xeb": 12.532861589043364,
+          "entropy": 13.629538887047456,
+          "ideal_entropy": 12.656772897531546
+        }
+      }
+    },
+    {
+      "job_id": "dagtnd0mhr3c73e5mrsg",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 16,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T19:20:37.823520",
+      "circuit_metrics": {
+        "sabre_depth": 310,
+        "tket_depth": 345,
+        "prometheus_depth": 232,
+        "sabre_2q_gates": 307,
+        "tket_2q_gates": 454,
+        "prometheus_2q_gates": 253
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.2181949900822693,
+          "tvd": 0.7703083668787339,
+          "hop": 0.6217041015625,
+          "xeb": 74.30855985192508,
+          "entropy": 12.964417500837143,
+          "ideal_entropy": 8.578987888904424
+        },
+        "tket": {
+          "fidelity": 0.053098837343661526,
+          "tvd": 0.9089138353612927,
+          "hop": 0.48773193359375,
+          "xeb": 12.209916453967265,
+          "entropy": 13.409978930212114,
+          "ideal_entropy": 8.578987888904424
+        },
+        "prometheus": {
+          "fidelity": 0.3055773899121539,
+          "tvd": 0.6879241238316283,
+          "hop": 0.66424560546875,
+          "xeb": 128.95097486778235,
+          "entropy": 12.48534328226194,
+          "ideal_entropy": 8.578987888904424
+        }
+      }
+    },
+    {
+      "job_id": "daghd01hvn6c73cqki90",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 16,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T05:19:12.488033",
+      "circuit_metrics": {
+        "sabre_depth": 376,
+        "tket_depth": 345,
+        "prometheus_depth": 229,
+        "sabre_2q_gates": 366,
+        "tket_2q_gates": 454,
+        "prometheus_2q_gates": 265
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.22834042542106006,
+          "tvd": 0.7499171136755459,
+          "hop": 0.72802734375,
+          "xeb": 37.72886616564064,
+          "entropy": 12.921328987535317,
+          "ideal_entropy": 9.309890785594845
+        },
+        "tket": {
+          "fidelity": 0.03612410826189191,
+          "tvd": 0.9370103448561135,
+          "hop": 0.51263427734375,
+          "xeb": 6.960923467256906,
+          "entropy": 13.603893633889005,
+          "ideal_entropy": 9.309890785594845
+        },
+        "prometheus": {
+          "fidelity": 0.25349768793733735,
+          "tvd": 0.7259917503381714,
+          "hop": 0.69342041015625,
+          "xeb": 55.69724988947367,
+          "entropy": 12.769080528630592,
+          "ideal_entropy": 9.309890785594845
+        }
+      }
+    },
+    {
+      "job_id": "dagh9tb9k43c73adctd0",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 7,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-09T05:12:38.299459",
+      "circuit_metrics": {
+        "sabre_depth": 98,
+        "tket_depth": 103,
+        "prometheus_depth": 85,
+        "sabre_2q_gates": 57,
+        "tket_2q_gates": 63,
+        "prometheus_2q_gates": 47
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.9281197817325786,
+          "tvd": 0.16008454235844766,
+          "hop": 0.87518310546875,
+          "xeb": 3.2785165803933687,
+          "entropy": 5.910839284887186,
+          "ideal_entropy": 5.18281371956794
+        },
+        "tket": {
+          "fidelity": 0.8688357544716062,
+          "tvd": 0.2524063692902109,
+          "hop": 0.81329345703125,
+          "xeb": 2.709262414742428,
+          "entropy": 6.178878028776354,
+          "ideal_entropy": 5.18281371956794
+        },
+        "prometheus": {
+          "fidelity": 0.9016777358356363,
+          "tvd": 0.21004014838907284,
+          "hop": 0.84771728515625,
+          "xeb": 2.8906655021160215,
+          "entropy": 6.0903180424713055,
+          "ideal_entropy": 5.18281371956794
+        }
+      }
+    },
+    {
+      "job_id": "dafhjeu42tqs73avv7dg",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 23,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T17:08:28.523411",
+      "circuit_metrics": {
+        "sabre_depth": 537,
+        "tket_depth": 849,
+        "prometheus_depth": 347,
+        "sabre_2q_gates": 613,
+        "tket_2q_gates": 1112,
+        "prometheus_2q_gates": 522
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.000417638102346283,
+          "tvd": 0.9911922079332454,
+          "hop": 0.485595703125,
+          "xeb": 14.830223775169625,
+          "entropy": 13.9957275390625,
+          "ideal_entropy": 13.549252594901517
+        },
+        "tket": {
+          "fidelity": 7.50169376828565e-05,
+          "tvd": 0.9970932629388023,
+          "hop": 0.53485107421875,
+          "xeb": 2.8318501670167113,
+          "entropy": 13.993408203125,
+          "ideal_entropy": 13.549252594901517
+        },
+        "prometheus": {
+          "fidelity": 0.007022654456909933,
+          "tvd": 0.9628748959524931,
+          "hop": 0.52423095703125,
+          "xeb": 143.45582246373795,
+          "entropy": 13.98003182888818,
+          "ideal_entropy": 13.549252594901517
+        }
+      }
+    },
+    {
+      "job_id": "dafhioe42tqs73avv6g0",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 22,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T17:06:58.456133",
+      "circuit_metrics": {
+        "sabre_depth": 398,
+        "tket_depth": 707,
+        "prometheus_depth": 335,
+        "sabre_2q_gates": 544,
+        "tket_2q_gates": 1003,
+        "prometheus_2q_gates": 502
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.010113489288198782,
+          "tvd": 0.9655550113492224,
+          "hop": 0.5457763671875,
+          "xeb": 151.249882390683,
+          "entropy": 13.965217977906708,
+          "ideal_entropy": 10.75723798657358
+        },
+        "tket": {
+          "fidelity": 7.924828205452128e-05,
+          "tvd": 0.9971513785339953,
+          "hop": 0.5225830078125,
+          "xeb": 8.39443356704884,
+          "entropy": 13.995361328125,
+          "ideal_entropy": 10.75723798657358
+        },
+        "prometheus": {
+          "fidelity": 0.011855868337823856,
+          "tvd": 0.9635043449612068,
+          "hop": 0.55340576171875,
+          "xeb": 207.46403138775548,
+          "entropy": 13.9485756261916,
+          "ideal_entropy": 10.75723798657358
+        }
+      }
+    },
+    {
+      "job_id": "dafhi5dnj4cs73agcm3g",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 21,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T17:05:42.311627",
+      "circuit_metrics": {
+        "sabre_depth": 377,
+        "tket_depth": 631,
+        "prometheus_depth": 319,
+        "sabre_2q_gates": 478,
+        "tket_2q_gates": 893,
+        "prometheus_2q_gates": 453
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.023153029795667683,
+          "tvd": 0.9394353654688551,
+          "hop": 0.56304931640625,
+          "xeb": 216.5115817414423,
+          "entropy": 13.891391897823134,
+          "ideal_entropy": 11.133071954862993
+        },
+        "tket": {
+          "fidelity": 0.0025434180151468282,
+          "tvd": 0.9829342542196786,
+          "hop": 0.52838134765625,
+          "xeb": 29.174924513456972,
+          "entropy": 13.979948161315125,
+          "ideal_entropy": 11.133071954862993
+        },
+        "prometheus": {
+          "fidelity": 0.042580106098267206,
+          "tvd": 0.916014342883027,
+          "hop": 0.5855712890625,
+          "xeb": 334.73890572054586,
+          "entropy": 13.861476453020579,
+          "ideal_entropy": 11.133071954862993
+        }
+      }
+    },
+    {
+      "job_id": "dafhhjm42tqs73avv44g",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 20,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T17:04:31.341989",
+      "circuit_metrics": {
+        "sabre_depth": 453,
+        "tket_depth": 596,
+        "prometheus_depth": 295,
+        "sabre_2q_gates": 603,
+        "tket_2q_gates": 799,
+        "prometheus_2q_gates": 393
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.03208205797432569,
+          "tvd": 0.9230410151826836,
+          "hop": 0.57281494140625,
+          "xeb": 65.21030556623727,
+          "entropy": 13.898493815289065,
+          "ideal_entropy": 11.8574411981369
+        },
+        "tket": {
+          "fidelity": 0.003983210731397379,
+          "tvd": 0.9733229933157282,
+          "hop": 0.5537109375,
+          "xeb": 10.201776110497937,
+          "entropy": 13.946952096553922,
+          "ideal_entropy": 11.8574411981369
+        },
+        "prometheus": {
+          "fidelity": 0.034019102851550014,
+          "tvd": 0.9182083429352035,
+          "hop": 0.5279541015625,
+          "xeb": 56.77071319271716,
+          "entropy": 13.89993226935494,
+          "ideal_entropy": 11.8574411981369
+        }
+      }
+    },
+    {
+      "job_id": "dafhgud1ierc738nchig",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 19,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T17:03:07.008709",
+      "circuit_metrics": {
+        "sabre_depth": 389,
+        "tket_depth": 501,
+        "prometheus_depth": 280,
+        "sabre_2q_gates": 475,
+        "tket_2q_gates": 717,
+        "prometheus_2q_gates": 354
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.055425651169984345,
+          "tvd": 0.923008930177905,
+          "hop": 0.55511474609375,
+          "xeb": 232.00659131228932,
+          "entropy": 13.775717870974006,
+          "ideal_entropy": 8.145454962270605
+        },
+        "tket": {
+          "fidelity": 0.007380797245186444,
+          "tvd": 0.9775659332352318,
+          "hop": 0.5687255859375,
+          "xeb": 40.88761664154466,
+          "entropy": 13.92413871535819,
+          "ideal_entropy": 8.145454962270605
+        },
+        "prometheus": {
+          "fidelity": 0.11502879228563545,
+          "tvd": 0.860461944276095,
+          "hop": 0.57183837890625,
+          "xeb": 687.4910070048968,
+          "entropy": 13.364976449898192,
+          "ideal_entropy": 8.145454962270605
+        }
+      }
+    },
+    {
+      "job_id": "dafhgce42tqs73avv220",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 18,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T17:01:54.770440",
+      "circuit_metrics": {
+        "sabre_depth": 318,
+        "tket_depth": 478,
+        "prometheus_depth": 264,
+        "sabre_2q_gates": 351,
+        "tket_2q_gates": 633,
+        "prometheus_2q_gates": 317
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.07641613336391233,
+          "tvd": 0.9035722251408037,
+          "hop": 0.55853271484375,
+          "xeb": 159.74809784444972,
+          "entropy": 13.437898214437718,
+          "ideal_entropy": 8.200949420210787
+        },
+        "tket": {
+          "fidelity": 0.032139589678330846,
+          "tvd": 0.943593287800244,
+          "hop": 0.59283447265625,
+          "xeb": 55.366946291589436,
+          "entropy": 13.77544914834577,
+          "ideal_entropy": 8.200949420210787
+        },
+        "prometheus": {
+          "fidelity": 0.15168417477058843,
+          "tvd": 0.8252291721571443,
+          "hop": 0.61859130859375,
+          "xeb": 353.4608374606405,
+          "entropy": 13.042273842908681,
+          "ideal_entropy": 8.200949420210787
+        }
+      }
+    },
+    {
+      "job_id": "dafhfubdd5gc73d9rerg",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 17,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T17:00:58.466273",
+      "circuit_metrics": {
+        "sabre_depth": 318,
+        "tket_depth": 437,
+        "prometheus_depth": 244,
+        "sabre_2q_gates": 318,
+        "tket_2q_gates": 559,
+        "prometheus_2q_gates": 282
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.1747629357036362,
+          "tvd": 0.8126494591811995,
+          "hop": 0.66217041015625,
+          "xeb": 517.9616247016348,
+          "entropy": 12.753219286039423,
+          "ideal_entropy": 6.733663975577122
+        },
+        "tket": {
+          "fidelity": 0.05946395832708174,
+          "tvd": 0.9188902608760822,
+          "hop": 0.71221923828125,
+          "xeb": 116.86083824384417,
+          "entropy": 13.395452231545814,
+          "ideal_entropy": 6.733663975577122
+        },
+        "prometheus": {
+          "fidelity": 0.21524525023969923,
+          "tvd": 0.776127660009191,
+          "hop": 0.65576171875,
+          "xeb": 737.7967637690552,
+          "entropy": 12.364482391475425,
+          "ideal_entropy": 6.733663975577122
+        }
+      }
+    },
+    {
+      "job_id": "dafhffm42tqs73avv0r0",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 16,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T16:59:59.268552",
+      "circuit_metrics": {
+        "sabre_depth": 270,
+        "tket_depth": 345,
+        "prometheus_depth": 230,
+        "sabre_2q_gates": 264,
+        "tket_2q_gates": 454,
+        "prometheus_2q_gates": 249
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.24377976960015785,
+          "tvd": 0.7390264632748882,
+          "hop": 0.67254638671875,
+          "xeb": 31.0471365283611,
+          "entropy": 13.130242350659467,
+          "ideal_entropy": 9.933928898237737
+        },
+        "tket": {
+          "fidelity": 0.08184827334096502,
+          "tvd": 0.8821884135433278,
+          "hop": 0.607666015625,
+          "xeb": 8.869576251011285,
+          "entropy": 13.439771413220393,
+          "ideal_entropy": 9.933928898237737
+        },
+        "prometheus": {
+          "fidelity": 0.2786335330531359,
+          "tvd": 0.7056991218438251,
+          "hop": 0.68853759765625,
+          "xeb": 45.92585207296102,
+          "entropy": 12.915104009290586,
+          "ideal_entropy": 9.933928898237737
+        }
+      }
+    },
+    {
+      "job_id": "dafhf1e42tqs73avv0c0",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 15,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T16:59:01.797876",
+      "circuit_metrics": {
+        "sabre_depth": 289,
+        "tket_depth": 594,
+        "prometheus_depth": 217,
+        "sabre_2q_gates": 245,
+        "tket_2q_gates": 486,
+        "prometheus_2q_gates": 221
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.1830010569934206,
+          "tvd": 0.8088350578150896,
+          "hop": 0.53173828125,
+          "xeb": 36.30719378981984,
+          "entropy": 12.697464834595083,
+          "ideal_entropy": 7.919508842961706
+        },
+        "tket": {
+          "fidelity": 0.09214565157976995,
+          "tvd": 0.885136476181333,
+          "hop": 0.53265380859375,
+          "xeb": 13.2232774057559,
+          "entropy": 13.205732662752588,
+          "ideal_entropy": 7.919508842961706
+        },
+        "prometheus": {
+          "fidelity": 0.2917102959507406,
+          "tvd": 0.7074878442078986,
+          "hop": 0.646240234375,
+          "xeb": 57.741660103895484,
+          "entropy": 12.315498002852094,
+          "ideal_entropy": 7.919508842961706
+        }
+      }
+    },
+    {
+      "job_id": "dafheibdd5gc73d9rcp0",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 14,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T16:58:01.895027",
+      "circuit_metrics": {
+        "sabre_depth": 288,
+        "tket_depth": 281,
+        "prometheus_depth": 194,
+        "sabre_2q_gates": 280,
+        "tket_2q_gates": 382,
+        "prometheus_2q_gates": 199
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.36138053652339114,
+          "tvd": 0.6536261303214744,
+          "hop": 0.74481201171875,
+          "xeb": 70.448240882884,
+          "entropy": 11.473808547749014,
+          "ideal_entropy": 7.055970220718543
+        },
+        "tket": {
+          "fidelity": 0.18933831893666145,
+          "tvd": 0.8074802424392085,
+          "hop": 0.69970703125,
+          "xeb": 22.917595354014697,
+          "entropy": 12.407926883012937,
+          "ideal_entropy": 7.055970220718543
+        },
+        "prometheus": {
+          "fidelity": 0.3842226205840867,
+          "tvd": 0.6284664640448127,
+          "hop": 0.74200439453125,
+          "xeb": 65.33419854696267,
+          "entropy": 11.385701638451618,
+          "ideal_entropy": 7.055970220718543
+        }
+      }
+    },
+    {
+      "job_id": "dafhe0d1ierc738ncdg0",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 13,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T16:56:50.184027",
+      "circuit_metrics": {
+        "sabre_depth": 249,
+        "tket_depth": 304,
+        "prometheus_depth": 200,
+        "sabre_2q_gates": 219,
+        "tket_2q_gates": 340,
+        "prometheus_2q_gates": 185
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.41468917749645284,
+          "tvd": 0.6138000872285956,
+          "hop": 0.664306640625,
+          "xeb": 29.680499298163,
+          "entropy": 11.11245498004799,
+          "ideal_entropy": 7.311649527218291
+        },
+        "tket": {
+          "fidelity": 0.28239263746827475,
+          "tvd": 0.7210663011518935,
+          "hop": 0.59417724609375,
+          "xeb": 16.442935445165467,
+          "entropy": 11.705172626467826,
+          "ideal_entropy": 7.311649527218291
+        },
+        "prometheus": {
+          "fidelity": 0.4049877751412056,
+          "tvd": 0.61440239477468,
+          "hop": 0.62213134765625,
+          "xeb": 29.52120145479259,
+          "entropy": 11.036544728014034,
+          "ideal_entropy": 7.311649527218291
+        }
+      }
+    },
+    {
+      "job_id": "dafhdhm42tqs73avuu4g",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 12,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T16:55:51.724139",
+      "circuit_metrics": {
+        "sabre_depth": 254,
+        "tket_depth": 337,
+        "prometheus_depth": 168,
+        "sabre_2q_gates": 203,
+        "tket_2q_gates": 264,
+        "prometheus_2q_gates": 141
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.5272848929975529,
+          "tvd": 0.5358372830138445,
+          "hop": 0.68292236328125,
+          "xeb": 15.173468916680463,
+          "entropy": 10.741856337461991,
+          "ideal_entropy": 7.906619581544261
+        },
+        "tket": {
+          "fidelity": 0.3997181392936368,
+          "tvd": 0.6556453989910693,
+          "hop": 0.63287353515625,
+          "xeb": 8.214940311254125,
+          "entropy": 11.296358586547036,
+          "ideal_entropy": 7.906619581544261
+        },
+        "prometheus": {
+          "fidelity": 0.6212562451157726,
+          "tvd": 0.4456538992219168,
+          "hop": 0.7392578125,
+          "xeb": 24.185790622018835,
+          "entropy": 10.249647011571861,
+          "ideal_entropy": 7.906619581544261
+        }
+      }
+    },
+    {
+      "job_id": "dafhcvtnj4cs73agcelg",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 11,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T16:54:40.362254",
+      "circuit_metrics": {
+        "sabre_depth": 195,
+        "tket_depth": 242,
+        "prometheus_depth": 145,
+        "sabre_2q_gates": 150,
+        "tket_2q_gates": 214,
+        "prometheus_2q_gates": 122
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.5974995353657542,
+          "tvd": 0.47239003608889885,
+          "hop": 0.72979736328125,
+          "xeb": 19.380477983273092,
+          "entropy": 9.542118758743028,
+          "ideal_entropy": 6.754594909260485
+        },
+        "tket": {
+          "fidelity": 0.4290622993577434,
+          "tvd": 0.6285490102381479,
+          "hop": 0.639892578125,
+          "xeb": 10.76427786965689,
+          "entropy": 10.269340449073816,
+          "ideal_entropy": 6.754594909260485
+        },
+        "prometheus": {
+          "fidelity": 0.6805634112459122,
+          "tvd": 0.3970713350953601,
+          "hop": 0.7833251953125,
+          "xeb": 24.924693623890064,
+          "entropy": 9.147706335545049,
+          "ideal_entropy": 6.754594909260485
+        }
+      }
+    },
+    {
+      "job_id": "dafhc73dd5gc73d9r9u0",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 10,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T16:53:01.323960",
+      "circuit_metrics": {
+        "sabre_depth": 152,
+        "tket_depth": 289,
+        "prometheus_depth": 128,
+        "sabre_2q_gates": 106,
+        "tket_2q_gates": 186,
+        "prometheus_2q_gates": 93
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.6293818788407023,
+          "tvd": 0.42620295613663256,
+          "hop": 0.75140380859375,
+          "xeb": 13.423314308971275,
+          "entropy": 8.477176373228195,
+          "ideal_entropy": 5.922241489274282
+        },
+        "tket": {
+          "fidelity": 0.45891609223286095,
+          "tvd": 0.5955762504475437,
+          "hop": 0.65625,
+          "xeb": 8.576743981214129,
+          "entropy": 9.144643902007243,
+          "ideal_entropy": 5.922241489274282
+        },
+        "prometheus": {
+          "fidelity": 0.6865045171972244,
+          "tvd": 0.37473786489557326,
+          "hop": 0.7923583984375,
+          "xeb": 14.93270350918015,
+          "entropy": 8.256894059692955,
+          "ideal_entropy": 5.922241489274282
+        }
+      }
+    },
+    {
+      "job_id": "dafhbqe42tqs73avus6g",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 8,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T16:52:09.978957",
+      "circuit_metrics": {
+        "sabre_depth": 134,
+        "tket_depth": 142,
+        "prometheus_depth": 93,
+        "sabre_2q_gates": 79,
+        "tket_2q_gates": 96,
+        "prometheus_2q_gates": 57
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.7841525322057221,
+          "tvd": 0.2921457556488409,
+          "hop": 0.85107421875,
+          "xeb": 21.53726198533972,
+          "entropy": 5.635678689149464,
+          "ideal_entropy": 3.7107353802630056
+        },
+        "tket": {
+          "fidelity": 0.7467718642143532,
+          "tvd": 0.3386501965510923,
+          "hop": 0.84979248046875,
+          "xeb": 19.906561251854527,
+          "entropy": 5.881792470937367,
+          "ideal_entropy": 3.7107353802630056
+        },
+        "prometheus": {
+          "fidelity": 0.8288019979425962,
+          "tvd": 0.23398105927089097,
+          "hop": 0.87109375,
+          "xeb": 26.449938271619445,
+          "entropy": 5.222078788103773,
+          "ideal_entropy": 3.7107353802630056
+        }
+      }
+    },
+    {
+      "job_id": "dafhbc5nj4cs73agcd1g",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 8,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T16:51:12.849139",
+      "circuit_metrics": {
+        "sabre_depth": 105,
+        "tket_depth": 142,
+        "prometheus_depth": 95,
+        "sabre_2q_gates": 70,
+        "tket_2q_gates": 96,
+        "prometheus_2q_gates": 57
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.7283559301548046,
+          "tvd": 0.28945354810310864,
+          "hop": 0.803955078125,
+          "xeb": 5.467689103869471,
+          "entropy": 6.7713355668927315,
+          "ideal_entropy": 5.216456188829112
+        },
+        "tket": {
+          "fidelity": 0.6877393268382186,
+          "tvd": 0.3314373672105685,
+          "hop": 0.79473876953125,
+          "xeb": 5.059394990123217,
+          "entropy": 6.9287716023626995,
+          "ideal_entropy": 5.216456188829112
+        },
+        "prometheus": {
+          "fidelity": 0.7672913614593454,
+          "tvd": 0.2604437474230479,
+          "hop": 0.85028076171875,
+          "xeb": 5.384332796237215,
+          "entropy": 6.731582191419925,
+          "ideal_entropy": 5.216456188829112
+        }
+      }
+    },
+    {
+      "job_id": "dafhan642tqs73avur0g",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Star Graph (Topology Stress)",
+      "logical_qubits": 15,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T16:49:49.835686",
+      "circuit_metrics": {
+        "sabre_depth": 59,
+        "tket_depth": 97,
+        "prometheus_depth": 59,
+        "sabre_2q_gates": 26,
+        "tket_2q_gates": 44,
+        "prometheus_2q_gates": 26
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.5424051746114295,
+          "tvd": 0.4570922851562499,
+          "hop": 0.54290771484375,
+          "xeb": 8893.999999999998,
+          "entropy": 5.090308854356219,
+          "ideal_entropy": 1.0
+        },
+        "tket": {
+          "fidelity": 0.5282910840691636,
+          "tvd": 0.4686279296874999,
+          "hop": 0.5313720703125,
+          "xeb": 8704.999999999998,
+          "entropy": 4.841469480210196,
+          "ideal_entropy": 1.0
+        },
+        "prometheus": {
+          "fidelity": 0.5452766223706942,
+          "tvd": 0.4541625976562499,
+          "hop": 0.54583740234375,
+          "xeb": 8941.999999999998,
+          "entropy": 5.023981349048874,
+          "ideal_entropy": 1.0
+        }
+      }
+    },
+    {
+      "job_id": "dafbnllnj4cs73ag5l2g",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 16,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T10:27:51.093927",
+      "circuit_metrics": {
+        "sabre_depth": 382,
+        "tket_depth": 345,
+        "prometheus_depth": 236,
+        "sabre_2q_gates": 347,
+        "tket_2q_gates": 454,
+        "prometheus_2q_gates": 275
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.16453921693957702,
+          "tvd": 0.7993734352145038,
+          "hop": 0.59588623046875,
+          "xeb": 14.992052871391884,
+          "entropy": 13.35028911293194,
+          "ideal_entropy": 10.26263136067561
+        },
+        "tket": {
+          "fidelity": 0.2051921017812407,
+          "tvd": 0.7645351302166605,
+          "hop": 0.615234375,
+          "xeb": 23.7653092191138,
+          "entropy": 13.226961403340304,
+          "ideal_entropy": 10.26263136067561
+        },
+        "prometheus": {
+          "fidelity": 0.28883069653471877,
+          "tvd": 0.693622526953802,
+          "hop": 0.66619873046875,
+          "xeb": 35.56942608537586,
+          "entropy": 12.942630072845493,
+          "ideal_entropy": 10.26263136067561
+        }
+      }
+    },
+    {
+      "job_id": "daf9t3bdd5gc73d9iae0",
+      "selected_qpu": "ibm_fez",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 13,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T08:22:53.844807",
+      "circuit_metrics": {
+        "sabre_depth": 231,
+        "tket_depth": 304,
+        "prometheus_depth": 178,
+        "sabre_2q_gates": 187,
+        "tket_2q_gates": 340,
+        "prometheus_2q_gates": 162
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.43658171003435325,
+          "tvd": 0.5763538320187824,
+          "hop": 0.70892333984375,
+          "xeb": 68.53054236890098,
+          "entropy": 10.421666631899123,
+          "ideal_entropy": 6.863493346419364
+        },
+        "tket": {
+          "fidelity": 0.31087116729055375,
+          "tvd": 0.7114707245958836,
+          "hop": 0.651123046875,
+          "xeb": 34.99765870592791,
+          "entropy": 11.229300449180625,
+          "ideal_entropy": 6.863493346419364
+        },
+        "prometheus": {
+          "fidelity": 0.5220742342507653,
+          "tvd": 0.5239991002976856,
+          "hop": 0.7535400390625,
+          "xeb": 74.95727901551989,
+          "entropy": 10.290568558620555,
+          "ideal_entropy": 6.863493346419364
+        }
+      }
+    },
+    {
+      "job_id": "daf9rrdnj4cs73ag3hmg",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 13,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T08:20:13.600952",
+      "circuit_metrics": {
+        "sabre_depth": 253,
+        "tket_depth": 304,
+        "prometheus_depth": 186,
+        "sabre_2q_gates": 209,
+        "tket_2q_gates": 340,
+        "prometheus_2q_gates": 168
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.3779816929121593,
+          "tvd": 0.6420596945293642,
+          "hop": 0.6397705078125,
+          "xeb": 82.81549610522809,
+          "entropy": 10.531546670380754,
+          "ideal_entropy": 5.982079222929585
+        },
+        "tket": {
+          "fidelity": 0.2951291442145931,
+          "tvd": 0.7141945331763526,
+          "hop": 0.601318359375,
+          "xeb": 54.51659577288746,
+          "entropy": 11.018348139677695,
+          "ideal_entropy": 5.982079222929585
+        },
+        "prometheus": {
+          "fidelity": 0.44379583388739197,
+          "tvd": 0.5802715881503894,
+          "hop": 0.63189697265625,
+          "xeb": 99.52797049693017,
+          "entropy": 9.924945284212548,
+          "ideal_entropy": 5.982079222929585
+        }
+      }
+    },
+    {
+      "job_id": "daf9p65nj4cs73ag3f20",
+      "selected_qpu": "ibm_marrakesh",
+      "total_backend_qubits": 156,
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 13,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "timestamp": "2026-09-07T08:14:32.794770",
+      "circuit_metrics": {
+        "sabre_depth": 243,
+        "tket_depth": 304,
+        "prometheus_depth": 186,
+        "sabre_2q_gates": 197,
+        "tket_2q_gates": 340,
+        "prometheus_2q_gates": 168
+      },
+      "physical_observables": {
+        "sabre": {
+          "fidelity": 0.15925709826737802,
+          "tvd": 0.8359583707483446,
+          "hop": 0.6011962890625,
+          "xeb": 31.994310193024326,
+          "entropy": 11.969829242580133,
+          "ideal_entropy": 5.512551755189721
+        },
+        "tket": {
+          "fidelity": 0.11569165248192505,
+          "tvd": 0.8735521729803667,
+          "hop": 0.52093505859375,
+          "xeb": 33.475455939205396,
+          "entropy": 10.829213969269079,
+          "ideal_entropy": 5.512551755189721
+        },
+        "prometheus": {
+          "fidelity": 0.42626130673821583,
+          "tvd": 0.5978053281362955,
+          "hop": 0.66778564453125,
+          "xeb": 173.1720225805763,
+          "entropy": 9.924489617354705,
+          "ideal_entropy": 5.512551755189721
+        }
+      }
+    }
+  ],
+  "unrecovered_queue_dispatches": [
+    {
+      "job_id": "db3v85svf2bc73ctral0",
+      "selected_qpu": "ibm_fez",
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 8,
+      "compiled_circuits": 3,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "status": "UNRECOVERED_QUEUE_DISPATCH",
+      "note": "Dispatched to IBM Quantum Runtime queue during earlier account session; telemetry never recovered due to session expiration. Excluded from all win-rate and fidelity statistics."
+    },
+    {
+      "job_id": "db3v85svf2bc73ctrakg",
+      "selected_qpu": "ibm_marrakesh",
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 8,
+      "compiled_circuits": 3,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "status": "UNRECOVERED_QUEUE_DISPATCH",
+      "note": "Dispatched to IBM Quantum Runtime queue during earlier account session; telemetry never recovered due to session expiration. Excluded from all win-rate and fidelity statistics."
+    },
+    {
+      "job_id": "db3v85imb58s7388ed7g",
+      "selected_qpu": "ibm_kingston",
+      "circuit_family": "Dense All-to-All (K_N)",
+      "logical_qubits": 8,
+      "compiled_circuits": 3,
+      "shots_per_compiler": 16384,
+      "total_job_shots": 49152,
+      "status": "UNRECOVERED_QUEUE_DISPATCH",
+      "note": "Dispatched to IBM Quantum Runtime queue during earlier account session; telemetry never recovered due to session expiration. Excluded from all win-rate and fidelity statistics."
+    }
+  ]
+}
